@@ -1,0 +1,39 @@
+.content-container {
+    max-width: 768px;
+    width: 100%;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 40px 0;
+}
+
+.demo-container {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    /*pointer-events: none;*/
+}
+
+.demo-btn-list {
+    display: flex;
+    top: 0;
+    bottom: 0;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-right: 15px;
+    min-width: 120px;
+}
+
+.demo-btn {
+    height: 100%;
+    font-weight: bold;
+}
+
+.demo-inner-container {
+    border: solid 5px;
+    flex-grow: 1;
+}

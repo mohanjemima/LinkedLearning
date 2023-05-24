@@ -26,16 +26,28 @@
     position: relative;
     padding: 20px 10px;
 }
+
+@media screen and (max-width: 640px) {
+    .banner-sub-heading {
+        display: none !important;
+    }
+}
+
 .banner-nav{
     display: inline-flex;
     padding:0px 25px;
     justify-self: right;
 }
+
 .banner-link-list{
     list-style: none;
     display: inline;
 }
-.banner-link-list-item{display: inline;}
+
+.banner-link-list-item{
+    display: inline;
+    font-weight: bold;
+}
 
 .banner-link{
     position:relative;
