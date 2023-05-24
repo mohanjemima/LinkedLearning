@@ -1,0 +1,174 @@
+/*general stylesheet including base colors/ base assets etc.*/
+
+:root{
+   --dark-blue:#073B4C;
+   --dark-blue-light:#F2F5F6;
+   --blue:#118AB2;
+   --blue-light:#F3F9FB;
+   --red:#EF476F;
+   --red-light:#FEF6F8;
+   --yellow:#FFD166;
+   --yellow-light:#FFFBF0;
+   --green:#06D6A0;
+   --green-light:#F2FDFA;
+
+   --place-holder-color:#829CA5;
+}
+
+* {
+   font-family: Arial, Helvetica, sans-serif;
+   color: var(--dark-blue);
+}
+
+.page-wrapper{
+   margin: auto;
+   padding:20px;
+   width:min-content;
+   /*border:solid;*/
+}
+
+/*****   BOXES   ********************************************************/
+
+.box{
+   width: 400px;
+   border:solid 10px;
+   padding: 15px;
+   border-radius: 1px;
+   text-decoration: none;
+   box-shadow: 4px 4px 1px rgba(0, 0, 0, 0.15);
+}
+.box:active{
+   box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.15);
+}
+.box:hover{
+   filter:brightness(95%);
+}
+
+.box-blue{
+   background-color: var(--blue-light);
+   border-color: var(--blue);
+}
+
+.box-red{
+   background-color: var(--red-light);
+   border-color: var(--red);
+}
+.box-yellow{
+   background-color: var(--yellow-light);
+   border-color: var(--yellow);
+}
+
+.box-green{
+   background-color: var(--green-light);
+   border-color: var(--green);
+}
+
+.box-dark-blue{
+   background-color: var(--dark-blue-light);
+   border-color: var(--dark-blue);
+}
+
+/*****   BUTTONS   ********************************************************/
+.btn {
+   font-size: 16px;
+   margin: 10px 5px;
+   padding: 8px 20px;
+   border:none;
+   display: inline-block;
+   border-radius: 12px;
+   box-shadow:0px 1px 3px rgba(0, 0, 0, 0.25);
+   text-decoration: none;
+}
+.btn:active{
+   transform: translate(-1px,-1px);
+   box-shadow:inset 0px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.btn:hover{
+   filter:brightness(90%);
+}
+
+.btn-red{
+   background-color: var(--red);
+
+}
+
+.btn-green{   background-color: var(--green);
+}
+
+.btn-yellow{
+   background-color: var(--yellow);
+}
+/*Font*/
+.page-heading{
+   font-size: 25px;
+   text-align: center;
+}
+
+.sub-heading{
+   font-size:20px;
+   margin: 10px 0px;
+   text-decoration: none;
+}
+/**/
+.text-input-signUp-logIn{
+   font-size: 16px;
+   font-weight: bold;
+   margin: 10px 5px;
+   padding: 13px 23px;
+   border:solid 3px var(--dark-blue);
+   border-radius: 12px;
+   box-shadow:0px 1px 3px rgba(0, 0, 0, 0.25);
+}
+.text-input-signUp-logIn::placeholder {
+   color: var(--place-holder-color);
+}
+
+/***** Radio-input   ********************************************************/
+
+input[type="radio"] {
+   /*Disabeling standard button apperance*/
+   -webkit-appearance: none;
+   appearance: none;
+   margin: 0;
+
+   width: 22px;
+   height: 22px;
+   border: 3px solid var(--dark-blue);
+   border-radius: 50%;
+
+   display: grid;
+   place-content: center;
+}
+
+input[type="radio"]::before {
+   content: "";
+   width: 10px;
+   height: 10px;
+   border-radius: 50%;
+   transform: scale(0);
+   box-shadow: inset 12px 12px var(--dark-blue);
+}
+
+input[type="radio"]:checked::before {
+   transform: scale(1);
+}
+
+.radio-btn-stack{
+   position: relative;
+   display:inline-grid;
+   grid-template-columns: max-content auto;
+   gap:5px;
+}
+.radio-label{
+   font-size: 18px;
+   position: relative;
+   display: inline-grid;
+   gap:3px;
+
+   padding: 0px 5px;
+}
+
+
+
+
