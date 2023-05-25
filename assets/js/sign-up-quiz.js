@@ -61,7 +61,6 @@ function setRecommendation(){
     }
     document.getElementsByClassName('notification-box-text').innerText = text;
     document.getElementById('notification-box').style.visibility = "visible";
-    document.getElementById('notification-box').load('notification-box');
 
 
 }
