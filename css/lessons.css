@@ -1,0 +1,28 @@
+.myBox {
+    /*background-color: lightgrey;*/
+    width: 650px;
+    border: 15px;
+    border-style: solid;
+    border-color: cornflowerblue;
+    background-color: lightsteelblue;
+    padding:15px;
+    margin: 10px;
+    text-align:left ;
+    grid-template-rows: 1fr 1fr 3fr 3fr;
+
+}
+
+.list{
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: scroll; align:left;
+    text-align:left;
+    width: 640px;
+    height: 300px;
+
+}
+
+h2{
+    text-align: left;
+
+}
