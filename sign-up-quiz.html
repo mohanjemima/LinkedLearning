@@ -31,27 +31,27 @@
         <div class="sign-up-quiz-stack">
             <h2 class="sub-heading">Do you have any experience with HTML?</h2>
             <div class="radio-btn-stack">
-                <input type="radio" onclick="update('html-skill') " name="html-skill" value="0" id="html-option-1"><label class="radio-label" for="html-option-1">I have no HTML experience.</label>
-                <input type="radio" onclick="update('html-skill')" name="html-skill" value="1" id="html-option-2"><label class="radio-label" for="html-option-2">I have a bit of experience, but I'm not too confident.</label>
-                <input type="radio" onclick="update('html-skill')" name="html-skill" value="2" id="html-option-3"><label class="radio-label" for="html-option-3">I am confident I know the basics.</label>
-                <input type="radio" onclick="update('html-skill') " name="html-skill" value="3" id="html-option-4"><label class="radio-label" for="html-option-4">I know most things; I’d just like to revise.</label>
+                <input type="radio" onclick="update('html-skill') " name="html-skill" id="html-option-1"><label class="radio-label" for="html-option-1">I have no HTML experience.</label>
+                <input type="radio" onclick="update('html-skill')" name="html-skill" id="html-option-2"><label class="radio-label" for="html-option-2">I have a bit of experience, but I'm not too confident.</label>
+                <input type="radio" onclick="update('html-skill')" name="html-skill" id="html-option-3"><label class="radio-label" for="html-option-3">I am confident I know the basics.</label>
+                <input type="radio" onclick="update('html-skill') " name="html-skill" id="html-option-4"><label class="radio-label" for="html-option-4">I know most things; I’d just like to revise.</label>
             </div>
         </div>
 
         <div class="sign-up-quiz-stack">
             <h2  class="sub-heading">Do you have any experience with CSS?</h2>
             <div class="radio-btn-stack">
-                <input type="radio" onclick="update('css-skill')" name="css-skill" value="0" id="css-option-1"><label class="radio-label" for="css-option-1">I have no CSS experience.</label>
-                <input type="radio" onclick="update('css-skill')" name="css-skill" value="1" id="css-option-2"><label class="radio-label" for="css-option-2">I have a bit of experience, but I'm not too confident.</label>
-                <input type="radio" onclick="update('css-skill')" name="css-skill" value="2" id="css-option-3"><label class="radio-label" for="css-option-3">I am confident I know the basics.</label>
-                <input type="radio" onclick="update('css-skill')" name="css-skill" value="3" id="css-option-4"><label class="radio-label" for="css-option-4">I know most things; I’d just like to revise.</label>
+                <input type="radio" onclick="update(this.name)" name="css-skill"  id="css-option-1"><label class="radio-label" for="css-option-1">I have no CSS experience.</label>
+                <input type="radio" onclick="update('css-skill')" name="css-skill"  id="css-option-2"><label class="radio-label" for="css-option-2">I have a bit of experience, but I'm not too confident.</label>
+                <input type="radio" onclick="update('css-skill')" name="css-skill"  id="css-option-3"><label class="radio-label" for="css-option-3">I am confident I know the basics.</label>
+                <input type="radio" onclick="update('css-skill')" name="css-skill" id="css-option-4"><label class="radio-label" for="css-option-4">I know most things; I’d just like to revise.</label>
             </div>
         </div>
     </section>
     </form>
 
     <div id="notification-box" >
-        <p class="notification-box-text" id="recommendation-text">We recommend starting the whole course from the beginning.</p>
+        <p class="notification-box-text" id="recommendation-text"></p>
     </div>
 
     <button type="submit" class="btn btn-green next-btn">Next</button>
