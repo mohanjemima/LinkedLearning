@@ -13,12 +13,12 @@
 <header>
     <div role="banner" class="banner">
         <img class="banner-img" src="assets/img/banner-logo.svg" alt="Linked Learning Logo">
-        <p class="banner-sub-heading">Dashboard</p><!-- alter text-->
+        <p class="banner-sub-heading">Dashboard</p>
     </div>
 </header>
 <body>
 
-<main class="page-wrapper user-dash-wrapper ">A
+<main class="page-wrapper user-dash-wrapper ">
 
     <section class="user-left-section">
     <div class="user-small-box-section">
@@ -29,28 +29,59 @@
     <a href="#" class="box box-red box-small-rectangle">
         <img class="small-box-img" src="assets/img/rewards-icon.svg" alt="staAr icon in circle">
         <h2 class="box-heading">Rewards</h2>
-
     </a>
     <a href="#" class="box box-blue box-small-rectangle">
         <img class="small-box-img" src="assets/img/lessons-icon.svg" alt="code icon in circle">
         <h2 class="box-heading">Lessons</h2>
-
     </a>
     </div>
-    <a href="#" class="box box-dark-blue box-wide-rectangle"></a>
+    <a href="#" class="box box-dark-blue box-wide-rectangle">
+        <img id="pin-img" src="assets/img/pin-icon.svg" alt="pin icon">
+        <span class="lesson-section">
+            <h1 id="lesson-section-heading">Lesson Title</h1>
+            <p id="lesson-section-description">
+                wjepfjwepfjpowefpowjepfojwepfjpowejfjw
+                wjepfjwepfjpowefpowjepfojwepfjpowejfjwpoejfpwjepofjpwoejpofwepofjpwoejfpejpfjepwfjpwefpwjfpwwjfpe
+                wjepfjwepfjpowefpowjepfojwepfjpowejfjwpoejfpwjepofjpwoejpofwepofjpwoejfpejpfjepwfjpwefpwjfpwwjfpe
+                wjepfjwepfjpowefpowjepfojwepfjpowejfjwpoejfpwjepofjpwoejpofwepofjpwoejfpejpfjepwfjpwefpwjfpw12345 words
+            </p>
+        </span>
+    </a>
     </section>
+
     <section class="user-right-section">
      <a href="" class="box box-green box-long-rectangle">
          <img class="user-profile-img" src="assets/img/user-profile-img.svg" alt="profile picture">
          <h2 class="box-heading">Child Name</h2>
-         <div><p>Ranking info</p></div>
-         <div><p>Awards</p></div>
-
+             <div class="ranking-info-item-row">
+             <span class="ranking-info-item">
+                 <h3 class="ranking-info-item-label"> Ranking</h3>
+                 <p class="ranking-info-item-content">
+                     9<span id="place-format">th</span>
+                 </p>
+             </span>
+             <span class="ranking-info-item">
+                 <h3 class="ranking-info-item-label"> Lesson</h3>
+                 <p class="ranking-info-item-content">12/24</p>
+             </span>
+             <span class="ranking-info-item">
+                 <h3 class="ranking-info-item-label"> Points</h3>
+                 <p class="ranking-info-item-content">178,000</p>
+             </span>
+             </div>
+         <div class="awards-section">
+             <h3 class="ranking-info-item-label">Awards</h3></div>
 
      </a>
     </section>
 
 </main>
 
+<script>
+    let description = document.getElementById("lesson-section-description").innerText;
+    if(   description.length> 550){
+        document.getElementById("lesson-section-description").textContent = (description.substring(0,545) + " ...");
+    }
+</script>
 </body>
 </html>

@@ -22,7 +22,7 @@
 
 .page-wrapper{
    margin: auto;
-   padding:20px;
+   padding:20px; 
    width:min-content;
    /*border:solid;*/
 }

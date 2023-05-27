@@ -16,7 +16,7 @@
 .box-long-rectangle{
     text-align: center;
     display: inline-grid;
-    grid-template-rows: 1fr 1fr 3fr 3fr;
+    grid-template-rows: 1fr 1fr 1fr 3fr;
     height: 450px;
     width:300px;
 }
@@ -31,10 +31,32 @@
 }
 
 .box-wide-rectangle{
-    display: inline-flex;
+    display: flex;
+    flex-direction: row;
     height: 180px;
     width: auto;
+    gap: 20px;
 }
+
+.lesson-section{
+    max-width: 430px;
+    display: flex;
+    flex-direction: column;
+}
+
+#lesson-section-heading{
+    inline-size: 480px;
+    margin: 10px 0 0 0;
+    border-bottom:4px solid var(--dark-blue);
+
+}
+
+#lesson-section-description{
+    margin: 10px 0px;
+    inline-size: 480px;
+    overflow-wrap: break-word;
+}
+
 .box-small-rectangle{
     display: grid;
     height: 200px;
@@ -62,5 +84,49 @@
     justify-self: center;
     border-radius: 90%;
     border: 5px solid var(--green);
+}
+
+.awards-section{
+    padding: 10px 15px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.ranking-info-item-row{
+    padding: 0 15px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    column-gap: 20px;
+    height: max-content;
+}
+#place-format{
+    font-size: 13px;
+    vertical-align: top;
+}
+.ranking-info-item{
+    display: flex;
+    flex-direction: column;
+}
+
+.ranking-info-item-content{
+    position: relative;
+    display: inline;
+    flex-direction: row;
+}
+
+.ranking-info-item-label{
+    margin: 0;
+    padding: 5px 0;
+    font-size: 15px;
+    font-weight: normal;
+    text-align: left;
+}
+
+.ranking-info-item-content{
+    font-size: 20px;
+    font-weight: bolder;
 
 }
