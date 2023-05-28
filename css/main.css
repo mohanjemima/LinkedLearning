@@ -175,6 +175,56 @@ input[type="radio"]:checked::before {
    padding: 0 5px;
 }
 
+/***** Check-box-input   ********************************************************/
 
+input[type="checkbox"] {
+   box-sizing: border-box;
+   -webkit-appearance: none;
+   appearance: none;
+   margin: 0;
+
+   color: var(--dark-blue);
+   background-color: var(--dark-blue-light);
+   width: 20px;
+   height: 20px;
+   border: 3px solid var(--dark-blue);
+   border-radius: 0.15em;
+   transform: translateY(-0.075em);
+
+   display: grid;
+   place-content: center;
+}
+
+input[type="checkbox"]::before {
+   content: "";
+   width: 13px;
+   height: 13px;
+
+   /*tick: check-box*/
+   clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+   transform: scale(0);
+   transform-origin: bottom left;
+   box-shadow: inset 15px 15px var(--dark-blue);
+}
+
+input[type="checkbox"]:checked::before {
+   transform: scale(1);
+}
+/***** Scroll-bar   ********************************************************/
+::-webkit-scrollbar-track {
+   background-color: #C8E5EE;
+}
+
+::-webkit-scrollbar {
+   width: 20px;
+}
+
+::-webkit-scrollbar-thumb {
+   background-color: #7FC0D6;
+
+   border-width:10px 5px;
+   border-style:solid ;
+   border-color: #C8E5EE;
+}
 
 
