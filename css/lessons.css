@@ -1,28 +1,38 @@
-.myBox {
-    /*background-color: lightgrey;*/
-    width: 650px;
-    border: 15px;
-    border-style: solid;
-    border-color: cornflowerblue;
-    background-color: lightsteelblue;
-    padding:15px;
-    margin: 10px;
-    text-align:left ;
-    grid-template-rows: 1fr 1fr 3fr 3fr;
+.link-list-box{
+    width: max-content;
+}
+
+.lesson-link-list{
+    list-style: none;
+    padding: 0 15px 0 0;
+    margin: 0;
+ overflow-x: hidden;
+ overflow-y: scroll;
+    max-height: 400px;
+    width: 800px;
+}
+
+.link-list-heading{
+    padding:10px;
+    margin: 0 0 8px 0;
+    font-size: 25px;
+    text-align: center;
+    border-bottom: 1.5px solid #A8D4E3;
 
 }
 
-.list{
-    white-space: nowrap;
-    overflow-x: auto;
-    overflow-y: scroll; align:left;
-    text-align:left;
-    width: 640px;
-    height: 300px;
-
-}
-
-h2{
+.link-list-item{
+    font-size: 20px;
+    padding: 12px 10px;
     text-align: left;
+    border-bottom: 1.5px solid #A8D4E3;
+}
 
+#first{
+    padding: 4px 10px 10px 10px;
+
+}
+
+.link-list-link{
+    text-decoration: none;
 }

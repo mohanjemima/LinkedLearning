@@ -216,13 +216,13 @@ input[type="checkbox"]:checked::before {
 }
 
 ::-webkit-scrollbar {
-   width: 20px;
+   width: 28px;
 }
 
 ::-webkit-scrollbar-thumb {
    background-color: #7FC0D6;
 
-   border-width:10px 5px;
+   border-width:15px 7px;
    border-style:solid ;
    border-color: #C8E5EE;
 }
