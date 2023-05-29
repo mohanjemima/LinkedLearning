@@ -1,0 +1,71 @@
+.small-box{
+    display: grid;
+    padding: 0px 10px;
+    height: auto;
+
+}
+
+.link-list-box{
+    width:900px;
+}
+
+.lesson-link-list{
+    list-style: none;
+    padding: 0 15px 0 0;
+    margin: 0;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    max-height: 400px;
+    width: 850px;
+}
+
+.link-list-heading{
+    padding:10px;
+    margin: 0 0 8px 0;
+    font-size: 25px;
+    text-align: center;
+    border-bottom: 1.5px solid #A8D4E3;
+
+}
+
+.link-list-item{
+    font-size: 20px;
+    padding: 12px 10px;
+    text-align: left;
+    border-bottom: 1.5px solid #A8D4E3;
+}
+
+#first{
+    padding: 4px 10px 10px 10px;
+
+}
+
+.link-list-link{
+    text-decoration: none;
+}
+
+.user-right-section{
+    display: grid;
+    padding: 0px 10px;
+    height: auto;
+    float: right;
+}
+
+.user-small-box-section{
+    height: max-content;
+    width: max-content;
+    display: flex;
+    flex-direction: column-reverse;
+    gap:20px
+
+}
+
+.box-small-rectangle{
+    height: 200px;
+    width: 160px;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap:25px;
+   display: inline-block;
+
+
+}
