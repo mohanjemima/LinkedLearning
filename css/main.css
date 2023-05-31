@@ -211,15 +211,18 @@ input[type="checkbox"]:checked::before {
    transform: scale(1);
 }
 /***** Scroll-bar   ********************************************************/
-::-webkit-scrollbar-track {
+scroll-bar{
+   overflow: scroll;
+}
+.scroll-bar::-webkit-scrollbar-track {
    background-color: #C8E5EE;
 }
 
-::-webkit-scrollbar {
+.scroll-bar::-webkit-scrollbar {
    width: 28px;
 }
 
-::-webkit-scrollbar-thumb {
+.scroll-bar::-webkit-scrollbar-thumb {
    background-color: #7FC0D6;
 
    border-width:15px 7px;
