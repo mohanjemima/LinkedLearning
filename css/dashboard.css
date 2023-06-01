@@ -130,3 +130,7 @@
     font-weight: bolder;
 
 }
+
+#lesson-section-description{
+    overflow: hidden;
+}

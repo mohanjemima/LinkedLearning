@@ -29,7 +29,7 @@
 
           <!--HOME BUTTON, Returns to Dashboard: start-->
           <li class="banner-link-list-item">
-            <img class="banner-link-icon" src="assets/img/home-icon.svg">
+            <img class="banner-link-icon" src="assets/img/home-icon.svg " alt="house icon">
             <a class="banner-link" href="dashboard.html">Home</a>
           </li>
           <!--HOME BUTTON, Returns to Dashboard: end-->
@@ -82,15 +82,15 @@
     </div>
 
     <div class="footer-container">
-      <button type="submit" class="btn" type="submit">Previous</button>
-      <button type="submit" class="btn btn-yellow" type="submit"><b>Next</b></button>
+      <button type="submit" class="btn">Previous</button>
+      <button type="submit" class="btn btn-yellow" ><b>Next</b></button>
     </div>
 
   </main>
 
   <script>
     function changeDemoItem(element) {
-      var btns = document.getElementById("demo-options-list").children;
+      let btns = document.getElementById("demo-options-list").children;
       for (let btn of btns) {
         btn.className = "btn demo-btn";
       }

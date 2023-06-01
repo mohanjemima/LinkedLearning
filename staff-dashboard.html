@@ -2,87 +2,90 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Linked Learning | Staff Dashboard </title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linked Learning | Staff Dashboard</title>
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/banner.css">
     <link rel="stylesheet" href="css/main.css">
-    <!--    <link rel="stylesheet" href="css/content.css">-->
-    <link rel="stylesheet" href="css/staffdashboard.css">
-<!--    <link rel="stylesheet" href="css/lessons.css">-->
-
-
-    <header>
-        <div role="banner" class="banner">
-            <img class="banner-img" src="assets/img/banner-logo.svg" alt="Linked Learning Logo">
-            <p class="banner-sub-heading">Staff dashboard </p><!-- alter text-->
-        </div>
-    </header>
-
+    <link rel="stylesheet" href="css/staff-dashboard.css">
+    <link rel="stylesheet" href="css/lessons.css">
 
 </head>
+<header>
+    <div role="banner" class="banner">    <!--BANNER: start-->
 
+        <img class="banner-img" src="assets/img/banner-logo.svg" alt="Linked Learning Logo">
+        <p class="banner-sub-heading">Staff Dashboard</p>
+
+        <!--NAV BAR, Returns to Dashboard: start-->
+        <nav role="navigation" class="banner-nav" >
+            <ul class="link-list">
+
+                <!--HOME BUTTON, Returns to Dashboard: start-->
+                <li class="banner-link-list-item">
+                    <img class= "banner-link-icon" src="assets/img/home-icon.svg" alt="house icon">
+                    <a class="banner-link" href="dashboard.html">Home</a>
+                </li>
+                <!--HOME BUTTON, Returns to Dashboard: end-->
+            </ul>
+        </nav>
+        <!--NAV BAR, Returns to Dashboard: end-->
+
+    </div><!--BANNER: end-->
+
+</header>
 <body>
-<section class="user-right-section">
-<div class="user-small-box-section">
 
-    <a href="#" class="box box-green box-small-rectangle">
-        <img class="small-box-img" src="assets/img/new-lesson-icon.svg" alt="">
-        <h2 class="box-heading">New Lesson</h2>
-    </a>
+<main class="page-wrapper ">
+<div class="staff-dashboard">
+    <section class="left-link-section box box-blue link-list-box disable">
+        <h1 class="link-list-heading">Available Lessons</h1>
+        <ul class = "lesson-link-list staff-sizing scroll-bar">
 
-    <a href="#" class="box box-dark-blue box-small-rectangle">
-        <img class="small-box-img" src="assets/img/staff-profile-icon.svg" alt="">
-        <h2 class="box-heading">Staff Name </h2>
-    </a>
+            <!--filler url, source: w3schools  url: (as seen)-->
 
+            <li class="link-list-item" id="first"><a class="link-list-link" href="article.html">1. What is HTML </a></li>
 
+            <li class="link-list-item"><a class="link-list-link" href="https://www.w3schools.com/">Q1 : Quiz! Do you really know what HTML is ?</a></li>
 
-</div>
-</section>
+            <li class="link-list-item"><a class="link-list-link" href="https://www.w3schools.com/">2. Let's put it to the test !</a></li>
 
-<div class="Staff-links ">
+            <li class="link-list-item"><a class="link-list-link" href="https://www.w3schools.com/">Summary: What have we learned ?</a></li>
 
+            <li class="link-list-item"><a class="link-list-link" href="https://www.w3schools.com/">3. What is CSS?</a></li>
 
-<div class="box box-blue link-list-box">
+            <li class="link-list-item"><a class="link-list-link" href="https://www.w3schools.com/">Q2 Quiz! Do you really know what HTML is </a></li>
 
-    <h2>Available lessons</h2>
+            <li class="link-list-item"><a class="link-list-link" href="https://www.w3schools.com/">Summary: What is CSS ?</a></li>
 
-    <ul class = "lesson-link-list">
-        <li class="link-list-item" id="first"><a class="link-list-link" href="article.html">1. What is HTML </a></li>
+            <li class="link-list-item"><a class="link-list-link" href="https://www.w3schools.com/">Summary: What is CSS ?</a></li>
 
-        <li class="link-list-item"><a class="link-list-link" href="https://www.w3schools.com/">Q1 : Quiz! Do you really know what HTML is ?</a></li>
+            <li class="link-list-item"><a class="link-list-link" href="https://www.w3schools.com/">Summary: What is CSS ?</a></li>
 
-        <li class="link-list-item"><a class="link-list-link" href="https://www.w3schools.com/">2. Let's put it to the test !</a></li>
+            <li class="link-list-item"><a class="link-list-link" href="https://www.w3schools.com/">Summary: What is CSS ?</a></li>
 
-        <li class="link-list-item"><a class="link-list-link" href="https://www.w3schools.com/">Summary: What have we learned ?</a></li>
+            <li class="link-list-item"><a class="link-list-link" href="https://www.w3schools.com/">Summary: What is CSS ?</a></li>
 
-        <li class="link-list-item"><a class="link-list-link" href="https://www.w3schools.com/">3. What is CSS?</a></li>
+            <li class="link-list-item"><a class="link-list-link" href="https://www.w3schools.com/">Summary: What is CSS ?</a></li>
 
-        <li class="link-list-item"><a class="link-list-link" href="https://www.w3schools.com/">Q2 Quiz! Do you really know what HTML is </a></li>
+            <li class="link-list-item"><a class="link-list-link" href="https://www.w3schools.com/">Summary: What is CSS ?</a></li>
+        </ul>
+    </section>
 
-        <li class="link-list-item"><a class="link-list-link" href="https://www.w3schools.com/">Summary: What is CSS ?</a></li>
+    <div class="right-button-section">
+        <div  class="box box-dark-blue box-square disable">
+            <img class="box-square-img" src="assets/img/staff-profile-icon.svg" alt="generic user icon ">
+            <h2 class="box-square-headings">Staff Name</h2>
+        </div>
 
-        <li class="link-list-item"><a class="link-list-link" href="https://www.w3schools.com/">Summary: What is CSS ?</a></li>
-
-        <li class="link-list-item"><a class="link-list-link" href="https://www.w3schools.com/">Summary: What is CSS ?</a></li>
-
-        <li class="link-list-item"><a class="link-list-link" href="https://www.w3schools.com/">Summary: What is CSS ?</a></li>
-
-        <li class="link-list-item"><a class="link-list-link" href="https://www.w3schools.com/">Summary: What is CSS ?</a></li>
-
-        <li class="link-list-item"><a class="link-list-link" href="https://www.w3schools.com/">Summary: What is CSS ?</a></li>
-
-        <li class="link-list-item"><a class="link-list-link" href="https://www.w3schools.com/">Summary: What is CSS ?</a></li>
-    </ul>
-
-
+        <a href="#" class="box box-green box-square ">
+            <img class="box-square-img" src="assets/img/new-lesson-icon.svg" alt="new file icon">
+            <h2 class="box-square-headings">Staff Name</h2>
+        </a>
 
     </div>
-
-
-
-
 </div>
+</main>
+
 </body>
+</html>
