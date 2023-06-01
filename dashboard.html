@@ -35,7 +35,7 @@
         <h2 class="box-heading">Lessons</h2>
     </a>
     </div>
-    <a href="#" class="box box-dark-blue box-wide-rectangle">
+    <a href="./article.html" class="box box-dark-blue box-wide-rectangle">
         <img id="pin-img" src="assets/img/pin-icon.svg" alt="pin icon">
         <div class="lesson-section">
             <h1 id="lesson-section-heading">1. What is HTML?</h1>
@@ -50,8 +50,7 @@
     </a>
     </section>
 
-    <div class="user-right-section">
-     <div href="" class="box box-green box-long-rectangle">
+     <div  class="box box-green box-long-rectangle disable">
          <img class="user-profile-img" src="assets/img/user-profile-img.svg" alt="profile picture">
          <h2 class="box-heading">Child Name</h2>
              <section class="ranking-info-item-row">
@@ -73,7 +72,6 @@
          <div class="awards-section">
              <h3 class="ranking-info-item-label">Awards</h3></div>
      </div>
-    </div>
 
 </main>
 
@@ -83,8 +81,8 @@
         document.getElementById("lesson-section-description").textContent = "";
         document.getElementById("lesson-section-description").textContent = (description.substring(0,400) + " ...");
         console.log(description.substring(0,400) + " ...");
-
     }
+
 </script>
 </body>
 </html>
