@@ -26,7 +26,6 @@
 .main-heading{
     font-size: 30px;
     text-align: center;
-    padding: 0px;
 }
 
 .box-elements{
@@ -40,7 +39,7 @@
     border-bottom: 1.5px solid #FFD166;
     font-size: 20px;
     text-decoration: none;
-    padding: 0px 0px 0px 0px;
+    padding: 0px;
     margin-bottom: 5px;
 }
 
@@ -48,7 +47,6 @@
     border-bottom: 1.5px solid #EF476F;
     font-size: 20px;
     text-decoration: none;
-    padding: 0px 0px;
     margin-bottom: 5px;
 }
 
