@@ -1,6 +1,6 @@
 let htmlChoice ;
 let cssChoice ;
-let text;
+let htmlText, cssText;
 
 
 function update(elementName){
@@ -12,11 +12,11 @@ function update(elementName){
         htmlChoice = choice;
     }
 
-    text = "We recommend ";
+    htmlText = "We recommend ";
+    cssText="";
 
     if(htmlChoice != undefined && cssChoice != undefined){
         setRecommendation();
-        console.log(text);
         display();
     }
 
@@ -34,35 +34,35 @@ function update(elementName){
 function setRecommendation() {
 
     if (htmlChoice == "html-option-1" && cssChoice == "css-option-1") {
-        text += "starting the whole course from the beginning.";
+        htmlText += "starting the whole course from the beginning.";
     } else {
         switch (htmlChoice) {
             case "html-option-1":
-                text += "starting the HTML chapter from the beginning ";
+                htmlText += "starting the HTML chapter from the beginning. ";
                 break;
             case "html-option-2":
-                text += "skipping the HTML introduction and starting with the articles ";
+                htmlText += "skipping the HTML introduction and starting with the articles. ";
                 break;
             case "html-option-3":
-                text += "doing the HTML Quiz and reading the chapter Summary ";
+                htmlText += "doing the HTML Quiz and reading the chapter Summary. ";
                 break;
             case "html-option-4":
-                text += "reading the HTML chapter Summary ";
+                htmlText += "reading the HTML chapter Summary. ";
                 break;
         }
 
         switch (cssChoice) {
             case "css-option-1":
-                text += "and starting the CSS chapter from the beginning.";
+                cssText += "And starting the CSS chapter from the beginning.";
                 break;
             case "css-option-2":
-                text += "and skipping the CSS introduction and starting with the articles";
+                cssText += "And skipping the CSS introduction and starting with the articles";
                 break;
             case "css-option-3":
-                text += "and doing the CSS Quiz and reading the chapter Summary ";
+                cssText += "And doing the CSS Quiz and reading the chapter Summary ";
                 break;
             case "css-option-4":
-                text += "and reading the CSS chapter Summary.";
+                cssText += "And reading the CSS chapter Summary.";
                 break;
         }
 
@@ -72,8 +72,7 @@ function setRecommendation() {
 function display(){
     document.getElementById(htmlChoice).checked = true;
     document.getElementById(cssChoice).checked = true;
-    document.getElementById('recommendation-text').textContent = text;
+    document.getElementById('html-recommendation').textContent = htmlText;
+    document.getElementById('css-recommendation').textContent = cssText;
     document.getElementById('notification-box').style.visibility = "visible";
-
-
 }
