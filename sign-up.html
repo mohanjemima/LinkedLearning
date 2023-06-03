@@ -22,9 +22,14 @@
     <h1 class="page-heading ">Sign up</h1>
 
    <form action="sign-up-quiz.html" method="post">
-    <input class="text-input-signUp-logIn" type="email" name="email" placeholder="E-mail Address" required>
-    <input class="text-input-signUp-logIn" type="password" name="password" placeholder="Password" required>
-       <button type="submit"class="btn btn-green" type="submit">Sign up</button>
+    <input class="text-input-signUp-logIn" id="sign-up-email" type="email" name="email" placeholder="E-mail Address" required>
+       <label class="hidden-label" for="sign-up-email">E-mail Address</label>
+
+       <input class="text-input-signUp-logIn" id="sign-up-password" type="password" name="password" placeholder="Password" required>
+
+       <label class="hidden-label" for="sign-up-password">Password</label>
+
+       <button type="submit" class="btn btn-green" >Sign up</button>
        <div class="fine-print-box">
        <a class="fine-print" href="log-in.html">Don’t have an account?<br>Log in here!</a>
        </div>

@@ -1,0 +1,38 @@
+.staff-dashboard{
+    display: inline-flex;
+    gap:30px;
+    margin: auto;
+}
+
+.staff-sizing{
+    width: 700px;
+}
+
+.right-button-section{
+    width: max-content;
+    display: flex;
+    flex-direction: column;
+    gap:45px;
+}
+
+.box-square{
+    width: 180px;
+    height:180px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.box-square-img{
+    width: 150px;
+    height:150px;
+    display: inline-block;
+    margin: auto;
+}
+
+.box-square-headings{
+    margin: 0;
+    font-size: 25px;
+    font-weight: lighter;
+    text-align: center;
+}

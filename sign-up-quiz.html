@@ -21,10 +21,14 @@
 <main class="page-wrapper sign-up-quiz">
     <h1 class="page-heading log-in">About You</h1>
 
-    <form  action="#" method="post">
+    <form  action="dashboard.html" method="post">
     <section class="text-input-signUp-quiz-section">
-        <input  class="text-input-signUp-logIn quiz-input" placeholder="Child Name" required>
-        <input  class="text-input-signUp-logIn quiz-input" id="age-input" placeholder="Age" required>
+        <input  class="text-input-signUp-logIn quiz-input" id="child-name" placeholder="Child Name" required>
+        <label class="hidden-label" for="child-name"></label>
+
+        <input  class="text-input-signUp-logIn quiz-input" id="age-input" placeholder="Age" maxlength="2" required>
+        <label class="hidden-label" for="age-input"></label>
+
     </section>
 
     <section class="radio-quiz-section">
@@ -48,13 +52,14 @@
             </div>
         </div>
     </section>
-    </form>
 
     <div id="notification-box" >
-        <p class="notification-box-text" id="recommendation-text"></p>
+        <p class="notification-box-text" id="html-recommendation"></p>
+        <p class="notification-box-text" id="css-recommendation"></p>
     </div>
 
     <button type="submit" class="btn btn-green next-btn">Next</button>
+    </form>
 
 </main>
 
