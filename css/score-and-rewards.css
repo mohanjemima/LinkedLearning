@@ -3,22 +3,24 @@
 }
 
 .leaderboard-box {
-    position: absolute;
-    left: 50px;
+    position: relative;
+    left: 5px;
     text-align: center;
     display: inline-grid;
     height: 400px;
     width: 400px;
+    margin-right: 100px;
 }
 
 .rewards-box{
-    position: absolute;
-    right: 50px;
+    position: relative;
+    right: 5px;
     text-align: center;
     display: inline-grid;
     height: 400px;
     width: 600px;
     grid-template-rows: 1fr 1fr 1fr 3fr;
+
 }
 
 .box-elements{
