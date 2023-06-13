@@ -104,3 +104,60 @@
     justify-self: center;
 }
 
+
+/*******************************************CSS From example**************************************************************************/
+
+.main-heading{
+    /*adjusting margin*/
+    margin: 0;
+}
+
+.scores-sub-headings{
+    display: inline-flex;
+    flex-direction: row;
+    gap: 20px;
+    padding: 0 10px;
+    border-bottom: 2px solid var(--yellow);
+    justify-content: space-between;
+}
+
+.scores-box{
+    display: flex;
+    flex-direction: column;
+}
+
+.column-headings{
+    margin:20px 0 0 0;
+}
+
+.ranking-list{
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    font-weight: lighter;
+    list-style-position: inside;
+    /*this moves the marker into the li tag that way we can just put a border at the bottom of the li*/
+}
+
+.ranking-item{
+    padding: 5px 10px;/* aligning the li with the sub-heading div */
+    border-bottom: 2px solid var(--yellow);
+}
+
+/*This isn't an elegant solution but is good enough for the project*/
+.ranking-item-entry {
+    display: inline-flex;
+    gap:180px;
+}
+
+#username{
+    text-align: left;
+    width: max-content;
+}
+#score{
+    text-align: right;
+    width: max-content;
+}
+
+
+

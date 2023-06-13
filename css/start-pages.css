@@ -1,71 +1,122 @@
-.log-in-sign-up-wrapper{
-    margin-top:17vh;
+.log-in-sign-up-wrapper {
+    margin-top: 17vh;
 }
 
-.sign-up-quiz{
+.sign-up-quiz {
     width: max-content;
     height: max-content;
 }
 
-.fine-print-box{
+.fine-print-box {
     display: inline-block;
-    margin:10px 5px 10px 0;
+    margin: 10px 5px 10px 0;
     padding: 5px 5px 5px 10px;
     border-left: solid 3px var(--dark-blue);
     vertical-align: middle;
 }
 
-.fine-print{
+.fine-print {
     font-size: 12px;
     font-weight: bold;
     text-decoration: none;
     display: inline-block;
-
 }
 
-.text-input-signUp-quiz-section{
+.text-input-signUp-quiz-section {
     display: flex;
-    flex:50%;
-    justify-content:center ;
-
+    flex: 50%;
+    justify-content: center;
 }
 
-#age-input{ width: 30px;
-
+#age-input {
+    width: 30px;
 }
 
-.sign-up-quiz-stack{
+.sign-up-quiz-stack {
     display: inline-block;
-    padding:0 10px 0 0;
-    flex:50%;
+    padding: 0 10px 0 0;
+    flex: 50%;
 }
 
-.radio-quiz-section{
+.radio-quiz-section {
     padding: 20px;
     display: flex;
     flex-direction: row;
-    align-content: center
 }
 
-#notification-box{
+#notification-box {
     margin: 0 20px;
     padding: 8px 8px 8px 30px;
     height: auto;
-    border:1px solid var(--blue);
-    border-left:10px solid var(--blue);
+    display: block;
+    border: 1px solid var(--blue);
+    border-left: 10px solid var(--blue);
     border-radius: 4px;
     background-color: var(--blue-light);
-    visibility:hidden;
+    visibility: hidden;
     text-align: left;
 }
 
-.notification-box-text{
+.notification-box-text {
     font-size: 15px;
     font-weight: lighter;
 }
 
-.next-btn{
+.next-btn {
     display: block;
-    margin:20px auto;
+    margin: 20px auto;
 }
 
+/* Responsive CSS */
+@media screen and (max-width: 768px) {
+    .log-in-sign-up-wrapper {
+        margin-top: 10vh;
+    }
+    .radio-quiz-section{
+        flex-direction: column;
+        margin: auto;
+        width: fit-content;
+        row-gap: 20px;
+    }
+
+    .sign-up-quiz {
+        width: 100%;
+    }
+
+    .text-input-signUp-quiz-section{
+        flex: 100%;
+        justify-items: center;
+    }
+}
+
+/* Mobile CSS */
+@media screen and (max-width: 480px) {
+    .log-in-sign-up-wrapper {
+        margin-top: 5vh;
+    }
+
+    .fine-print-box {
+        margin: 10px 0;
+    }
+
+    .text-input-signUp-quiz-section{
+        display: flex;
+        padding: 0;
+        flex-direction: column;
+        margin: auto auto 10px;
+        max-width: 262px;
+    }
+
+    .sign-up-quiz-stack {
+        display: block;
+        padding: 0;
+        margin-bottom: 10px;
+        width: 100%;
+    }
+#age-input{
+    margin: auto;
+}
+    .next-btn {
+        margin-top: 10px;
+    }
+}

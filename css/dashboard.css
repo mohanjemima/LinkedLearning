@@ -1,32 +1,32 @@
-.user-dash-wrapper{
+.user-dash-wrapper {
     display: flex;
-    margin: 0px  auto;
+    margin: 0px auto;
 }
-.user-left-section{
+
+.user-left-section {
     display: flex;
     flex-direction: column;
-    gap:20px;
+    gap: 20px;
     margin: 0px 20px;
 }
 
-.box-long-rectangle{
+.box-long-rectangle {
     text-align: center;
     display: inline-grid;
     grid-template-rows: 1fr 1fr 1fr 3fr;
     height: 450px;
-    width:300px;
+    width: 300px;
 }
 
-.user-small-box-section{
+.user-small-box-section {
     height: max-content;
     width: max-content;
     display: flex;
     flex-direction: row;
-    gap:20px
-
+    gap: 20px;
 }
 
-.box-wide-rectangle{
+.box-wide-rectangle {
     display: flex;
     flex-direction: row;
     height: 180px;
@@ -34,62 +34,64 @@
     gap: 20px;
 }
 
-.lesson-section{
+.lesson-section {
     max-width: 430px;
     display: flex;
+    height: fit-content;
     flex-direction: column;
 }
 
-#lesson-section-heading{
+#lesson-section-heading {
     inline-size: 480px;
     margin: 10px 0 0 0;
-    border-bottom:4px solid var(--dark-blue);
-
+    border-bottom: 4px solid var(--dark-blue);
 }
 
-#lesson-section-description{
+#lesson-section-description {
     margin: 10px 0px;
     inline-size: 480px;
     overflow-wrap: break-word;
 }
 
-.box-small-rectangle{
+.box-small-rectangle {
     display: grid;
     height: 200px;
     width: 160px;
     grid-template-rows: 2fr 1fr;
-    gap:25px;
+    gap: 25px;
     text-align: center;
-
 }
-.box-heading{
+
+.box-heading {
     font-size: 25px;
     font-weight: lighter;
 }
-.small-box-img{
+
+.small-box-img {
     display: inline-block;
     width: 100px;
-    height:100px;
+    height: 100px;
     justify-self: center;
 }
-.user-profile-img{
+
+.user-profile-img {
     display: inline-block;
     width: 150px;
-    height:150px;
+    height: 150px;
     margin: 10px 0px;
     justify-self: center;
     border-radius: 90%;
     border: 5px solid var(--green);
 }
 
-.awards-section{
+.awards-section {
     padding: 10px 15px;
     position: relative;
     display: flex;
     flex-direction: column;
 }
 
-.ranking-info-item-row{
+.ranking-info-item-row {
     padding: 0 15px;
     position: relative;
     display: flex;
@@ -98,22 +100,24 @@
     column-gap: 20px;
     height: max-content;
 }
-#place-format{
+
+#place-format {
     font-size: 13px;
     vertical-align: top;
 }
-.ranking-info-item{
+
+.ranking-info-item {
     display: flex;
     flex-direction: column;
 }
 
-.ranking-info-item-content{
+.ranking-info-item-content {
     position: relative;
     display: inline;
     flex-direction: row;
 }
 
-.ranking-info-item-label{
+.ranking-info-item-label {
     margin: 0;
     padding: 5px 0;
     font-size: 15px;
@@ -121,12 +125,140 @@
     text-align: left;
 }
 
-.ranking-info-item-content{
+.ranking-info-item-content {
     font-size: 20px;
     font-weight: bolder;
-
 }
 
-#lesson-section-description{
+#lesson-section-description {
     overflow: hidden;
+}
+
+/* Responsive CSS */
+@media (max-width: 768px) {
+    .user-dash-wrapper {
+        flex-direction: column;
+        align-items: center;
+        row-gap: 20px;
+    }
+
+    .box-long-rectangle{
+        width: 86%;
+        display: flex;
+        flex-direction: row;
+        column-gap: 20px;
+        height: fit-content;
+        justify-content: space-around;
+    }
+
+
+    .details {
+        display: inline-flex;
+        flex-direction: column;
+    }
+
+    .box-wide-rectangle {
+        width: 92%;
+    }
+
+    .lesson-section,
+    #lesson-section-heading,
+    #lesson-section-description {
+        inline-size: auto;
+        width: 100%;
+    }
+
+    .box-small-rectangle {
+        width: 150px;
+    }
+}
+
+/* Mobile CSS */
+@media (max-width: 480px) {
+    .user-dash-wrapper {
+        flex-direction: column;
+        align-items: center;
+        width:80%;
+        margin:auto;
+    }
+
+    .user-left-section {
+        margin: 0;
+        flex-direction: column;
+    }
+
+    .user-small-box-section{
+        flex-direction: column;
+        width: 85%;
+    }
+    .box-small-rectangle{
+        display:inline-flex;
+        flex-direction: row;
+        height: fit-content;
+        justify-content: space-around;
+    }
+
+
+
+    .box-small-rectangle .box-heading{
+        margin: auto;
+    }
+
+    .box-small-rectangle img{
+        width: 25%;
+        height: 25%;
+    }
+    #pin-img{
+        width: 20%;
+    }
+    #lesson-section-heading{
+        overflow: hidden;
+        padding: 20px 0;
+        margin: 0;
+        border-bottom: none;
+    }
+    #lesson-section-description{
+        height: 30%;
+        overflow: hidden;
+    }
+
+    .box-wide-rectangle{
+        width: 85%;
+        height: fit-content;
+        column-gap: 0;
+    }
+
+    .box-long-rectangle{
+        width: 85%;
+        margin: auto;
+        gap: 0;
+        overflow: hidden;
+    }
+    .user-profile-img{
+        width: 23%;
+        height: 23%;
+    }
+    .box-long-rectangle .box-heading{
+        margin:0;
+    }
+
+    .ranking-info-item-row{
+        padding: 0 0 0 10px;
+        gap:5px;
+    }
+    .awards-section{
+        display: none;
+    }
+
+    .lesson-section,
+    #lesson-section-heading{
+        inline-size: auto;
+        width: 100%;
+    }
+
+    #lesson-section-description{display: none}
+
+    .box-small-rectangle {
+        width: 100%;
+    }
 }
