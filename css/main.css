@@ -46,7 +46,7 @@
    text-decoration: none;
    box-shadow: 4px 4px 1px rgba(0, 0, 0, 0.15);
 }
-.box:active{
+.box:not(.disable):active{
    box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.15);
 }
 .box:not(.disable):hover{
