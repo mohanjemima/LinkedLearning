@@ -64,7 +64,7 @@
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         grid-template-rows: 2fr;
-        grid-column-gap: 0px;
+        grid-column-gap: 10px;
         grid-row-gap: 0px;
         padding-right: 15px;
         min-width: 120px;
@@ -131,7 +131,7 @@
     .demo-btn {
         max-height: 43px;
         width: 80%;
-        grid-row-gap:10px;
-        grid-column-gap:10px;
+        grid-row-gap:5px;
+        grid-column-gap:5px;
     }
 }
