@@ -4,7 +4,7 @@
 .banner{
     height: var(--banner-height);
     width: 100vw;
-    overflow-x: hidden;
+    overflow: hidden;
     display: grid;
     grid-template-columns: min-content max-content auto;
     grid-template-rows: 1fr;

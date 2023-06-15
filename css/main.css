@@ -4,7 +4,7 @@
    --dark-blue:#073B4C;
    --dark-blue-light:#F2F5F6;
    --blue:#118AB2;
-   --blue-light:#F3F9FB;
+   --blue-light: #d5dde2;
    --red:#EF476F;
    --red-light:#FEF6F8;
    --yellow:#FFD166;
@@ -80,7 +80,7 @@
 /*****   BUTTONS   ********************************************************/
 .btn {
    font-size: 16px;
-   margin: 10px 5px;
+   margin: 0;
    padding: 8px 20px;
    border:none;
    display: inline-block;
@@ -179,6 +179,7 @@ input[type="radio"]:checked::before {
    font-size: 18px;
    position: relative;
    display: inline-grid;
+   width: max-content;
    gap:3px;
 
    padding: 0 5px;
