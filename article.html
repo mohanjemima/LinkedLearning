@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta  charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
   <title>Linked Learning | Article & Demo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
@@ -12,7 +12,7 @@
 </head>
 <body>
   <header>
-    <div role="banner" class="banner">
+      <div role="banner" class="banner">
 
       <img class="banner-img" src="assets/img/banner-logo.svg" alt="Linked Learning Logo">
       <p class="banner-sub-heading">Article & Demo</p><!--REPLACE TEXT-->
@@ -76,27 +76,18 @@
         <button class="btn demo-btn" value="<h4>h4 tag</h4>" onclick="changeDemoItem(this)">&lt;h4&gt;</button>
         <button class="btn demo-btn" value="<p>p tag</p>" onclick="changeDemoItem(this)">&lt;p&gt;</button>
       </div>
-      <div class="box box-dark-blue demo-inner-container" id="demo-container">
+      <div class="box-dark-blue demo-inner-container disable" id="demo-container">
         <h1>h1 tag</h1>
       </div>
     </div>
 
     <div class="footer-container">
-      <button type="submit" class="btn">Previous</button>
-      <button type="submit" class="btn btn-yellow" ><b>Next</b></button>
+      <button type="submit" class="btn btn-footer">Previous</button>
+      <button type="submit" class="btn btn-footer btn-yellow" ><b>Next</b></button>
     </div>
 
   </main>
 
-  <script>
-    function changeDemoItem(element) {
-      let btns = document.getElementById("demo-options-list").children;
-      for (let btn of btns) {
-        btn.className = "btn demo-btn";
-      }
-      element.classList.add("btn-dark-blue");
-      document.getElementById("demo-container").innerHTML = element.value;
-    }
-  </script>
+  <script src="assets/js/article-demo.js"></script>
 </body>
 </html>

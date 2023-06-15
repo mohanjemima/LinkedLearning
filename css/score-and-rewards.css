@@ -1,106 +1,290 @@
-.scores-rewards-wrapper{
+
+/*.scores-rewards-wrapper {*/
+/*    display: flex;*/
+/*    justify-content: space-evenly;*/
+/*    gap:20px*/
+/*}*/
+
+
+/*.section-box{*/
+/*    position: relative;*/
+/*    text-align: center;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    height: 455px;*/
+/*}*/
+/*.rewards-box {*/
+/*    width: 600px;*/
+/*}*/
+
+/*.leaderboard-box {*/
+/*    width: 350px;*/
+/*}*/
+
+/*.box-elements {*/
+/*    flex: 1;*/
+/*}*/
+
+/*.rank-follow{*/
+/*font-size: 15px;*/
+/*}*/
+
+/*.marker{*/
+/*    padding: 0 5px;*/
+/*    width:30px;*/
+/*    text-align: right;*/
+/*}*/
+/*.rows {*/
+/*    border-bottom: 2px solid;*/
+/*background-color: var(--red-light);*/
+/*    display: flex;*/
+/*    width: 100%;*/
+/*    padding: 5px 0;*/
+/*}*/
+/*.disable-row{*/
+/*    background-color: transparent;*/
+/*}*/
+
+/*.rows:not(.disable-row):hover{*/
+/*    cursor: pointer;*/
+/*    filter:brightness(95%);*/
+/*}*/
+
+/*.rows:not(.disable-row):active{*/
+/*    box-shadow: inset 0 0 10px rgba(0,0,0, 0.5%);*/
+/*    filter:brightness(90%);*/
+
+/*}*/
+
+
+/*.display-row-yellow{*/
+/*    border-color: var(--yellow);*/
+/*}.display-row-red{*/
+/*     border-color: var(--red);*/
+/* }*/
+
+/*.main-heading-scores{*/
+/*    font-size: 30px;*/
+/*    text-align: center;*/
+/*    margin: 10px 0;*/
+/*}*/
+/*.main-heading-rewards{*/
+/*    font-size: 30px;*/
+/*    text-align: center;*/
+/*    margin:3px 0;*/
+/*}*/
+
+/*.column-headings {*/
+/*    font-size: 20px;*/
+/*}*/
+
+/*.leaderboard-column-items {*/
+/*    font-size: 20px;*/
+/*    text-align: left;*/
+/*}*/
+
+/*.leaderboard-column-one {*/
+/*    flex: 10%;*/
+/*    text-align: left;*/
+/*    display: inline-flex;*/
+/*    flex-direction: row;*/
+/*}*/
+
+/*.leaderboard-column-two {*/
+/*    flex: 10%;*/
+/*    text-align: right;*/
+/*}*/
+
+
+/*.rewards-image-column {*/
+/*    flex: 1 1 20%;*/
+/*}*/
+
+/*.rewards-name-column {*/
+/*    flex: 1 1 50%;*/
+/*    margin-top: 10px;*/
+/*    text-align: left;*/
+/*    font-size: 20px;*/
+/*}*/
+
+/*.rewards-score-column {*/
+/*    flex: 1 1 30%;*/
+/*    margin-top: 10px;*/
+
+/*    text-align: right;*/
+/*    font-size: 20px;*/
+/*}*/
+
+/*.small-box-img {*/
+/*    display: inline-block;*/
+/*    width: 40px;*/
+/*    height: 40px;*/
+/*    justify-self: center;*/
+/*}*/
+
+
+
+
+
+
+
+
+
+
+
+.scores-rewards-wrapper {
     display: flex;
+    justify-content: space-evenly;
+    gap: 20px;
+}
+
+.section-box {
+    position: relative;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    height: 455px;
+}
+.rewards-box {
+    width: 600px;
 }
 
 .leaderboard-box {
-    position: relative;
-    left: 5px;
-    text-align: center;
-    display: inline-grid;
-    height: 400px;
-    width: 400px;
-    margin-right: 100px;
+    width: 350px;
 }
 
-.rewards-box{
-    position: relative;
-    right: 5px;
-    text-align: center;
-    display: inline-grid;
-    height: 400px;
-    width: 600px;
-    grid-template-rows: 1fr 1fr 1fr 3fr;
-
+.box-elements {
+    flex: 1;
 }
 
-.box-elements{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+.rank-follow {
+    font-size: 15px;
 }
 
-.table{
-    display: flex;
-    flex-wrap: wrap;
+.marker {
+    padding: 0 5px;
+    width: 30px;
+    text-align: right;
 }
 
-.rows{
+.rows {
+    border-bottom: 2px solid;
+    background-color: var(--red-light);
     display: flex;
     width: 100%;
+    padding: 5px 0;
+}
+.disable-row {
+    background-color: transparent;
 }
 
-.main-heading{
+.rows:not(.disable-row):hover {
+    cursor: pointer;
+    filter: brightness(95%);
+}
+
+.rows:not(.disable-row):active {
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5%);
+    filter: brightness(90%);
+}
+
+.display-row-yellow {
+    border-color: var(--yellow);
+}
+
+.display-row-red {
+    border-color: var(--red);
+}
+
+.main-heading-scores {
     font-size: 30px;
     text-align: center;
+    margin: 10px 0;
 }
 
-.column-headings{
-    font-size: 20px;
-    text-decoration: none;
+.main-heading-rewards {
+    font-size: 30px;
+    text-align: center;
+    margin: 3px 0;
 }
 
-.leaderboard-column-items{
-    border-bottom: 2px solid #FFD166;
+.column-headings {
     font-size: 20px;
-    text-decoration: none;
-    margin-bottom: -10px;
-    padding: 10px;
+}
+
+.leaderboard-column-items {
+    font-size: 20px;
     text-align: left;
 }
 
-.leaderboard-column-one{
+.leaderboard-column-one {
     flex: 10%;
     text-align: left;
-    margin-top: 1px;
-    margin-bottom: -10px;
+    display: inline-flex;
+    flex-direction: row;
 }
 
-.leaderboard-column-two{
-    flex:10%;
+.leaderboard-column-two {
+    flex: 10%;
     text-align: right;
-    list-style: none;
-    margin-top: 1px;
-    margin-bottom: -10px;
 }
 
-.rewards-image-column{
+.rewards-image-column {
     flex: 1 1 20%;
-    border-bottom: 2px solid #EF476F;
-    margin-bottom: 5px;
 }
 
-.rewards-avatar-column{
+.rewards-name-column {
     flex: 1 1 50%;
-    padding: 10px;
-    border-bottom: 2px solid #EF476F;
+    margin-top: 10px;
     text-align: left;
     font-size: 20px;
-    margin-bottom: 5px;
 }
 
-.rewards-score-column{
+.rewards-score-column {
     flex: 1 1 30%;
-    padding: 10px;
-    border-bottom: 2px solid #EF476F;
+    margin-top: 10px;
     text-align: right;
     font-size: 20px;
-    margin-bottom: 5px;
 }
 
-.small-box-img{
+.small-box-img {
     display: inline-block;
     width: 40px;
-    height:40px;
+    height: 40px;
     justify-self: center;
 }
+@media screen and (max-width: 1110px)
+{
+    .scores-rewards-wrapper{
+        flex-direction: column;
+    }
 
+    .leaderboard-box,.rewards-box {
+        width: 600px;
+    }
+}
+@media screen and (max-width: 768px) {
+    .scores-rewards-wrapper {
+        width: fit-content;
+        flex-wrap: wrap;
+    }
+
+    .section-box {
+        height: auto;
+    }
+
+
+    .leaderboard-box,.rewards-box{
+        width: 400px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+
+    .rewards-name-column, .rewards-score-column{
+        margin-top: 0;
+    }
+}
+    .leaderboard-box,.rewards-box{
+        width: 350px;
+}

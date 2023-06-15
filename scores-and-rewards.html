@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta  charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
     <title>Linked Learning | Scores & Rewards</title>
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
     <link rel="stylesheet" href="css/normalize.css">
@@ -33,187 +33,153 @@
 <body>
 
 <main class="page-wrapper scores-rewards-wrapper">
-    <section class="box box-yellow leaderboard-box">
-        <h1 class="main-heading">Leaderboard</h1>
-        <div class="box-elements">
-            <div class="table">
-                <div class="rows">
-                    <h2 class="leaderboard-column-items column-headings leaderboard-column-one">Username</h2>
-                    <h2 class="leaderboard-column-items column-headings leaderboard-column-two">Score</h2>
-                </div>
-                <div class="rows">
-                    <div class="leaderboard-column-items leaderboard-column-one">
-                        <ol class="leaderboard-column-one" start="1">
-                            <li>User1</li>
-                        </ol>
-                    </div>
-                    <div class="leaderboard-column-items leaderboard-column-two">
-                        <ul class="leaderboard-column-two">
-                            <li>9875</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="rows">
-                    <div class="leaderboard-column-items leaderboard-column-one">
-                        <ol class="leaderboard-column-one" start="2">
-                            <li>User2</li>
-                        </ol>
-                    </div>
-                    <div class="leaderboard-column-items leaderboard-column-two">
-                        <ul class="leaderboard-column-two">
-                            <li>8975</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="rows">
-                    <div class="leaderboard-column-items leaderboard-column-one">
-                        <ol class="leaderboard-column-one" start="3">
-                            <li>User3</li>
-                        </ol>
-                    </div>
-                    <div class="leaderboard-column-items leaderboard-column-two">
-                        <ul class="leaderboard-column-two">
-                            <li>7985</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="rows">
-                    <div class="leaderboard-column-items leaderboard-column-one">
-                        <ol class="leaderboard-column-one" start="4">
-                            <li>User4</li>
-                        </ol>
-                    </div>
-                    <div class="leaderboard-column-items leaderboard-column-two">
-                        <ul class="leaderboard-column-two">
-                            <li>6987</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="rows">
-                    <div class="leaderboard-column-items leaderboard-column-one">
-                        <ol class="leaderboard-column-one" start="5">
-                            <li>User5</li>
-                        </ol>
-                    </div>
-                    <div class="leaderboard-column-items leaderboard-column-two">
-                        <ul class="leaderboard-column-two">
-                            <li>5985</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="rows">
-                    <div class="leaderboard-column-items leaderboard-column-one">
-                        <ol class="leaderboard-column-one" start="6">
-                            <li>User6</li>
-                        </ol>
-                    </div>
-                    <div class="leaderboard-column-items leaderboard-column-two">
-                        <ul class="leaderboard-column-two">
-                            <li>4897</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="rows">
-                    <div class="leaderboard-column-items leaderboard-column-one">
-                        <ol class="leaderboard-column-one" start="7">
-                            <li>User7</li>
-                        </ol>
-                    </div>
-                    <div class="leaderboard-column-items leaderboard-column-two">
-                        <ul class="leaderboard-column-two">
-                            <li>3759</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="rows">
-                    <div class="leaderboard-column-items leaderboard-column-one">
-                        <ol class="leaderboard-column-one" start="8">
-                            <li>User8</li>
-                        </ol>
-                    </div>
-                    <div class="leaderboard-column-items leaderboard-column-two">
-                        <ul class="leaderboard-column-two">
-                            <li>2985</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="rows">
-                    <div class="leaderboard-column-items leaderboard-column-one">
-                        <ol class="leaderboard-column-one" start="9">
-                            <li>User9</li>
-                        </ol>
-                    </div>
-                    <div class="leaderboard-column-items leaderboard-column-two">
-                        <ul class="leaderboard-column-two">
-                            <li>1895</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="rows">
-                    <div class="leaderboard-column-items leaderboard-column-one">
-                        <ol class="leaderboard-column-one" start="10">
-                            <li>User10</li>
-                        </ol>
-                    </div>
-                    <div class="leaderboard-column-items leaderboard-column-two">
-                        <ul class="leaderboard-column-two">
-                            <li>0987</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <section #href="#Leaderboard" class="box box-yellow leaderboard-box section-box disable">
+        <h1 class="main-heading-scores">Leaderboard</h1>
+        <table class="box-elements">
+                <tr class="rows disable-row display-row-yellow">
+                    <th class="leaderboard-column-items column-headings leaderboard-column-one">Username</th>
+                    <th class="leaderboard-column-items column-headings leaderboard-column-two">Score</th>
+                </tr>
+                <tr class="rows disable-row display-row-yellow">
+                    <td class="leaderboard-column-items leaderboard-column-one">
+                        <p class="leaderboard-column-one"><span class="marker">1.</span> <span id="username1">User1</span></p>
+                    </td>
+                    <td class="leaderboard-column-items leaderboard-column-two">
+                        <p class="leaderboard-column-two">9875</p>
+                    </td>
+                </tr>
+            <tr class="rows disable-row display-row-yellow">
+                <td class="leaderboard-column-items leaderboard-column-one">
+                    <p class="leaderboard-column-one" ><span class="marker">2.</span> <span id="username2">User2</span></p>
+                </td>
+                <td class="leaderboard-column-items leaderboard-column-two">
+                    <p class="leaderboard-column-two">9875</p>
+                </td>
+            </tr><tr class="rows disable-row  display-row-yellow">
+            <td class="leaderboard-column-items leaderboard-column-one">
+                <p class="leaderboard-column-one" ><span class="marker">3.</span> <span id="username3">User3</span></p>
+            </td>
+            <td class="leaderboard-column-items leaderboard-column-two">
+                <p class="leaderboard-column-two">9875</p>
+            </td>
+        </tr>
+
+            <tr class="rows  disable-row display-row-yellow">
+                <td class="leaderboard-column-items leaderboard-column-one">
+                    <p class="leaderboard-column-one" ><span class="marker">4.</span> <span id="username4">User4</span></p>
+                </td>
+                <td class="leaderboard-column-items leaderboard-column-two">
+                    <p class="leaderboard-column-two">9875</p>
+                </td>
+            </tr>
+            <tr class="rows disable-row display-row-yellow">
+                <td class="leaderboard-column-items leaderboard-column-one">
+                    <p class="leaderboard-column-one" ><span class="marker">5.</span> <span id="username5">User5</span></p>
+                </td>
+                <td class="leaderboard-column-items leaderboard-column-two">
+                    <p class="leaderboard-column-two">9875</p>
+                </td>
+            </tr>
+            <tr class="rows disable-row  display-row-yellow">
+                <td class="leaderboard-column-items leaderboard-column-one">
+                    <p class="leaderboard-column-one" ><span class="marker">6.</span> <span id="username6">User6</span></p>
+                </td>
+                <td class="leaderboard-column-items leaderboard-column-two">
+                    <p class="leaderboard-column-two">9875</p>
+                </td>
+            </tr>
+            <tr class="rows disable-row display-row-yellow">
+                <td class="leaderboard-column-items leaderboard-column-one">
+                    <p class="leaderboard-column-one" ><span class="marker">7.</span> <span id="username7">User7</span></p>
+                </td>
+                <td class="leaderboard-column-items leaderboard-column-two">
+                    <p class="leaderboard-column-two">9875</p>
+                </td>
+            </tr>
+            <tr class="rows disable-row display-row-yellow">
+                <td class="leaderboard-column-items leaderboard-column-one">
+                    <p class="leaderboard-column-one" ><span class="marker">8.</span> <span id="username8">User8</span></p>
+                </td>
+                <td class="leaderboard-column-items leaderboard-column-two">
+                    <p class="leaderboard-column-two">9875</p>
+                </td>
+            </tr>
+            <tr class="rows disable-row display-row-yellow">
+                <td class="leaderboard-column-items leaderboard-column-one">
+                    <p class="leaderboard-column-one" ><span class="marker">9.</span> <span id="username9">User9</span></p>
+                </td>
+                <td class="leaderboard-column-items leaderboard-column-two">
+                    <p class="leaderboard-column-two">9875</p>
+                </td>
+            </tr>
+            <tr class="rows disable-row display-row-yellow">
+                <td class="leaderboard-column-items leaderboard-column-one">
+                    <p class="leaderboard-column-one" ><span class="marker">10.</span> <span id="username10">User10</span></p>
+                </td>
+                <td class="leaderboard-column-items leaderboard-column-two">
+                    <p class="leaderboard-column-two">9875</p>
+                </td>
+            </tr>
+                <!-- Repeat rows for other users -->
+        </table>
     </section>
 
-    <section class="box box-red rewards-box">
-        <h1 class="main-heading">Rewards</h1>
-        <div class="box-elements">
-        <div class="table">
-            <div class="rows">
-                <h2 class="column-headings rewards-image-column"> </h2>
-                <h2 class="column-headings rewards-avatar-column"> </h2>
-                <h2 class="column-headings rewards-score-column">Cost</h2>
-            </div>
-            <div class="rows">
-                <div class="rewards-image-column"> <!--Using staff profile image as placeholder until images are found -->
-                    <img class="small-box-img" src="assets/img/staff-profile-icon.svg" alt="">
-                </div>
-                <div class="rewards-avatar-column">New Avatar 1</div>
-                <div class="rewards-score-column">9875</div>
-            </div>
-            <div class="rows">
-                <div class="rewards-image-column">
-                    <img class="small-box-img" src="assets/img/staff-profile-icon.svg" alt="">
-                </div>
-                <div class="rewards-avatar-column">New Avatar 2</div>
-                <div class="rewards-score-column">9875</div>
-            </div>
-            <div class="rows">
-                <div class="rewards-image-column">
-                    <img class="small-box-img" src="assets/img/staff-profile-icon.svg" alt="">
-                </div>
-                <div class="rewards-avatar-column">New Avatar 3</div>
-                <div class="rewards-score-column">9875</div>
-            </div>
-            <div class="rows">
-                <div class="rewards-image-column">
-                    <img class="small-box-img" src="assets/img/staff-profile-icon.svg" alt="">
-                </div>
-                <div class="rewards-avatar-column">New Avatar 4</div>
-                <div class="rewards-score-column">9875</div>
-            </div>
-            <div class="rows">
-                <div class="rewards-image-column">
-                    <img class="small-box-img" src="assets/img/staff-profile-icon.svg" alt="">
-                </div>
-                <div class="rewards-avatar-column">New Avatar 5</div>
-                <div class="rewards-score-column">9875</div>
-            </div>
-        </div>
-        </div>
-    </section>
+    <section href="#Rewards" class="box box-red rewards-box section-box disable">
+        <h1 class="main-heading-rewards">Rewards</h1>
+        <table class="box-elements">
+                <tr  class="rows disable-row display-row-red">
+                        <th class="column-headings rewards-image-column"></th>
+                        <th class="column-headings rewards-name-column"></th>
+                        <th class="column-headings rewards-score-column">Cost</th>
+                </tr>
 
+                <tr class="rows  display-row-red">
+                    <td class="rewards-image-column">
+                        <img class="small-box-img" src="assets/img/staff-profile-icon.svg" alt="">
+                    </td>
+                    <td class="rewards-name-column">New Avatar 1</td>
+                    <td class="rewards-score-column">9875</td>
+                </tr>
+
+            <tr class="rows  display-row-red">
+                <td class="rewards-image-column">
+                    <img class="small-box-img" src="assets/img/staff-profile-icon.svg" alt="">
+                </td>
+                <td class="rewards-name-column">New Avatar 2</td>
+                <td class="rewards-score-column">9875</td>
+            </tr>
+
+            <tr class="rows  display-row-red">
+                <td class="rewards-image-column">
+                    <img class="small-box-img" src="assets/img/staff-profile-icon.svg" alt="">
+                </td>
+                <td class="rewards-name-column">New Avatar 3</td>
+                <td class="rewards-score-column">9875</td>
+            </tr>
+
+            <tr class="rows  display-row-red">
+                <td class="rewards-image-column">
+                    <img class="small-box-img" src="assets/img/staff-profile-icon.svg" alt="">
+                </td>
+                <td class="rewards-name-column">New Avatar 4</td>
+                <td class="rewards-score-column">9875</td>
+            </tr>
+            <tr class="rows  display-row-red">
+                <td class="rewards-image-column">
+                    <img class="small-box-img" src="assets/img/staff-profile-icon.svg" alt="">
+                </td>
+                <td class="rewards-name-column">New Avatar 5</td>
+                <td class="rewards-score-column">9875</td>
+             </tr>
+            <tr class="rows  display-row-red">
+                <td class="rewards-image-column">
+                    <img class="small-box-img" src="assets/img/staff-profile-icon.svg" alt="">
+                </td>
+                <td class="rewards-name-column">New Avatar 6</td>
+                <td class="rewards-score-column">9875</td>
+            </tr>
+        </table>
+    </section>
 </main>
-
 </body>
 </html>
