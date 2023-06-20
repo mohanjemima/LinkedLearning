@@ -20,7 +20,6 @@ html {
  * Remove the margin in all browsers.
  */
 
-header,
 body {
   margin: 0;
 }
@@ -35,12 +34,16 @@ main {
 
 /**
  * Correct the font size and margin on `h1` elements within `section` and
- * `article` contexts in Chrome, Firefox, and Safari.
+ * `lesson-content.css` contexts in Chrome, Firefox, and Safari.
  */
 
 h1 {
-  font-size: 1.5em;
+  font-size: 2em;
   margin: 0.67em 0;
+}
+
+p{
+  margin: 0;
 }
 
 /* Grouping content
@@ -65,6 +68,7 @@ hr {
 pre {
   font-family: monospace, monospace; /* 1 */
   font-size: 1em; /* 2 */
+  margin:0;
 }
 
 /* Text-level semantics
@@ -78,7 +82,6 @@ a {
   background-color: transparent;
 }
 
-font
 /**
  * 1. Remove the bottom border in Chrome 57-
  * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
@@ -163,7 +166,7 @@ button,
 input,
 optgroup,
 select,
-textarea,p {
+textarea {
   font-family: inherit; /* 1 */
   font-size: 100%; /* 1 */
   line-height: 1.15; /* 1 */

@@ -1,10 +1,26 @@
-.log-in-sign-up-wrapper {
-    margin-top: 17vh;
+/***** SIGN UP / LOGIN *************************************************************/
+.sign-up-wrapper,
+.log-in-wrapper {
+    margin: 8% auto;
+    padding: 20px;
+    width: min-content;
 }
 
-.sign-up-quiz {
-    width: max-content;
-    height: max-content;
+.text-input {
+    display: flex;
+    flex: 50%;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 10px 5px;
+    padding: 13px 23px;
+    border: solid 3px var(--dark-blue);
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+}
+
+.text-input::placeholder {
+    color: var(--place-holder-color);
 }
 
 .fine-print-box {
@@ -21,27 +37,19 @@
     text-decoration: none;
     display: inline-block;
 }
-
-.text-input-signUp-quiz-section {
-    display: flex;
-    flex: 50%;
-    justify-content: center;
-}
-
+/***** SIGN UP QUIZ ****************************************************************/
 #age-input {
+    flex: none;
     width: 30px;
 }
 
-.sign-up-quiz-stack {
-    display: inline-block;
-    padding: 0 10px 0 0;
-    flex: 50%;
+#child-name {
+    flex: none;
 }
 
-.radio-quiz-section {
-    padding: 20px;
-    display: flex;
-    flex-direction: row;
+.sign-up-quiz-wrapper {
+    width: max-content;
+    height: max-content;
 }
 
 #notification-box {
@@ -63,35 +71,54 @@
 }
 
 .next-btn {
+    font-size: 16px;
+    margin: 0;
+    padding: 8px 20px;
+    border: none;
+    display: inline-block;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+    text-decoration: none;
+    user-select: none;
     display: block;
     margin: 20px auto;
 }
 
-/* Responsive CSS */
+.skill-quiz {
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+}
+
+.text-input-section {
+    display: flex;
+    flex: 100%;
+    justify-content: center;
+}
+/***** MEDIA QUERY *************************************************************/
+/* Media Query -transition- */
 @media screen and (max-width: 768px) {
-    .log-in-sign-up-wrapper {
+    .sign-up-wrapper,
+    .log-in-wrapper {
         margin-top: 10vh;
     }
-    .radio-quiz-section{
+
+    .skill-quiz {
         flex-direction: column;
         margin: auto;
         width: fit-content;
         row-gap: 20px;
     }
 
-    .sign-up-quiz {
+    .sign-up-quiz-wrapper {
         width: 100%;
-    }
-
-    .text-input-signUp-quiz-section{
-        flex: 100%;
-        justify-items: center;
     }
 }
 
-/* Mobile CSS */
+/* Media Query: MOBILE */
 @media screen and (max-width: 480px) {
-    .log-in-sign-up-wrapper {
+    .sign-up-wrapper,.log-in-wrapper {
         margin-top: 5vh;
     }
 
@@ -99,7 +126,7 @@
         margin: 10px 0;
     }
 
-    .text-input-signUp-quiz-section{
+    .text-input{
         display: flex;
         padding: 0;
         flex-direction: column;
@@ -113,10 +140,15 @@
         margin-bottom: 10px;
         width: 100%;
     }
-#age-input{
-    margin: auto;
-}
+
+    #age-input {
+        flex:none;
+        margin: auto;
+    }
+
     .next-btn {
         margin-top: 10px;
     }
+
 }
+

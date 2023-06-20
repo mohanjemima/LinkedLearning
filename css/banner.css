@@ -1,12 +1,15 @@
+/***** BANNER *************************************************************/
+
 :root{
     --banner-height:60px;
 }
+
 .banner {
     display: flex;
     align-items: center;
     justify-content: space-between;
     background-color: #ffffff;
-    box-shadow:0px 1px 3px rgba(0, 0, 0, 0.25);
+    box-shadow:0 1px 3px rgba(0, 0, 0, 0.25);
     font-family: Arial, Helvetica, sans-serif;
     color: var(--dark-blue);
 
@@ -47,7 +50,7 @@
 .banner-link {
     display: flex;
     align-items: center;
-    margin-left: 10px;
+    margin: 0 5px;
     text-decoration: none;
 }
 
@@ -58,7 +61,8 @@
     vertical-align: middle;
 }
 
-/* Media Query for Mobile */
+/***** MEDIA QUERY *************************************************************/
+/* Media Query: MOBILE */
 @media screen and (max-width: 768px) {
 
     .banner-links {
