@@ -27,7 +27,7 @@ CREATE TABLE Lesson (
     id INT NOT NULL AUTO_INCREMENT,
     title VARCHAR(255) NOT NULL,
     content MEDIUMTEXT,
-    demo_id INT NOT NULL,
+    demo_id INT,
     PRIMARY KEY (id),
     FOREIGN KEY (demo_id) REFERENCES Demo(id)
 );

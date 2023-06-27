@@ -29,12 +29,12 @@ $showHomeLink = false;
 </header>
 <main class="page-wrapper content-container">
 
-    <form action="dashboard.html" method="post">
+    <form action="crud/create-lesson.php" method="post">
         <h2>Page Content</h2>
-        <input class="text-input edit-input" id="title" placeholder="Lesson Title" required />
+        <input class="text-input edit-input" id="title" name="title" placeholder="Lesson Title" required />
         <label for="title"></label>
 
-        <textarea class="text-input edit-text-area" id="content" placeholder="Lesson Content" rows="10" required></textarea>
+        <textarea class="text-input edit-text-area" id="content" name="content" placeholder="Lesson Content" rows="10" required></textarea>
         <label for="content"></label>
 
         <h2 class="demo-options-editor-title">Demo Items</h2>
