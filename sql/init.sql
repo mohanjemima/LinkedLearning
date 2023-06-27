@@ -8,9 +8,10 @@ CREATE TABLE User (
 
 -- LESSON DDL
 
-CREATE TABLE Demo (
+CREATE TABLE Lesson (
     id INT NOT NULL AUTO_INCREMENT,
     title VARCHAR(255) NOT NULL,
+    content MEDIUMTEXT,
     PRIMARY KEY (id)
 );
 
@@ -18,18 +19,9 @@ CREATE TABLE DemoItem (
     id INT NOT NULL AUTO_INCREMENT,
     display_label VARCHAR(64) NOT NULL,
     html_content TEXT NOT NULL,
-    demo_id INT NOT NULL,
+    lesson_id INT NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (demo_id) REFERENCES Demo(id)
-);
-
-CREATE TABLE Lesson (
-    id INT NOT NULL AUTO_INCREMENT,
-    title VARCHAR(255) NOT NULL,
-    content MEDIUMTEXT,
-    demo_id INT,
-    PRIMARY KEY (id),
-    FOREIGN KEY (demo_id) REFERENCES Demo(id)
+    FOREIGN KEY (lesson_id) REFERENCES Lesson(id)
 );
 
 -- QUIZ DDL

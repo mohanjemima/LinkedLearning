@@ -44,12 +44,12 @@ $showHomeLink = false;
         </section>
 
         <section>
-            <button class="btn btn-dark-blue next-btn" onclick="addNewDemoOptionToForm()">Add Item</button>
-            <button class="btn next-btn" onclick="removeLastDemoOptionFromForm()">Remove Item</button>
+            <button type="button" class="btn btn-dark-blue next-btn" onclick="addNewDemoOptionToForm()">Add Item</button>
+            <button type="button" class="btn next-btn" onclick="removeLastDemoOptionFromForm()">Remove Item</button>
         </section>
 
         <section class="submit-buttons-container">
-            <button class="btn btn-red next-btn">Cancel</button>
+            <button type="button" class="btn btn-red next-btn">Cancel</button>
             <button type="submit" class="btn btn-green next-btn">Save</button>
         </section>
     </form>
