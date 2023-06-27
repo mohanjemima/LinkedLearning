@@ -1,16 +1,35 @@
 <?php
 include(dirname(__DIR__).'/util/connection.php');
+include(dirname(__DIR__).'/util/fetch.php');
 
-echo phpversion();
-print_r($_POST);
+$lesson = null;
 $title = mysqli_real_escape_string($conn, $_POST['title']);
 $content = mysqli_real_escape_string($conn, $_POST['content']);
 
+if (array_key_exists("id", $_POST)) {
+    // UPDATE
+    $lesson = get_lesson(mysqli_real_escape_string($conn, $_POST["id"]));
+    if (sizeof($lesson) == 0) {
+        header("Location: ..\staff-dashboard.php");
+    }
+    $sql = "UPDATE Lesson (title, content) SET ('$title', '$content') WHERE id=$lesson[0]['id']";
+} else {
+    // NEW - CREATE
+    $sql = "INSERT INTO Lesson (title, content) VALUES ('$title', '$content')";
+}
+
 // Attempt insert query execution
-$sql = "INSERT INTO Lesson (title, content) VALUES ('$title', '$content')";
 if ($conn->query($sql)) {
 
-    $lesson_id = $conn->insert_id;
+    if ($lesson == null) {
+        $lesson_id = $conn->insert_id;
+    } else {
+        $lesson_id = $lesson[0]["id"];
+    }
+
+    if (array_key_exists("id", $_POST)) {
+        $conn->query("DELETE FROM DemoItem WHERE lesson_id=$lesson_id");
+    }
 
     if (array_key_exists("demo-option-header", $_POST)) {
         // Demo items exist - save appropriately

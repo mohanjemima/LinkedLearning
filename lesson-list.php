@@ -8,7 +8,7 @@ $bannerText = 'Lessons';
 $showBackLink = false;
 $showHomeLink = true;
 
-$lessons= getLessons();
+$lessons= get_lessons();
 
 function lessonRow($title,$isFirst,$href){
     $id='';
