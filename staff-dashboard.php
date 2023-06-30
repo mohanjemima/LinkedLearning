@@ -1,6 +1,6 @@
 <?php
+include 'util/fetch.php';
 include 'component.php'; // banner code
-include './assets/data/sample-data.php'; // sample data
 
 // Customize the link URLs, text, and display status for Banner
 $backLinkURL = '#';// back link for the back button
@@ -8,7 +8,7 @@ $bannerText = 'Dashboard';
 $showBackLink = false;
 $showHomeLink = false;
 
-$lessons= getLessons();
+$lessons= get_lessons();
 
 function lessonRow($title,$isFirst,$href){
     $id='';
@@ -45,7 +45,7 @@ function lessonRow($title,$isFirst,$href){
                 <?php
                 for ($i = 0; $i < count($lessons); $i++) {
                     if($i==0){ $isFirst = true; }else{ $isFirst=false; }
-                    lessonRow($lessons[$i]['pageTitle'],$isFirst,$lessons[$i]['href']);
+                    lessonRow($lessons[$i]['title'],$isFirst,'./edit-lesson.php?id='.$lessons[$i]['id']);
                 }
                 ?>
             </ul>
@@ -57,7 +57,7 @@ function lessonRow($title,$isFirst,$href){
                 <h2 class="box-square-headings">Staff Name</h2>
             </div>
 
-            <a href="./new-lesson.php" class="box box-green box-square ">
+            <a href="edit-lesson.php" class="box box-green box-square ">
                 <img class="box-square-img" src="assets/img/new-lesson-icon.svg" alt="new file icon">
                 <h2 class="box-square-headings">New Lesson</h2>
             </a>
