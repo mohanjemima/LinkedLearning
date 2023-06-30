@@ -10,6 +10,7 @@ $showHomeLink = false;
 
 $title = "";
 $content = "";
+$lesson = "";
 
 if (array_key_exists("id", $_GET)) {
     $lesson = get_lesson($_GET["id"]);

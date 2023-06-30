@@ -32,7 +32,7 @@ $showHomeLink = false;
             <input  class="text-input" id="child-name" placeholder="Child Name" required>
             <label class="hidden-label" for="child-name"></label>
 
-            <input  class="text-input " id="age-input" placeholder="Age" maxlength="2" required>
+            <input  class="text-input " id="age-input" placeholder="Age" maxlength="2" type="number" required>
             <label class="hidden-label" for="age-input"></label>
 
         </section>
