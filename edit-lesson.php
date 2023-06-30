@@ -42,6 +42,8 @@ if (array_key_exists("id", $_GET)) {
 <main class="page-wrapper content-container">
 
     <form action="crud/lesson.php<?php if (array_key_exists("id", $_GET)) { $lesson_id = $_GET["id"]; echo "?id=$lesson_id"; } ?>" method="post">
+        <?php if (array_key_exists("id", $_GET)) { $lesson_id = $_GET["id"]; echo "<input type=\"hidden\" name=\"id\" value=\"$lesson_id\" />"; } ?>
+
         <h2>Page Content</h2>
         <input class="text-input edit-input" id="title" name="title" placeholder="Lesson Title" value="<?php echo $title?>" required />
         <label for="title"></label>

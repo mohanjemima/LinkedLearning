@@ -12,7 +12,8 @@ if (array_key_exists("id", $_POST)) {
     if (sizeof($lesson) == 0) {
         header("Location: ..\staff-dashboard.php");
     }
-    $sql = "UPDATE Lesson (title, content) SET ('$title', '$content') WHERE id=$lesson[0]['id']";
+    $lesson_id = mysqli_real_escape_string($conn, $lesson[0]["id"]);
+    $sql = "UPDATE Lesson SET title='$title', content='$content' WHERE id=$lesson_id";
 } else {
     // NEW - CREATE
     $sql = "INSERT INTO Lesson (title, content) VALUES ('$title', '$content')";
