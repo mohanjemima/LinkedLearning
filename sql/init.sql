@@ -1,9 +1,16 @@
 CREATE TABLE User (
     id INT NOT NULL AUTO_INCREMENT,
+    email VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
     name VARCHAR(128) NOT NULL,
     profile_picture VARCHAR(255),
     is_admin BOOLEAN DEFAULT false,
-    PRIMARY KEY (id)
+    score LONG DEFAULT 0,
+    points LONG DEFAULT 0,
+    age INT,
+    current_lesson_id INT NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (current_lesson_id) REFERENCES Lesson(id)
 );
 
 -- LESSON DDL
