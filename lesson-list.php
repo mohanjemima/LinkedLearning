@@ -1,6 +1,7 @@
 <?php
 include 'component.php'; // banner code
 include './assets/data/sample-data.php'; // sample data
+include 'util/fetch.php';
 
 // Customize the link URLs, text, and display status for Banner
 $backLinkURL = '#';// back link for the back button
@@ -46,7 +47,7 @@ function lessonRow($title,$isFirst,$href){
             <?php
             for ($i = 0; $i < count($lessons); $i++) {
                 if($i==0){ $isFirst = true; }else{ $isFirst=false; }
-                lessonRow($lessons[$i]['pageTitle'],$isFirst,$lessons[$i]['href']);
+                lessonRow($lessons[$i]['title'],$isFirst,'./article.php?id='.$lessons[$i]['id']);
             }
             ?>
         </ul>

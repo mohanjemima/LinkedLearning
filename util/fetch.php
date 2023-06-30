@@ -20,9 +20,13 @@ function get_lessons() {
 }
 
 function get_lesson($lesson_id) {
+    global $conn;
+    $lesson_id = mysqli_real_escape_string($conn, $lesson_id);
     return fetch("Lesson WHERE id=$lesson_id");
 }
 
 function get_demo_items($lesson_id) {
+    global $conn;
+    $lesson_id = mysqli_real_escape_string($conn, $lesson_id);
     return fetch("DemoItem WHERE lesson_id=$lesson_id");
 }
