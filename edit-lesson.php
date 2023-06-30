@@ -92,7 +92,7 @@ if (array_key_exists("id", $_GET)) {
             $demo_items = get_demo_items($lesson[0]["id"]);
 
             foreach ($demo_items as $demo_item) {
-                echo "addNewDemoOptionToForm('${demo_item['display_label']}', '${demo_item['html_content']}');";
+                echo "addNewDemoOptionToForm(\"${demo_item['display_label']}\", \"${demo_item['html_content']}\");";
             }
         }
 
