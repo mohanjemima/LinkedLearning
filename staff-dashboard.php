@@ -44,7 +44,7 @@ function lessonRow($title,$isFirst,$href){
             <ul class = "lesson-link-list staff-sizing scroll-bar">
                 <?php
                 for ($i = 0; $i < count($lessons); $i++) {
-                    if($i==0){ $isFirst = true; }else{ $isFirst=false; }
+                    $isFirst = $i==0;
                     lessonRow($lessons[$i]['title'],$isFirst,'./edit-lesson.php?id='.$lessons[$i]['id']);
                 }
                 ?>

@@ -76,7 +76,7 @@ function getArticles(){
                 [
                     'heading' => 'Internal CSS',
                     'displayType' => 'code',
-                    'content' => '< head>
+                    'content' => '<head>
             < style>
             h1{
                 text-align: left;

@@ -12,26 +12,19 @@ $lesson = get_lesson($_GET["id"])[0];
 $demo_items = get_demo_items($_GET["id"]);
 
 function displayPageTitle($title){
-    echo'    <h1 class="main-heading">'.trim($title).'</h1>';
+    echo "<h1 class=\"main-heading\">$title</h1>";
 }
 function displayListItem($content) {
-    echo'<li class="paragraph">'.trim($content).'</li>';
-
-}
-function displayParagraphCodeExample($heading, $content){
-    $codeText =  htmlentities($content);
-
-    echo' <h3 class="text-block-heading">'.trim($heading).'</h3>';
-    echo'<pre class="pre-display"><code class="code-display"> '.trim($codeText).'</code></pre>';
+    echo "<li class=\"paragraph\">$content</li>";
 
 }
 
 function displayParagraphText($content) {
-    echo'<p class="paragraph">'.trim($content).'</p>';
+    echo "<p class=\"paragraph\">$content</p>";
 }
 
 function displayHeadingText($heading) {
-    echo' <h3 class="text-block-heading">'.trim($heading).'</h3class>';
+    echo "<h3 class=\"text-block-heading\">$heading</h3>";
 }
 
 ?>
@@ -61,18 +54,38 @@ function displayHeadingText($heading) {
     displayPageTitle($lesson['title']);
 
     $content_lines = preg_split("/\r\n|\n|\r/", $lesson['content']);
+    $is_code_block_open = false;
+    $is_list_open = false;
 
     //    ARTICLE PARAGRAPHS
     for ($i = 0; $i < count($content_lines); $i++) {
-        if (str_starts_with(trim($content_lines[$i]), "# ")) {
+        if (trim($content_lines[$i]) == "```") {
+            // handle surrounding code block display
+            if ($is_code_block_open) {
+                // close code block
+                echo '</code></pre>';
+                $is_code_block_open = false;
+            } else {
+                // open code block
+                echo '<pre class="pre-display"><code class="code-display">';
+                $is_code_block_open = true;
+            }
+        } else if ($is_code_block_open) {
+            echo $content_lines[$i];
+        } elseif (str_starts_with(trim($content_lines[$i]), "# ")) {
             // Display text as heading
             displayHeadingText(substr($content_lines[$i], 2));
-        } elseif (str_starts_with(trim($content_lines[$i]), "- ")) {
+        } elseif (str_starts_with(trim($content_lines[$i]), "---")) {
             // Display text as list
-            displayListItem(substr($content_lines[$i], 2));
-//        } elseif ($lessons[$index]['paragraphs'][$i]['displayType'] == 'code'){
-//            //display text as code example
-//            displayParagraphCodeExample($lessons[$index]['paragraphs'][$i]['heading'], $lessons[$index]['paragraphs'][$i]['content']);
+            if ($is_list_open) {
+                echo "</ul>";
+                $is_list_open = false;
+            } else {
+                echo "<ul>";
+                $is_list_open = true;
+            }
+        } else if ($is_list_open) {
+            displayListItem($content_lines[$i]);
         } else {
             // display text as paragraph
             displayParagraphText($content_lines[$i]);
@@ -81,8 +94,8 @@ function displayHeadingText($heading) {
     ?>
     </section>
 
-    <h3 style="<?php if (sizeof($demo_items) == 0) echo "visibility: hidden;" ?>">Demo</h3>
-    <div class="demo-container box box-dark-blue disable" style="<?php if (sizeof($demo_items) == 0) echo "visibility: hidden;" ?>">
+    <h3 style="<?php if (sizeof($demo_items) == 0) { echo "display: none;"; } ?>">Demo</h3>
+    <div class="demo-container box box-dark-blue disable" style="<?php if (sizeof($demo_items) == 0) echo "display: none;" ?>">
         <div class="demo-btn-list" id="demo-options-list">
             <?php
                 for ($i = 0; $i < count($demo_items); $i++) {
