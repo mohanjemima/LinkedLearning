@@ -48,7 +48,7 @@ if (array_key_exists("id", $_GET)) {
         <input class="text-input edit-input" id="title" name="title" placeholder="Lesson Title" value="<?php echo $title?>" required />
         <label for="title"></label>
 
-        <textarea class="text-input edit-text-area" id="content" name="content" placeholder="Lesson Content" rows="10" required><?php echo $content?></textarea>
+        <textarea class="text-input edit-text-area" id="content" name="content" placeholder="Lesson Content" rows="35" required><?php echo $content?></textarea>
         <label for="content"></label>
 
         <h2 class="demo-options-editor-title">Demo Items</h2>

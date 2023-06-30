@@ -71,7 +71,7 @@ function displayHeadingText($heading) {
                 $is_code_block_open = true;
             }
         } else if ($is_code_block_open) {
-            echo $content_lines[$i];
+            echo $content_lines[$i]."<br />";
         } elseif (str_starts_with(trim($content_lines[$i]), "# ")) {
             // Display text as heading
             displayHeadingText(substr($content_lines[$i], 2));
