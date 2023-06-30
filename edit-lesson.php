@@ -61,7 +61,7 @@ if (array_key_exists("id", $_GET)) {
         </section>
 
         <section class="submit-buttons-container">
-            <button type="button" class="btn btn-red next-btn">Cancel</button>
+            <a href="./staff-dashboard.php"><button type="button" class="btn btn-red next-btn">Cancel</button></a>
             <button type="submit" class="btn btn-green next-btn">Save</button>
         </section>
     </form>
