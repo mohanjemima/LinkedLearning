@@ -1,18 +1,3 @@
-CREATE TABLE User (
-    id INT NOT NULL AUTO_INCREMENT,
-    email VARCHAR(255) NOT NULL,
-    password VARCHAR(255) NOT NULL,
-    name VARCHAR(128) NOT NULL,
-    profile_picture VARCHAR(255),
-    is_admin BOOLEAN DEFAULT false,
-    score LONG DEFAULT 0,
-    points LONG DEFAULT 0,
-    age INT,
-    current_lesson_id INT NOT NULL,
-    PRIMARY KEY (id),
-    FOREIGN KEY (current_lesson_id) REFERENCES Lesson(id)
-);
-
 -- LESSON DDL
 
 CREATE TABLE Lesson (
@@ -55,4 +40,21 @@ CREATE TABLE QuizAnswer (
     quiz_question_id INT NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (quiz_question_id) REFERENCES QuizQuestion(id)
+);
+
+-- USER DDL
+
+CREATE TABLE Users (
+                       id INT NOT NULL AUTO_INCREMENT,
+                       email VARCHAR(255) NOT NULL,
+                       password VARCHAR(255) NOT NULL,
+                       name VARCHAR(128) NOT NULL,
+                       profile_picture VARCHAR(255),
+                       is_admin BOOLEAN DEFAULT false,
+                       score INT DEFAULT 0,
+                       points INT DEFAULT 0,
+                       age INT,
+                       current_lesson_id INT NOT NULL,
+                       PRIMARY KEY (id),
+                       FOREIGN KEY (current_lesson_id) REFERENCES Lesson(id)
 );
