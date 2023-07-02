@@ -5,6 +5,9 @@ $backLinkURL = '#';// back link for the back button
 $bannerText = 'Coding made easy';
 $showBackLink = false;
 $showHomeLink = false;
+
+$currentFile = basename($_SERVER['PHP_SELF']);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,12 +30,16 @@ generateBanner($backLinkURL,$bannerText,$showBackLink, $showHomeLink);
 <main class=" log-in-wrapper">
     <h1 class="main-heading">Log In</h1>
 
-    <form action="./dashboard.php" method="post">
-        <input class="text-input" id="login-email" type="email" name="email" placeholder="E-mail Address" required>
+    <form action="./crud/start-pages.php" method="post">
+        <input class="text-input" id="login-email" type="email" name="log-email" placeholder="E-mail Address" required>
         <label class="hidden-label" for="login-email">E-mail Address</label>
 
-        <input class="text-input" id="login-password" type="password" name="password" placeholder="Password" required>
+        <input class="text-input" id="login-password" type="password" name="log-password" placeholder="Password" required>
         <label class="hidden-label" for="login-password">Password</label>
+
+<!--hidden input-->
+        <input type="hidden" name="current_file" value="<?php echo htmlspecialchars($currentFile); ?>">
+
 
         <button class="btn btn-yellow" type="submit">Log In</button>
         <div class="fine-print-box">
@@ -41,6 +48,17 @@ generateBanner($backLinkURL,$bannerText,$showBackLink, $showHomeLink);
     </form>
 
 </main>
+<?php
+//Place at the bottom of page so Page loads before sending alert
+if (isset($_GET['value'])) {
+    $decodedValue = urldecode($_GET['value']);
+    if($decodedValue == "401:email") {
+        echo '<script>window.addEventListener("load", function() { alert("Wrong E-mail or Account doesn\'t exists"); });</script>';
+    }elseif ($decodedValue == "401:password"){
+        echo '<script>window.addEventListener("load", function() { alert("Incorrect Password"); });</script>';
+    }
+    }
 
+?>
 </body>
 </html>

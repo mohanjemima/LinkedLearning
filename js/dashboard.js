@@ -8,18 +8,28 @@ function load(){
 }
 
 function formatDescription() {
-    //formats the description of a lesson
-    let description = document.getElementById("lesson-section-description").textContent;
-    if (description.length > 400) {
-        document.getElementById("lesson-section-description").textContent = "";
-        document.getElementById("lesson-section-description").textContent = (description.substring(0, 400) + " ...");
+    // Formats the description of a lesson
+    let descriptionElement = document.getElementById("lesson-section-description");
+    let description = descriptionElement.textContent;
+
+// Remove "#" and "---"
+    const withoutHashAndDashes = description.replace(/#|--/g, '');
+
+// Check if the description is longer than 400 characters
+    if (withoutHashAndDashes.length > 400) {
+        descriptionElement.textContent = withoutHashAndDashes.substring(0, 400) + " ...";
     }
 }
 
 function formatRankingDisplay() {
 //formats the rank as appropriate
     let format;
-    let rank = document.getElementById("rank").innerText.trim();
+    let temp = document.getElementById("rank").innerText.trim();
+    let rank = temp.substring(temp.length - 1);
+    if(temp == '11'|| temp == '12'|| temp =='13'){
+        rank = temp;
+    }
+
     console.log(rank);
     console.log(typeof rank);
     switch (rank) {

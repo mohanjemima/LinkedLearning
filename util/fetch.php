@@ -30,3 +30,5 @@ function get_demo_items($lesson_id) {
     $lesson_id = mysqli_real_escape_string($conn, $lesson_id);
     return fetch("DemoItem WHERE lesson_id=$lesson_id");
 }
+
+

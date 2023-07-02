@@ -32,8 +32,7 @@ $showHomeLink = false;
         <input class="text-input" id="sign-up-email" type="email" name="email" placeholder="E-mail Address" required>
         <label class="hidden-label" for="sign-up-email">E-mail Address</label>
 
-        <input class="text-input id="sign-up-password" type="password" name="password" placeholder="Password" required>
-
+        <input class="text-input" id="sign-up-password" type="password" name="password" placeholder="Password" required>
         <label class="hidden-label" for="sign-up-password">Password</label>
 
         <button type="submit" class="btn btn-green" >Sign up</button>
@@ -43,7 +42,13 @@ $showHomeLink = false;
     </form>
 
 </main>
-
+<?php
+//Place at the bottom of page so Page loads before sending alert
+if (isset($_GET['value'])) {
+    $decodedValue = urldecode($_GET['value']);
+    echo '<script>window.addEventListener("load", function() { alert("An account using this e-mail already exists, please use a different e-mail or login"); });</script>';
+}
+?>
 </body>
 </html>
 

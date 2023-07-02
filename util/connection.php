@@ -1,9 +1,9 @@
 <?php
 $hostname = "devweb2022.cis.strath.ac.uk";
 // DONT COMMIT YOUR VALUES TO VCS!!!
-$username = "REPLACE";
-$password = "REPLACE";
-$db = "REPLACE";
+$username = "rqb22133";
+$password = "ooraub0Emah2";
+$db = "rqb22133";
 
 $conn = new mysqli($hostname, $username, $password, $db);
 
