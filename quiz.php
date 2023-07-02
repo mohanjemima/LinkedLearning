@@ -88,6 +88,17 @@ function displayQuestionCheck($i, $heading, $content)
     </section>
     </div>
 
+    <div class="notification-box">
+        <div class="mark-box">
+            <div>
+            <p class="notification-box-content">Mark: <span id="mark"></span></p>
+            <p class="notification-box-content">Score: <span id="score"></span></p>
+            <p class="notification-box-content">Points: + <span id="points"></span></p>
+            </div>
+            <img id="mascot-img" src="assets/img/avatars/avatar3.png" alt="mascot">
+        </div>
+    </div>    
+    
 <div class="footer-container">
     <a href="article.php" class="btn btn-default btn-footer ">Previous</a>
     <a href="article2.php" class="btn btn-footer btn-yellow" ><b>Next</b></a>

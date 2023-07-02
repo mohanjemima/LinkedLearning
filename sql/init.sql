@@ -44,7 +44,7 @@ CREATE TABLE QuizAnswer (
 
 -- USER DDL
 
-CREATE TABLE Users (
+CREATE TABLE User (
                        id INT NOT NULL AUTO_INCREMENT,
                        email VARCHAR(255) NOT NULL,
                        password VARCHAR(255) NOT NULL,
@@ -54,7 +54,7 @@ CREATE TABLE Users (
                        score INT DEFAULT 0,
                        points INT DEFAULT 0,
                        age INT,
-                       current_lesson_id INT NOT NULL,
+                       current_lesson_id INT NOT NULL DEFAULT 1,
                        PRIMARY KEY (id),
                        FOREIGN KEY (current_lesson_id) REFERENCES Lesson(id)
 );

@@ -110,8 +110,21 @@
   background-color: var(--dark-blue-light);
   border-color: var(--dark-blue);
 }
-/***** BUTTONS *************************************************************/
+/***** NOTIFICATION BOX *************************************************************/
+.notification-box {
+  margin-top:20px;
+  padding: 8px 8px 8px 30px;
+  height: auto;
+  display: block;
+  border: 1px solid var(--blue);
+  border-left: 10px solid var(--blue);
+  border-radius: 4px;
+  background-color: var(--blue-light);
+  visibility: visible;
+  text-align: left;
+}
 
+/***** BUTTONS *************************************************************/
 .btn {
   font-size: 16px;
   margin: 0;

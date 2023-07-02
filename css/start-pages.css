@@ -52,18 +52,6 @@
     height: max-content;
 }
 
-#notification-box {
-    margin: 0 20px;
-    padding: 8px 8px 8px 30px;
-    height: auto;
-    display: block;
-    border: 1px solid var(--blue);
-    border-left: 10px solid var(--blue);
-    border-radius: 4px;
-    background-color: var(--blue-light);
-    visibility: hidden;
-    text-align: left;
-}
 
 .notification-box-text {
     font-size: 15px;
@@ -85,7 +73,7 @@
 }
 
 .skill-quiz {
-    padding: 20px;
+    padding-top: 20px ;
     display: flex;
     flex-direction: row;
     gap:10px;

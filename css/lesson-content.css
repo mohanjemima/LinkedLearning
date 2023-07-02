@@ -50,6 +50,23 @@
     margin: 10px 5px;
 }
 
+.mark-box{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: start;
+}
+
+
+.notification-box-content{
+    display: flex;
+    width: fit-content;
+    justify-content: flex-start;
+}
+
+#mascot-img{
+    margin-left:auto ;
+    width: 90px;
+}
 /* Responsive CSS */
 @media screen and (max-width: 768px) {
     .content-container {
