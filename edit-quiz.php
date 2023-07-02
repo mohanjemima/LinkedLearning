@@ -58,7 +58,7 @@ if (array_key_exists("id", $_GET)) {
         <input class="text-input edit-input" id="title" name="title" placeholder="Quiz Title" value="<?php echo $title?>" required />
         <label for="title"></label>
 
-        <h2 class="demo-options-editor-title">Quiz Questions</h2>
+        <h2 class="demo-options-editor-title">Questions</h2>
 
         <section class="demo-options-editor-container" id="questions">
 
@@ -77,7 +77,7 @@ if (array_key_exists("id", $_GET)) {
 
 </main>
 <script type="text/javascript">
-    function addNewQuestionToForm(question="", type="", answers=[]) {
+    function addNewQuestionToForm(question="", type="") {
         let question_index = document.getElementById("questions").children.length;
         document.getElementById("questions").insertAdjacentHTML(
             "beforeend",
@@ -101,16 +101,15 @@ if (array_key_exists("id", $_GET)) {
         items.removeChild(items.lastChild);
     }
 
-    function addNewQuestionAnswerToForm(question_index) {
+    function addNewQuestionAnswerToForm(question_index, answer="", is_correct=false) {
         let answer_index = document.getElementById("questionanswers-"+question_index).children.length;
         document.getElementById("questionanswers-"+question_index).insertAdjacentHTML(
             "beforeend",
             `<div>` +
-            `<input class=\"text-input edit-input\" name=\"questions[${question_index}][answers][${answer_index}][label]\" placeholder=\"Answer ${answer_index+1}\" value="" required />\n` +
+            `<input class=\"text-input edit-input\" name=\"questions[${question_index}][answers][${answer_index}][label]\" placeholder=\"Answer ${answer_index+1}\" value=${answer} required />\n` +
             `<div class="sign-up-quiz-stack">` +
             `<div class="radio-btn-stack">` +
-            `<input type="checkbox" name="questions[${question_index}][answers][${answer_index}][is_correct]" id="is_correct_${answer_index}"><label class="radio-label" for="is_correct_${answer_index}">Correct Answer</label>` +
-            `<section class="demo-options-editor-container" id="questions-${answer_index}"></section>` +
+            `<input type="checkbox" name="questions[${question_index}][answers][${answer_index}][is_correct]" id="is_correct_${answer_index}" ${is_correct ? "checked": ""}><label class="radio-label" for="is_correct_${answer_index}">Correct Answer</label>` +
             `</div></div></div>`
         );
     }
@@ -120,18 +119,24 @@ if (array_key_exists("id", $_GET)) {
         items.removeChild(items.lastChild);
     }
 
-    //window.onload = function() {
-    //    <?php
-    //    if ($quiz != "") {
-    //        $demo_items = get_demo_items($quiz[0]["id"]);
-    //
-    //        foreach ($demo_items as $demo_item) {
-    //            echo "addNewDemoOptionToForm(\"${demo_item['display_label']}\", \"${demo_item['html_content']}\");";
-    //        }
-    //    }
-    //
-    //    ?>
-    //}
+    window.onload = function() {
+        <?php
+        if ($quiz != "") {
+            $i = 0;
+            foreach (get_quiz_questions($quiz[0]["id"]) as $question) {
+                echo "addNewQuestionToForm(\"${question['question']}\", \"${question['type']}\");";
+
+                foreach (get_quiz_question_answers($question["id"]) as $answer) {
+                    $answer_label = $answer["label"];
+                    $is_correct = $answer["is_correct"];
+                    echo "addNewQuestionAnswerToForm(${i}, \"$answer_label\", $is_correct);";
+                }
+                $i++;
+            }
+        }
+
+        ?>
+    }
 </script>
 </body>
 </html>
