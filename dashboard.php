@@ -1,30 +1,19 @@
 <?php
 include 'component.php'; // banner code
-include './crud/dashboard-data.php';
+include './assets/data/sample-data.php'; // sample data
+
 // Customize the link URLs, text, and display status for Banner
 $backLinkURL = '#';// back link for the back button
 $bannerText = 'Dashboard';
 $showBackLink = false;
 $showHomeLink = false;
 
+//SAMPLE//
+$childName = "Melissa";
+$rank = 1;
+$lessonsCompleted= 2;
+$points= 123045678;
 
-if (isset($_GET['value'])) {
-    $id = urldecode($_GET['value']);
-    $user = get_user_record($id)[0];
-    if (isset($user['name'])) {
-        $childName = $user['name'];
-    } else {
-        $childName ="Name:404";
-    }
-
-}
-
-$rank = get_user_rank($id);
-$lessonsCompleted= $user['current_lesson_id'] ."/".get_no_available_lessons();
-$points= $user['points'];
-$title = get_title($id);
-$content = get_content($id);
-$articleURL ="./article.php?id=".$user['current_lesson_id'] ;
 
 
 ?>
@@ -63,13 +52,16 @@ $articleURL ="./article.php?id=".$user['current_lesson_id'] ;
                 <h2 class="box-heading">Lessons</h2>
             </a>
         </div>
-        <a href=<?=$articleURL?> class="box box-dark-blue box-wide-rectangle">
+        <a href="./article.php" class="box box-dark-blue box-wide-rectangle">
             <img id="pin-img" src="assets/img/pin-icon.svg" alt="pin icon">
             <div class="lesson-section">
-                
-                <h1 id="lesson-section-heading"><?=$title;?></h1>
+                <h1 id="lesson-section-heading">1. What is HTML?</h1>
                 <p id="lesson-section-description" aria-valuemax="405">
-                    <?=$content;?>
+                    The HyperText Markup Language or HTML is the standard markup language for documents designed to be displayed in a web browser. It is often assisted by technologies such as Cascading Style Sheets (CSS) and scripting languages such as JavaScript.
+
+                    Web browsers receive HTML documents from a web server or from local storage and render the documents into multimedia web pages. HTML describes the structure of a web page semantically and originally included cues for its appearance.
+
+                    HTML elements are the building blocks of HTML pages. With HTML constructs, images and other objects such as interactive forms may be embedded into the rendered page. HTML provides a means to create structured documents by denoting structural semantics for text such as headings, paragraphs, lists, links, quotes, and other items. HTML elements are delineated by tags, written using angle brackets. Tags such as  directly introduce content into the page. Other tags such as  surround and provide information about document text and may include sub-element tags. Browsers do not display the HTML tags but use them to interpret the content of the page.                <!--filler text, source: wikipedia  url: https://en.wikipedia.org/wiki/HTML-->
                 </p>
             </div>
         </a>
@@ -89,7 +81,7 @@ $articleURL ="./article.php?id=".$user['current_lesson_id'] ;
                 </div>
                 <div class="ranking-info-item">
                     <h3 class="ranking-info-item-label"> Lesson</h3>
-                    <p class="ranking-info-item-content"><?=$lessonsCompleted?></p>
+                    <p class="ranking-info-item-content"><?=$lessonsCompleted?>/24</p>
                 </div>
                 <div class="ranking-info-item">
                     <h3 class="ranking-info-item-label"> Points</h3>
