@@ -63,6 +63,10 @@
     justify-content: flex-start;
 }
 
+.question-control-container {
+    margin: 24px 4px;
+}
+
 #mascot-img{
     margin-left:auto ;
     width: 90px;

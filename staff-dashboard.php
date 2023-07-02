@@ -62,6 +62,11 @@ function lessonRow($title,$isFirst,$href){
                 <h2 class="box-square-headings">New Lesson</h2>
             </a>
 
+            <a href="edit-quiz.php" class="box box-green box-square ">
+                <img class="box-square-img" src="assets/img/new-lesson-icon.svg" alt="new file icon">
+                <h2 class="box-square-headings">New Quiz</h2>
+            </a>
+
         </div>
     </div>
 </main>
