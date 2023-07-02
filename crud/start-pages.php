@@ -96,4 +96,3 @@ function valid_account($findPassword,$findEmail){
 }
 
 exit();
-
