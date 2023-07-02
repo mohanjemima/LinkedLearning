@@ -5,6 +5,15 @@ $backLinkURL = '#';// back link for the back button
 $bannerText = 'Coding made easy';
 $showBackLink = false;
 $showHomeLink = false;
+
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+}
+
+$currentFile = basename($_SERVER['PHP_SELF']);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,13 +36,19 @@ $showHomeLink = false;
 <main class="page-wrapper sign-up-quiz-wrapper">
     <h1 class="main-heading">About You</h1>
 
-    <form  action="dashboard.php" method="post">
+    <form  action="./crud/start-pages.php" method="post">
         <section class="text-input-section">
-            <input  class="text-input" id="child-name" placeholder="Child Name" required>
+            <input  class="text-input" id="child-name"  name="child-name" placeholder="Child Name" required>
             <label class="hidden-label" for="child-name"></label>
 
-            <input  class="text-input " id="age-input" placeholder="Age" maxlength="2" type="number" required>
+            <input  class="text-input " id="age-input" name="age" placeholder="Age" maxlength="2" type="number" required>
             <label class="hidden-label" for="age-input"></label>
+
+<!-- hidden values-->
+            <input type="hidden" name="sign-up-email" value="<?php echo isset($email) ? htmlspecialchars($email) : ''; ?>">
+            <input type="hidden" name="sign-up-password" value="<?php echo isset($password) ? htmlspecialchars($password) : ''; ?>">
+
+            <input type="hidden" name="current_file" value="<?php echo htmlspecialchars($currentFile); ?>">
 
         </section>
 
@@ -59,7 +74,7 @@ $showHomeLink = false;
             </div>
         </section>
 
-        <div id="notification-box" >
+        <div class="notification-box" id="notification-box" >
             <p class="notification-box-text" id="html-recommendation"></p>
             <p class="notification-box-text" id="css-recommendation"></p>
         </div>
