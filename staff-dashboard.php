@@ -10,12 +10,8 @@ $showHomeLink = false;
 
 $content= list_all_content();
 
-function lessonRow($title,$isFirst,$href){
-    $id='';
-    if($isFirst){
-        $id='id="first"';
-    }
-    echo '<li class="link-list-item" '.$id.'><a class="link-list-link"  href="'.$href.'" >'.$title.'</a></li>';
+function lessonRow($title, $href){
+    echo '<li class="link-list-item"><a class="link-list-link"  href="'.$href.'" >'.$title.'</a></li>';
 }
 ?>
 <!DOCTYPE html>
@@ -40,12 +36,18 @@ function lessonRow($title,$isFirst,$href){
 <main class="page-wrapper ">
     <div class="staff-dashboard">
         <section class="left-link-section box box-blue link-list-box disable">
-            <h1 class="link-list-heading">Available Lessons</h1>
+            <h1 class="link-list-heading">Available Lessons & Quizzes</h1>
             <ul class = "lesson-link-list staff-sizing scroll-bar">
                 <?php
-                for ($i = 0; $i < count($content); $i++) {
-                    $isFirst = $i==0;
-                    lessonRow($content[$i]['title'],$isFirst,'./edit-lesson.php?id='.$content[$i]['id']);
+                foreach ($content as $item) {
+                    if (array_key_exists("lesson_id", $item)) {
+                        // is a quiz
+                        $href = "./edit-quiz.php?id=".$item["id"];
+                    } else {
+                        // is a lesson
+                        $href = "./edit-lesson.php?id=".$item["id"];
+                    }
+                    lessonRow($item['title'],$href);
                 }
                 ?>
             </ul>
