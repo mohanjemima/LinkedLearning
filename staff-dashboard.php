@@ -8,7 +8,7 @@ $bannerText = 'Dashboard';
 $showBackLink = false;
 $showHomeLink = false;
 
-$lessons= get_lessons();
+$content= list_all_content();
 
 function lessonRow($title,$isFirst,$href){
     $id='';
@@ -43,9 +43,9 @@ function lessonRow($title,$isFirst,$href){
             <h1 class="link-list-heading">Available Lessons</h1>
             <ul class = "lesson-link-list staff-sizing scroll-bar">
                 <?php
-                for ($i = 0; $i < count($lessons); $i++) {
+                for ($i = 0; $i < count($content); $i++) {
                     $isFirst = $i==0;
-                    lessonRow($lessons[$i]['title'],$isFirst,'./edit-lesson.php?id='.$lessons[$i]['id']);
+                    lessonRow($content[$i]['title'],$isFirst,'./edit-lesson.php?id='.$content[$i]['id']);
                 }
                 ?>
             </ul>

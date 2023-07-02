@@ -43,6 +43,18 @@ if (array_key_exists("id", $_GET)) {
         <?php if (array_key_exists("id", $_GET)) { $quiz_id = $_GET["id"]; echo "<input type=\"hidden\" name=\"id\" value=\"$quiz_id\" />"; } ?>
 
         <h2>Quiz Content</h2>
+
+        <label for="lesson">Choose the lesson this quiz will be associated with</label>
+        <select name="lesson" id="lesson">
+            <?php
+                foreach(get_lessons() as $lesson) {
+                    $lesson_id = $lesson["id"];
+                    $lesson_title = $lesson["title"];
+                    echo "<option value=\"$lesson_id\">$lesson_title</option>";
+                }
+            ?>
+        </select>
+
         <input class="text-input edit-input" id="title" name="title" placeholder="Quiz Title" value="<?php echo $title?>" required />
         <label for="title"></label>
 
@@ -108,18 +120,18 @@ if (array_key_exists("id", $_GET)) {
         items.removeChild(items.lastChild);
     }
 
-    window.onload = function() {
-        <?php
-        if ($quiz != "") {
-            $demo_items = get_demo_items($quiz[0]["id"]);
-
-            foreach ($demo_items as $demo_item) {
-                echo "addNewDemoOptionToForm(\"${demo_item['display_label']}\", \"${demo_item['html_content']}\");";
-            }
-        }
-
-        ?>
-    }
+    //window.onload = function() {
+    //    <?php
+    //    if ($quiz != "") {
+    //        $demo_items = get_demo_items($quiz[0]["id"]);
+    //
+    //        foreach ($demo_items as $demo_item) {
+    //            echo "addNewDemoOptionToForm(\"${demo_item['display_label']}\", \"${demo_item['html_content']}\");";
+    //        }
+    //    }
+    //
+    //    ?>
+    //}
 </script>
 </body>
 </html>

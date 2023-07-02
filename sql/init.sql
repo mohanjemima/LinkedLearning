@@ -21,7 +21,9 @@ CREATE TABLE DemoItem (
 CREATE TABLE Quiz (
     id INT NOT NULL AUTO_INCREMENT,
     title VARCHAR(255) NOT NULL,
-    PRIMARY KEY (id)
+    lesson_id INT NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (lesson_id) REFERENCES Lesson(id)
 );
 
 CREATE TABLE QuizQuestion (
