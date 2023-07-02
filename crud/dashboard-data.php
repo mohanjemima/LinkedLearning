@@ -80,4 +80,3 @@ function get_title($id){
 function get_content($id){
     return strip_tags(get_current_lesson($id)['content']);
 }
-
