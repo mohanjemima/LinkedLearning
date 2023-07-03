@@ -106,7 +106,7 @@ if (array_key_exists("id", $_GET)) {
         document.getElementById("questionanswers-"+question_index).insertAdjacentHTML(
             "beforeend",
             `<div>` +
-            `<input class=\"text-input edit-input\" name=\"questions[${question_index}][answers][${answer_index}][label]\" placeholder=\"Answer ${answer_index+1}\" value=${answer} required />\n` +
+            `<input class=\"text-input edit-input\" name=\"questions[${question_index}][answers][${answer_index}][label]\" placeholder=\"Answer ${answer_index+1}\" value=\"${answer}\" required />\n` +
             `<div class="sign-up-quiz-stack">` +
             `<div class="radio-btn-stack">` +
             `<input type="checkbox" name="questions[${question_index}][answers][${answer_index}][is_correct]" id="is_correct_${answer_index}" ${is_correct ? "checked": ""}><label class="radio-label" for="is_correct_${answer_index}">Correct Answer</label>` +
