@@ -17,7 +17,7 @@ function displayPageTitle($title){
 function displayQuestionInput($i, $heading)
 {
     echo '<div class="input-question">';
-    echo '<h2 class="sub-heading">' . $heading . '</h2>';
+    echo '<h2 class="sub-heading">' . htmlspecialchars(addslashes($heading)) . '</h2>';
     echo '<input placeholder="type answer..." class="quiz-input" type="text" id="q' . $i . '-input">';
     echo '<label class="hidden-label" for="q' . $i . '-input">Question' . $i . '</label>';
     echo '</div>';
@@ -39,7 +39,6 @@ function displayQuestionCheck($i, $question, $answers)
 {
     echo '<div class="quiz-stack">';
     echo '<h2 class="sub-heading">' . $question . '</h2>';
-    print_r($answers);
     echo '<div class="radio-btn-stack">';
     for ($j=0; $j<count($answers); $j++) {
         echo '<input type="checkbox" name="question' . $i . '"><label class="checkbox-label" id="q' . $i . '-option' . $j . '" for="q' . $i . '-option' . $j . '">' . htmlspecialchars(addslashes($answers[$j]["label"])) . '</label>';

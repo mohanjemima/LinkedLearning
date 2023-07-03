@@ -51,7 +51,7 @@ if (array_key_exists("id", $_GET)) {
             <?php
                 foreach(get_lessons() as $lesson) {
                     $lesson_id = $lesson["id"];
-                    $lesson_title = $lesson["title"];
+                    $lesson_title = htmlspecialchars(addslashes($lesson["title"]));
                     if ($lesson_id == $associated_lesson_id) {
                         echo "<option value=\"$lesson_id\" selected>$lesson_title</option>";
                     } else {
@@ -130,10 +130,11 @@ if (array_key_exists("id", $_GET)) {
         if ($quiz != "") {
             $i = 0;
             foreach (get_quiz_questions($quiz[0]["id"]) as $question) {
-                echo "addNewQuestionToForm(\"${question['question']}\", \"${question['type']}\");";
+                $q = htmlspecialchars(addslashes($question['question']));
+                echo "addNewQuestionToForm(\"$q\", \"${question['type']}\");";
 
                 foreach (get_quiz_question_answers($question["id"]) as $answer) {
-                    $answer_label = $answer["label"];
+                    $answer_label = htmlspecialchars(addslashes($answer["label"]));
                     $is_correct = $answer["is_correct"];
                     echo "addNewQuestionAnswerToForm(${i}, \"$answer_label\", $is_correct);";
                 }

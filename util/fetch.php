@@ -22,7 +22,14 @@ function list_all_content() {
         return $result;
     }, array());
     $quizzes = array_reduce(get_quizzes(), function($result, $item) {
-        $result[strval($item["lesson_id"] + 0.2)] = $item;
+        $count = 0.2;
+        foreach(array_keys($result) as $key) {
+            if(strpos($key, strval($item["lesson_id"])) > -1){
+                $count += 0.1;
+            }
+        }
+
+        $result[strval($item["lesson_id"] + $count)] = $item;
         return $result;
     }, array());
 
