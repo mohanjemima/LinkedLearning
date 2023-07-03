@@ -13,7 +13,7 @@ if (array_key_exists("id", $_POST)) {
         header("Location: ..\staff-dashboard.php");
     }
     $quiz_id = mysqli_real_escape_string($conn, $quiz[0]["id"]);
-    $sql = "UPDATE Quiz SET title='$title' WHERE id=$quiz_id";
+    $sql = "UPDATE Quiz SET title='$title', lesson_id=$lesson_id WHERE id=$quiz_id";
 } else {
     // NEW - CREATE
     $sql = "INSERT INTO Quiz (title, lesson_id) VALUES ('$title', '$lesson_id')";

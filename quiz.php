@@ -1,18 +1,17 @@
 <?php
+include './util/fetch.php';
 include 'component.php'; // banner code
-include './assets/data/sample-data.php'; // sample data
 // Customize the link URLs, text, and display status for Banner
 $backLinkURL = '#';// back link for the back button
 $bannerText = 'Quiz';
 $showBackLink = false;
 $showHomeLink = true;
 
-$lessons= getQuizzes();
-
-$index = array_search( 'q1', array_column($lessons, 'lessonID'));
+$quiz = get_quiz($_GET["id"])[0];
+$questions = get_quiz_questions($_GET["id"]);
 
 function displayPageTitle($title){
-    echo'    <h1 class="main-heading">'.trim($title).'</h1>';
+    echo '<h1 class="main-heading">'.trim($title).'</h1>';
 }
 
 function displayQuestionInput($i, $heading)
@@ -24,25 +23,26 @@ function displayQuestionInput($i, $heading)
     echo '</div>';
 }
 
-function displayQuestionRadio($i, $heading, $content)
+function displayQuestionRadio($i, $question, $answers)
 {
     echo '<div class="quiz-stack">';
-    echo '<h2 class="sub-heading">' . $heading . '</h2>';
+    echo '<h2 class="sub-heading">' . $question . '</h2>';
     echo '<div class="radio-btn-stack">';
-    for ($j=0; $j<count($content); $j++) {
-        echo '<input type="radio" name="question' . $i . '"><label class="radio-label" id="q' . $i . '-option' . $j . '" for="q' . $i . '-option' . $j . '">' . $content[$j]['choice'] . '</label>';
+    for ($j=0; $j<count($answers); $j++) {
+        echo '<input type="radio" name="question' . $i . '"><label class="radio-label" id="q' . $i . '-option' . $j . '" for="q' . $i . '-option' . $j . '">' . htmlspecialchars(addslashes($answers[$j]["label"])) . '</label>';
     }
     echo '</div>';
     echo '</div>';
 }
 
-function displayQuestionCheck($i, $heading, $content)
+function displayQuestionCheck($i, $question, $answers)
 {
     echo '<div class="quiz-stack">';
-    echo '<h2 class="sub-heading">' . $heading . '</h2>';
+    echo '<h2 class="sub-heading">' . $question . '</h2>';
+    print_r($answers);
     echo '<div class="radio-btn-stack">';
-    for ($j=0; $j<count($content); $j++) {
-        echo '<input type="checkbox" name="question' . $i . '"><label class="checkbox-label" id="q' . $i . '-option' . $j . '" for="q' . $i . '-option' . $j . '">' . $content[$j]['choice'] . '</label>';
+    for ($j=0; $j<count($answers); $j++) {
+        echo '<input type="checkbox" name="question' . $i . '"><label class="checkbox-label" id="q' . $i . '-option' . $j . '" for="q' . $i . '-option' . $j . '">' . htmlspecialchars(addslashes($answers[$j]["label"])) . '</label>';
     }
     echo '</div>';
     echo '</div>';
@@ -53,7 +53,7 @@ function displayQuestionCheck($i, $heading, $content)
 <html lang="en">
 <head>
     <meta  charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
-    <title>Linked Learning |Quiz</title>
+    <title>Linked Learning | Quiz</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
     <link rel="stylesheet" href="./css/normalize.css">
@@ -70,18 +70,26 @@ function displayQuestionCheck($i, $heading, $content)
 <main class="page-wrapper ">
     <div class="quiz-wrapper">
     <section class= "information-section">
-     <?php   displayPageTitle($lessons[$index]['pageTitle']);
+     <?php
+         displayPageTitle($quiz['title']);
 
-     for ($i = 0; $i < count($lessons[$index]['paragraphs']); $i++) {
-             if ($lessons[$index]['paragraphs'][$i]['displayType'] == 'input') {
+         for ($i = 0; $i < count($questions); $i++) {
+
+             $answer_counts = array_count_values(array_column($questions[$i]["answers"], "is_correct"));
+             $correct_answer_count = 0;
+             if (array_key_exists(1, $answer_counts)) {
+                 $correct_answer_count = $answer_counts[1];
+             }
+
+             if ($questions[$i]['type'] == 'TEXT') {
                  // render input question
-                 displayQuestionInput($i,$lessons[$index]['paragraphs'][$i]['heading']);
-             } elseif ($lessons[$index]['paragraphs'][$i]['displayType'] == 'radio') {
+                 displayQuestionInput($i, $questions[$i]["question"]);
+             } elseif ($questions[$i]['type'] == 'MULTI' && $correct_answer_count == 1) {
                  // render radio button question
-                 displayQuestionRadio($i,$lessons[$index]['paragraphs'][$i]['heading'],$lessons[$index]['paragraphs'][$i]['content']);
-             } elseif ($lessons[$index]['paragraphs'][$i]['displayType'] == 'check'){
-                 //render check box question
-                 displayQuestionCheck($i,$lessons[$index]['paragraphs'][$i]['heading'],$lessons[$index]['paragraphs'][$i]['content']);
+                 displayQuestionRadio($i, $questions[$i]["question"], $questions[$i]["answers"]);
+             } elseif ($questions[$i]['type'] == 'MULTI' && $correct_answer_count != 1){
+                 // render check box question
+                 displayQuestionCheck($i, $questions[$i]["question"], $questions[$i]["answers"]);
              }
          }
      ?>

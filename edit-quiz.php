@@ -9,12 +9,14 @@ $showBackLink = true;
 $showHomeLink = false;
 
 $title = "";
+$associated_lesson_id = "";
 $quiz = "";
 
 if (array_key_exists("id", $_GET)) {
     $quiz = get_quiz($_GET["id"]);
     if (sizeof($quiz) == 1) {
         $title = $quiz[0]["title"];
+        $associated_lesson_id = $quiz[0]["lesson_id"];
     }
 }
 
@@ -50,7 +52,11 @@ if (array_key_exists("id", $_GET)) {
                 foreach(get_lessons() as $lesson) {
                     $lesson_id = $lesson["id"];
                     $lesson_title = $lesson["title"];
-                    echo "<option value=\"$lesson_id\">$lesson_title</option>";
+                    if ($lesson_id == $associated_lesson_id) {
+                        echo "<option value=\"$lesson_id\" selected>$lesson_title</option>";
+                    } else {
+                        echo "<option value=\"$lesson_id\">$lesson_title</option>";
+                    }
                 }
             ?>
         </select>
