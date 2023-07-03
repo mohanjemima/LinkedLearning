@@ -9,14 +9,10 @@ $bannerText = 'Lessons';
 $showBackLink = false;
 $showHomeLink = true;
 
-$lessons= get_lessons();
+$content = list_all_content();
 
-function lessonRow($title,$isFirst,$href){
-    $id='';
-    if($isFirst){
-        $id='id="first"';
-    }
-    echo '<li class="link-list-item" '.$id.'><a class="link-list-link"  href="'.$href.'" >'.$title.'</a></li>';
+function lessonRow($title, $href){
+    echo '<li class="link-list-item"><a class="link-list-link"  href="'.$href.'" >'.$title.'</a></li>';
 }
 
 ?>
@@ -45,9 +41,15 @@ function lessonRow($title,$isFirst,$href){
         <ul class = "lesson-link-list lesson-link-list-sizing scroll-bar">
 
             <?php
-            for ($i = 0; $i < count($lessons); $i++) {
-                if($i==0){ $isFirst = true; }else{ $isFirst=false; }
-                lessonRow($lessons[$i]['title'],$isFirst,'./article.php?id='.$lessons[$i]['id']);
+            foreach ($content as $item) {
+                if (array_key_exists("lesson_id", $item)) {
+                    // is a quiz
+                    $href = "./quiz.php?id=".$item["id"];
+                } else {
+                    // is a lesson
+                    $href = "./article.php?id=".$item["id"];
+                }
+                lessonRow($item["title"], $href);
             }
             ?>
         </ul>

@@ -60,7 +60,11 @@ function get_quiz($quiz_id) {
 function get_quiz_questions($quiz_id) {
     global $conn;
     $quiz_id = mysqli_real_escape_string($conn, $quiz_id);
-    return fetch("QuizQuestion WHERE quiz_id=$quiz_id");
+    $questions = fetch("QuizQuestion WHERE quiz_id=$quiz_id");
+    for ($i = 0; $i < count($questions); $i++) {
+        $questions[$i]["answers"] = get_quiz_question_answers($questions[$i]["id"]);
+    }
+    return $questions;
 }
 
 function get_quiz_question_answers($quiz_question_id) {

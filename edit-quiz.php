@@ -85,8 +85,8 @@ if (array_key_exists("id", $_GET)) {
             `<input class=\"text-input edit-input\" name=\"questions[${question_index}][question]\" placeholder=\"Question ${question_index+1}\" value="${question}" required />\n` +
             `<div class="sign-up-quiz-stack">` +
             `<div class="radio-btn-stack">` +
-            `<input type="radio" name="questions[${question_index}][type]" id="question-type-multi-${question_index}" ${["", "MULTI"].includes(type) ? "checked" : ""}><label class="radio-label" for="question-type-multi-${question_index}">Multiple Choice</label>` +
-            `<input type="radio" name="questions[${question_index}][type]" id="question-type-text-${question_index}" ${type === "TEXT" ? "checked" : "unchecked"}><label class="radio-label" for="question-type-text-${question_index}">Text Input</label>` +
+            `<input type="radio" name="questions[${question_index}][type]" value="MULTI" id="question-type-multi-${question_index}" ${["", "MULTI"].includes(type) ? "checked" : ""}><label class="radio-label" for="question-type-multi-${question_index}">Multiple Choice</label>` +
+            `<input type="radio" name="questions[${question_index}][type]" value="TEXT" id="question-type-text-${question_index}" ${type === "TEXT" ? "checked" : "unchecked"}><label class="radio-label" for="question-type-text-${question_index}">Text Input</label>` +
             `</div></div>`+
             `<section class="demo-options-editor-container" id="questionanswers-${question_index}"></section>` +
             `<section class="question-control-container">` +

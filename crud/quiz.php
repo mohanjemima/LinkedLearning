@@ -31,7 +31,7 @@ if ($conn->query($sql)) {
     // Clear down old questions and answers to make updates behave like an overwrite
     if (array_key_exists("id", $_POST)) {
         foreach (get_quiz_questions($quiz_id) as $question) {
-            $question_id = $question["quiz_id"];
+            $question_id = $question["id"];
             $conn->query("DELETE FROM QuizAnswer WHERE quiz_question_id=$question_id");
         }
         $conn->query("DELETE FROM QuizQuestion WHERE quiz_id=$quiz_id");
@@ -47,7 +47,7 @@ if ($conn->query($sql)) {
         foreach ($question["answers"] as $answer) {
             $answer_text = mysqli_real_escape_string($conn, $answer["label"]);
             $is_correct = 0;
-            if (array_key_exists("is_correct", $_POST)) {
+            if (array_key_exists("is_correct", $answer)) {
                 $is_correct = 1;
             }
             $conn->query("INSERT INTO QuizAnswer (label, is_correct, quiz_question_id) VALUES ('$answer_text', $is_correct, $question_id)");        }

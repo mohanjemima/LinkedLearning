@@ -1,6 +1,5 @@
 <?php
 include 'component.php'; // banner code
-include './assets/data/sample-data.php'; // sample data
 include './util/fetch.php';
 // Customize the link URLs, text, and display status for Banner
 $backLinkURL = '#';// back link for the back button
