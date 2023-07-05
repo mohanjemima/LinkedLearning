@@ -31,7 +31,7 @@ function mark_questions($questions) {
                     return $ans["is_correct"] == true;
                 });
                 $correct_answers = array_column($correct_answers, "id");
-                $results[$question["id"]] = array_intersect($user_response, $correct_answers);
+                $results[$question["id"]] = array_diff($user_response, $correct_answers) == [];
             } else {
                 $results[$question["id"]] = false;
             }
@@ -49,20 +49,22 @@ function displayPageTitle($title){
     echo '<h1 class="main-heading">'.trim($title).'</h1>';
 }
 
-function displayQuestionInput($question_id, $heading)
-{
+function generate_question_answer_response_header_postfix($question_id) {
     global $results;
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $is_correct = $results[$question_id];
-        echo '<div class="input-question">';
         if ($is_correct) {
-            echo '<h2 class="sub-heading">' . htmlspecialchars(addslashes($heading)) . ' - CORRECT</h2>';
-        } else {
-            echo '<h2 class="sub-heading">' . htmlspecialchars(addslashes($heading)) . ' - INCORRECT</h2>';
+            return ' - CORRECT';
         }
-    } else {
-        echo '<h2 class="sub-heading">' . htmlspecialchars(addslashes($heading)) . '</h2>';
+        return ' - INCORRECT';
     }
+    return '';
+}
+
+function displayQuestionInput($question_id, $heading)
+{
+    echo '<div class="input-question">';
+    echo '<h2 class="sub-heading">' . htmlspecialchars(addslashes($heading)) . generate_question_answer_response_header_postfix($question_id) . '</h2>';
     echo "<input placeholder='type answer...' class='quiz-input' type='text' id='q$question_id-input' name='answers[$question_id]' required>";
     echo "<label class='hidden-label' for='q$question_id-input'>Question$question_id</label>";
     echo '</div>';
@@ -71,7 +73,7 @@ function displayQuestionInput($question_id, $heading)
 function displayQuestionRadio($question_id, $question, $answers)
 {
     echo '<div class="quiz-stack">';
-    echo '<h2 class="sub-heading">' . $question . '</h2>';
+    echo '<h2 class="sub-heading">' . $question . generate_question_answer_response_header_postfix($question_id) . '</h2>';
     echo '<div class="radio-btn-stack">';
     for ($j=0; $j<count($answers); $j++) {
         $content = htmlspecialchars(addslashes($answers[$j]["label"]));
@@ -85,7 +87,7 @@ function displayQuestionRadio($question_id, $question, $answers)
 function displayQuestionCheck($question_id, $question, $answers)
 {
     echo '<div class="quiz-stack">';
-    echo '<h2 class="sub-heading">' . $question . '</h2>';
+    echo '<h2 class="sub-heading">' . $question . generate_question_answer_response_header_postfix($question_id) . '</h2>';
     echo '<div class="radio-btn-stack">';
     for ($j=0; $j<count($answers); $j++) {
         $content = htmlspecialchars(addslashes($answers[$j]["label"]));
