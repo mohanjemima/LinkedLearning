@@ -7,41 +7,90 @@ $bannerText = 'Quiz';
 $showBackLink = false;
 $showHomeLink = true;
 
-$quiz = get_quiz($_GET["id"])[0];
-$questions = get_quiz_questions($_GET["id"]);
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // mark the quiz
+    $quiz = get_quiz($_POST["id"])[0];
+    $questions = get_quiz_questions($_POST["id"]);
+
+    $results = mark_questions($questions);
+
+} else {
+    // GET request - display the quiz to be completed
+    $quiz = get_quiz($_GET["id"])[0];
+    $questions = get_quiz_questions($_GET["id"]);
+    $results = [];
+}
+
+function mark_questions($questions) {
+    $results = [];
+    foreach ($questions as $question) {
+        if ($question["type"] == "MULTI") {
+            if (array_key_exists($question["id"], $_POST["answers"])) {
+                $user_response = $_POST["answers"][$question["id"]];
+                $correct_answers = array_filter($question["answers"], function($ans) {
+                    return $ans["is_correct"] == true;
+                });
+                $correct_answers = array_column($correct_answers, "id");
+                $results[$question["id"]] = array_intersect($user_response, $correct_answers);
+            } else {
+                $results[$question["id"]] = false;
+            }
+        } elseif ($question["type"] == "TEXT") {
+            $user_response = $_POST["answers"][$question["id"]];
+            $correct_answer = $question["answers"][0]["label"];
+            // check if user answer contains the substring of the answer - equivalent to doing LIKE '%answer%' query
+            $results[$question["id"]] = str_contains($user_response, $correct_answer);
+        }
+    }
+    return $results;
+}
 
 function displayPageTitle($title){
     echo '<h1 class="main-heading">'.trim($title).'</h1>';
 }
 
-function displayQuestionInput($i, $heading)
+function displayQuestionInput($question_id, $heading)
 {
-    echo '<div class="input-question">';
-    echo '<h2 class="sub-heading">' . htmlspecialchars(addslashes($heading)) . '</h2>';
-    echo '<input placeholder="type answer..." class="quiz-input" type="text" id="q' . $i . '-input">';
-    echo '<label class="hidden-label" for="q' . $i . '-input">Question' . $i . '</label>';
+    global $results;
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $is_correct = $results[$question_id];
+        echo '<div class="input-question">';
+        if ($is_correct) {
+            echo '<h2 class="sub-heading">' . htmlspecialchars(addslashes($heading)) . ' - CORRECT</h2>';
+        } else {
+            echo '<h2 class="sub-heading">' . htmlspecialchars(addslashes($heading)) . ' - INCORRECT</h2>';
+        }
+    } else {
+        echo '<h2 class="sub-heading">' . htmlspecialchars(addslashes($heading)) . '</h2>';
+    }
+    echo "<input placeholder='type answer...' class='quiz-input' type='text' id='q$question_id-input' name='answers[$question_id]' required>";
+    echo "<label class='hidden-label' for='q$question_id-input'>Question$question_id</label>";
     echo '</div>';
 }
 
-function displayQuestionRadio($i, $question, $answers)
+function displayQuestionRadio($question_id, $question, $answers)
 {
     echo '<div class="quiz-stack">';
     echo '<h2 class="sub-heading">' . $question . '</h2>';
     echo '<div class="radio-btn-stack">';
     for ($j=0; $j<count($answers); $j++) {
-        echo '<input type="radio" name="question' . $i . '"><label class="radio-label" id="q' . $i . '-option' . $j . '" for="q' . $i . '-option' . $j . '">' . htmlspecialchars(addslashes($answers[$j]["label"])) . '</label>';
+        $content = htmlspecialchars(addslashes($answers[$j]["label"]));
+        $answer_id = $answers[$j]["id"];
+        echo "<input type='radio' name='answers[$question_id][]' value='$answer_id'><label class='radio-label' id='q$question_id-option$j' for='q$question_id-option$j'>$content</label>";
     }
     echo '</div>';
     echo '</div>';
 }
 
-function displayQuestionCheck($i, $question, $answers)
+function displayQuestionCheck($question_id, $question, $answers)
 {
     echo '<div class="quiz-stack">';
     echo '<h2 class="sub-heading">' . $question . '</h2>';
     echo '<div class="radio-btn-stack">';
     for ($j=0; $j<count($answers); $j++) {
-        echo '<input type="checkbox" name="question' . $i . '"><label class="checkbox-label" id="q' . $i . '-option' . $j . '" for="q' . $i . '-option' . $j . '">' . htmlspecialchars(addslashes($answers[$j]["label"])) . '</label>';
+        $content = htmlspecialchars(addslashes($answers[$j]["label"]));
+        $answer_id = $answers[$j]["id"];
+        echo "<input type='checkbox' name='answers[$question_id][]' value='$answer_id'><label class='checkbox-label' id='q$question_id-option$j' for='q$question_id-option'>$content</label>";
     }
     echo '</div>';
     echo '</div>';
@@ -69,29 +118,39 @@ function displayQuestionCheck($i, $question, $answers)
 <main class="page-wrapper ">
     <div class="quiz-wrapper">
     <section class= "information-section">
-     <?php
-         displayPageTitle($quiz['title']);
+        <form action="quiz.php" method="POST">
+            <?php
+             displayPageTitle($quiz['title']);
 
-         for ($i = 0; $i < count($questions); $i++) {
+            if (array_key_exists("id", $_GET)) {
+                $lesson_id = $_GET["id"];
+                echo "<input type=\"hidden\" name=\"id\" value=\"$lesson_id\" />";
+            }
 
-             $answer_counts = array_count_values(array_column($questions[$i]["answers"], "is_correct"));
-             $correct_answer_count = 0;
-             if (array_key_exists(1, $answer_counts)) {
-                 $correct_answer_count = $answer_counts[1];
+             for ($i = 0; $i < count($questions); $i++) {
+
+                 $answer_counts = array_count_values(array_column($questions[$i]["answers"], "is_correct"));
+                 $correct_answer_count = 0;
+                 if (array_key_exists(1, $answer_counts)) {
+                     $correct_answer_count = $answer_counts[1];
+                 }
+
+                 if ($questions[$i]['type'] == 'TEXT') {
+                     // render input question
+                     displayQuestionInput($questions[$i]["id"], $questions[$i]["question"]);
+                 } elseif ($questions[$i]['type'] == 'MULTI' && $correct_answer_count == 1) {
+                     // render radio button question
+                     displayQuestionRadio($questions[$i]["id"], $questions[$i]["question"], $questions[$i]["answers"]);
+                 } elseif ($questions[$i]['type'] == 'MULTI' && $correct_answer_count != 1){
+                     // render check box question
+                     displayQuestionCheck($questions[$i]["id"], $questions[$i]["question"], $questions[$i]["answers"]);
+                 }
              }
-
-             if ($questions[$i]['type'] == 'TEXT') {
-                 // render input question
-                 displayQuestionInput($i, $questions[$i]["question"]);
-             } elseif ($questions[$i]['type'] == 'MULTI' && $correct_answer_count == 1) {
-                 // render radio button question
-                 displayQuestionRadio($i, $questions[$i]["question"], $questions[$i]["answers"]);
-             } elseif ($questions[$i]['type'] == 'MULTI' && $correct_answer_count != 1){
-                 // render check box question
-                 displayQuestionCheck($i, $questions[$i]["question"], $questions[$i]["answers"]);
-             }
-         }
-     ?>
+            ?>
+            <section class="submit-buttons-container">
+                <button type="submit" class="btn btn-green next-btn">Submit</button>
+            </section>
+        </form>
     </section>
     </div>
 
@@ -107,6 +166,7 @@ function displayQuestionCheck($i, $question, $answers)
     </div>    
     
 <div class="footer-container">
+<!--    TODO FIX -->
     <a href="article.php" class="btn btn-default btn-footer ">Previous</a>
     <a href="article2.php" class="btn btn-footer btn-yellow" ><b>Next</b></a>
 </div>

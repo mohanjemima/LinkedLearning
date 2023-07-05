@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (check_email_exists($userData, $signEmail)) {
             //if e-mail already used then return to sign-up.php & display-error
             $encodedValue = urlencode("400:Account-exists");
-            header("Location: https://devweb2022.cis.strath.ac.uk/~rqb22133/sign-up.php?value=$encodedValue");
+            header("Location: ..\sign-up.php?value=$encodedValue");
                 //Use te URL below to see the value being sent
                 //https://devweb2022.cis.strath.ac.uk/~rqb22133/sign-up.php?value=acount-exists
             exit();
@@ -34,16 +34,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if (!check_email_exists($userData, $logEmail)) { //check e-mail exists
             $encodedValue = urlencode("401:email");
-            header("Location: https://devweb2022.cis.strath.ac.uk/~rqb22133/log-in.php?value=$encodedValue");
+            header("Location: ..\log-in.php?value=$encodedValue");
             exit();
         }elseif (!valid_account($logPassword, $logEmail)) { //check account details exists & match : FALSE
             $encodedValue = urlencode("401:password");
-            header("Location: https://devweb2022.cis.strath.ac.uk/~rqb22133/log-in.php?value=$encodedValue");
+            header("Location: ..\log-in.php?value=$encodedValue");
             exit();
         }else{
             $userID = valid_account($logPassword, $logEmail); //check account details exists & match : TRUE
             $encodedValue = urlencode($userID);
-            header("Location: https://devweb2022.cis.strath.ac.uk/~rqb22133/dashboard.php?value=$encodedValue");
+            header("Location: ..\dashboard.php?value=$encodedValue");
             exit();
         }
     }
