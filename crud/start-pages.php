@@ -51,6 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             if(isAdmin($userID)){
                 //Admin
+                header("Location: ..\staff-dashboard.php");
             }else if(!isAdmin($userID)){
                 //User
                 header("Location: ..\dashboard.php");
