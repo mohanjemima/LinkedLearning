@@ -69,8 +69,23 @@
 
 #mascot-img{
     margin-left:auto ;
+    margin-right: 20px;
     width: 90px;
 }
+
+.result-box {
+    margin-top:20px;
+    padding: 8px 8px 8px 30px;
+    height: auto;
+    display: block;
+    border: 1px solid var(--blue);
+    border-left: 10px solid var(--blue);
+    border-radius: 4px;
+    background-color: var(--blue-light);
+    visibility: visible;
+    text-align: left;
+}
+
 /* Responsive CSS */
 @media screen and (max-width: 768px) {
     .content-container {

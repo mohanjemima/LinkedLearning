@@ -3,8 +3,6 @@ include 'component.php'; // banner code
 // Customize the link URLs, text, and display status for Banner
 $backLinkURL = '#';// back link for the back button
 $bannerText = 'Coding made easy';
-session_start();
-check_user_access();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
@@ -40,7 +38,7 @@ $currentFile = basename($_SERVER['PHP_SELF']);
             <input  class="text-input" id="child-name"  name="child-name" placeholder="Child Name" required>
             <label class="hidden-label" for="child-name"></label>
 
-            <input  class="text-input " id="age-input" name="age" placeholder="Age" maxlength="2" type="number" required>
+            <input class="text-input" id="age-input" name="age" placeholder="Age" maxlength="2" type="text" required>
             <label class="hidden-label" for="age-input"></label>
 
 <!-- hidden values-->
@@ -82,7 +80,13 @@ $currentFile = basename($_SERVER['PHP_SELF']);
     </form>
 
 </main>
-
+<script>
+    document.getElementById('age-input').addEventListener('input', function (event) {
+        let input = event.target.value;
+        let validatedInput = input.replace(/\D/g, '').substr(0, 2);
+        event.target.value = validatedInput;
+    });
+</script>
 <script src="./js/sign-up-quiz.js"></script>
 </body>
 </html>

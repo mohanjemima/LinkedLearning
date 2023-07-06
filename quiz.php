@@ -171,7 +171,7 @@ function displayQuestionCheck($question_id, $question, $answers)
     </div>
 
     <?php
-//    global $conn;
+    global $conn;
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $correct_answer_count = array_sum($results);
             $mark = $correct_answer_count . " out of " . sizeof($questions);
@@ -186,12 +186,12 @@ function displayQuestionCheck($question_id, $question, $answers)
 
 
             
-            echo "<div class='notification-box'><div class='mark-box'><div>";
+            echo "<div class='result-box'><div class='mark-box'><div>";
             echo "<p class='notification-box-content'>Mark: <span id='mark'>$mark</span></p>";
             echo "<p class='notification-box-content'>Score: <span id='score'>$score</span></p>";
             echo "<p class='notification-box-content'>Points: <span id='points'>+$points gained!</span></p>";
             echo "</div>";
-            echo "<img id='mascot-img' src='assets/img/avatars/avatar3.png' alt='mascot'>";
+            echo "<img id='mascot-img' src='assets/img/praise.png' alt='mascot'>";
             echo "</div></div>";
         }
     ?>

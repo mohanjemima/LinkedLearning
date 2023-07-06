@@ -2,7 +2,6 @@ let htmlChoice ;
 let cssChoice ;
 let htmlText, cssText;
 
-
 function update(elementName){
     let choice = getSelectedRadio(elementName);
 
