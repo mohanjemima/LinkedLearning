@@ -1,7 +1,7 @@
 <?php
 include(dirname(__DIR__).'/util/connection.php');
 include(dirname(__DIR__).'/util/fetch.php');
-include './crud/dashboard-data.php';
+include './dashboard-data.php';
 
 
 session_start();
@@ -24,11 +24,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $encodedValue = urlencode("400:Account-exists");
             header("Location: ..\sign-up.php?error=$encodedValue");
             exit();
-        } elseif (notImpersonateAdmin($signEmail)){
-            //if email ends with admin formatting, it's impersonating an admin account;
-            $encodedValue = urlencode("401:Not_Authorised");
-            header("Location: ..\sign-up.php?error=$encodedValue");
-
         }else {
             add_user($childName, $age, $signEmail, $signPassword);
         }
@@ -86,11 +81,6 @@ function add_user($name,$age,$email,$password){
 
     $sql = "INSERT INTO User (name, age, email, password) VALUES ('$name',' $age', '$email', '$password')";
     //implement data binding if enough time;
-    if ($conn->query($sql)) {
-        echo "Data inserted successfully.";
-    } else {
-        echo "Error: " . $conn->errorInfo()[2];
-    }
 }
 
 
@@ -112,15 +102,7 @@ function valid_account($findPassword,$findEmail){
     }
 }
 
-function notImpersonateAdmin($email){
 
-    if(str_ends_with($email, '.staff@LinkedLearning')){
-        return true;
-    }else{
-        return false;
-    }
-
-}
 
 function isAdmin($id){
     global $conn;
