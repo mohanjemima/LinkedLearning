@@ -30,7 +30,7 @@ function mark_questions($questions) {
                     return $ans["is_correct"] == true;
                 });
                 $correct_answers = array_column($correct_answers, "id");
-                $results[$question["id"]] = array_diff($user_response, $correct_answers) == [];
+                $results[$question["id"]] = $user_response == $correct_answers;
             } else {
                 $results[$question["id"]] = false;
             }
@@ -41,7 +41,6 @@ function mark_questions($questions) {
             $results[$question["id"]] = str_contains($user_response, $correct_answer);
         }
     }
-    print_r($results);
 
     return $results;
 }
@@ -157,16 +156,21 @@ function displayQuestionCheck($question_id, $question, $answers)
     </section>
     </div>
 
-    <div class="notification-box">
-        <div class="mark-box">
-            <div>
-            <p class="notification-box-content">Mark: <span id="mark"></span></p>
-            <p class="notification-box-content">Score: <span id="score"></span></p>
-            <p class="notification-box-content">Points: + <span id="points"></span></p>
-            </div>
-            <img id="mascot-img" src="assets/img/avatars/avatar3.png" alt="mascot">
-        </div>
-    </div>    
+    <?php
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $correct_answer_count = array_sum($results);
+            $mark = $correct_answer_count . " out of " . sizeof($questions);
+            $score = $correct_answer_count * 100;
+            $points = $correct_answer_count * 100;
+            echo "<div class='notification-box'><div class='mark-box'><div>";
+            echo "<p class='notification-box-content'>Mark: <span id='mark'>$mark</span></p>";
+            echo "<p class='notification-box-content'>Score: <span id='score'>$score</span></p>";
+            echo "<p class='notification-box-content'>Points: <span id='points'>+$points gained!</span></p>";
+            echo "</div>";
+            echo "<img id='mascot-img' src='assets/img/avatars/avatar3.png' alt='mascot'>";
+            echo "</div></div>";
+        }
+    ?>
     
 <div class="footer-container">
 <!--    TODO FIX -->

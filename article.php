@@ -9,18 +9,22 @@ $lesson = get_lesson($_GET["id"])[0];
 $demo_items = get_demo_items($_GET["id"]);
 
 function displayPageTitle($title){
+    $title = htmlspecialchars(addslashes($title));
     echo "<h1 class=\"main-heading\">$title</h1>";
 }
 function displayListItem($content) {
+    $content = htmlspecialchars(addslashes($content));
     echo "<li class=\"paragraph\">$content</li>";
 
 }
 
 function displayParagraphText($content) {
+    $content = htmlspecialchars(addslashes($content));
     echo "<p class=\"paragraph\">$content</p>";
 }
 
 function displayHeadingText($heading) {
+    $heading = htmlspecialchars(addslashes($heading));
     echo "<h3 class=\"text-block-heading\">$heading</h3>";
 }
 
