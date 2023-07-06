@@ -5,8 +5,6 @@ include 'util/fetch.php';
 // Customize the link URLs, text, and display status for Banner
 $backLinkURL = './staff-dashboard.php';// back link for the back button
 $bannerText = 'Dashboard';
-$showBackLink = true;
-$showHomeLink = false;
 
 $title = "";
 $associated_lesson_id = "";
@@ -36,7 +34,7 @@ if (array_key_exists("id", $_GET)) {
 <header>
     <?php
     // Generate the banner HTML code
-    generateBanner($backLinkURL,$bannerText,$showBackLink, $showHomeLink);
+    generateBanner($backLinkURL,$bannerText,true, false, false);
     ?>
 </header>
 <main class="page-wrapper content-container">

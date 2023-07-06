@@ -4,8 +4,7 @@ include './assets/data/sample-data.php'; // sample data
 // Customize the link URLs, text, and display status for Banner
 $backLinkURL = '#';// back link for the back button
 $bannerText = 'Scores & Rewards';
-$showBackLink = false;
-$showHomeLink = true;
+
 
 $users =  getUsers();
 $rewards = getRewards();
@@ -48,7 +47,7 @@ function rewardPrizeRows($img,$name,$cost){
 <header>
     <?=
     // Generate the banner HTML code
-    generateBanner($backLinkURL,$bannerText,$showBackLink, $showHomeLink);
+    generateBanner($backLinkURL,$bannerText,false, true, false);
     ?>
 </header>
 <main class="page-wrapper scores-rewards-wrapper">

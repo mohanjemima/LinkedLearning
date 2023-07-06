@@ -4,3 +4,5 @@ INSERT INTO DemoItem (`display_label`, `html_content`, `lesson_id`) VALUES ('h1'
 INSERT INTO DemoItem (`display_label`, `html_content`, `lesson_id`) VALUES ('h3', '<h3>Here is a H3 tag: it' 's best suited for sub headings</h3>', '1');
 INSERT INTO DemoItem (`display_label`, `html_content`, `lesson_id`) VALUES ('p', '<p>This is a p (paragraph) tag: this is used for content, like you see throughout this page!</p>', '1');
 INSERT INTO User (name, age, email, password) VALUES ('Jemima',' 19', 'Jemima.mohan.2022@uni.strath.ac.uk', '1234');
+INSERT INTO User (name, age, email, password) VALUES ('Admin1',' 32', 'Admin1.staff@LinkedLearning', '1234');
+UPDATE `User` SET `is_admin`= true WHERE `email`= 'Admin1.staff@LinkedLearning';

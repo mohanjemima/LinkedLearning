@@ -6,8 +6,6 @@ include 'util/fetch.php';
 // Customize the link URLs, text, and display status for Banner
 $backLinkURL = '#';// back link for the back button
 $bannerText = 'Lessons';
-$showBackLink = false;
-$showHomeLink = true;
 
 $content = list_all_content();
 
@@ -31,7 +29,7 @@ function lessonRow($title, $href){
 <header>
     <?=
     // Generate the banner HTML code
-    generateBanner($backLinkURL,$bannerText,$showBackLink, $showHomeLink);
+    generateBanner($backLinkURL,$bannerText,false, true, false);
     ?>
 </header>
 <main class="page-wrapper ">

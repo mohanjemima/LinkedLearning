@@ -3,8 +3,6 @@ include 'component.php'; // banner code
 // Customize the link URLs, text, and display status for Banner
 $backLinkURL = '#';// back link for the back button
 $bannerText = 'Coding made easy';
-$showBackLink = false;
-$showHomeLink = false;
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -30,7 +28,7 @@ $currentFile = basename($_SERVER['PHP_SELF']);
 <header>
     <?=
     // Generate the banner HTML code
-    generateBanner($backLinkURL,$bannerText,$showBackLink, $showHomeLink);
+    generateBanner($backLinkURL,$bannerText,false, false, false);
     ?>
 </header>
 <main class="page-wrapper sign-up-quiz-wrapper">

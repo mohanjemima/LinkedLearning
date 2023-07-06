@@ -1,5 +1,5 @@
 <?php
-function generateBanner($backLinkURL,$bannerText,$showBackLink,$showHomeLink)
+function generateBanner($backLinkURL,$bannerText,$showBackLink,$showHomeLink,$showLogOut)
 {
     echo '<head>';
     echo '<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">';
@@ -16,13 +16,16 @@ function generateBanner($backLinkURL,$bannerText,$showBackLink,$showHomeLink)
     echo '    </div>';
     echo '    <p class="heading-text">' . $bannerText . '</p>';
     echo '</div>';
-    if($showBackLink || $showHomeLink) {
+    if($showBackLink || $showHomeLink || $showLogOut) {
         echo '<div class="banner-links">';
-        if ($showBackLink) {
+
+        if ($showLogOut) {
+            echo '<a href="./log-in.php" class="banner-link">';
+            echo 'LogOut</a>';
+        }else if ($showBackLink) {
             echo '<a href="' . $backLinkURL . '" class="banner-link">';
             echo '<b>&lt;&lt;</b> Back</a>';
-        }
-        if ($showHomeLink) {
+        }else if ($showHomeLink) {
             echo '<a href="./dashboard.php" class="banner-link">';
             echo '<img src="./assets/img/home-icon.svg" alt="house icon" class="banner-link-icon">Home </a>';
         }

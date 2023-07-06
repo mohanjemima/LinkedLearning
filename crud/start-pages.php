@@ -2,7 +2,9 @@
 include(dirname(__DIR__).'/util/connection.php');
 include(dirname(__DIR__).'/util/fetch.php');
 
-$userData = fetch('Users');
+session_start();
+
+$userData = fetch('User');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     //getting the file name of previous page
@@ -19,8 +21,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             //if e-mail already used then return to sign-up.php & display-error
             $encodedValue = urlencode("400:Account-exists");
             header("Location: ..\sign-up.php?value=$encodedValue");
-                //Use te URL below to see the value being sent
-                //https://devweb2022.cis.strath.ac.uk/~rqb22133/sign-up.php?value=acount-exists
             exit();
         } else {
             add_user($childName, $age, $signEmail, $signPassword);
@@ -42,8 +42,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit();
         }else{
             $userID = valid_account($logPassword, $logEmail); //check account details exists & match : TRUE
-            $encodedValue = urlencode($userID);
-            header("Location: ..\dashboard.php?value=$encodedValue");
+            $_SESSION['userID'] = $userID;
+            header("Location: ..\dashboard.php");
             exit();
         }
     }
@@ -67,8 +67,8 @@ function check_email_exists($array,$findEmail){
 function add_user($name,$age,$email,$password){
     global $conn;
 
-    $sql = "INSERT INTO Users (name, age, email, password) VALUES ('$name',' $age', '$email', '$password')";
-        //implement data binding if enough time;
+    $sql = "INSERT INTO User (name, age, email, password) VALUES ('$name',' $age', '$email', '$password')";
+    //implement data binding if enough time;
     if ($conn->query($sql)) {
         echo "Data inserted successfully.";
     } else {
@@ -83,10 +83,10 @@ function valid_account($findPassword,$findEmail){
     $findEmail = mysqli_real_escape_string($conn, $findEmail);
     $findPassword = mysqli_real_escape_string($conn, $findPassword);
 
-    $sql = "SELECT id FROM Users WHERE email = '$findEmail' AND password = '$findPassword'";
+    $sql = "SELECT id FROM User WHERE email = '$findEmail' AND password = '$findPassword'";
 
     $result = mysqli_query($conn, $sql);
-    
+
     if(mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_assoc($result);
         return $row['id'];

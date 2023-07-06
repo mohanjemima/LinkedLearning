@@ -36,7 +36,7 @@ if (array_key_exists("id", $_GET)) {
 <header>
     <?php
     // Generate the banner HTML code
-    generateBanner($backLinkURL,$bannerText,$showBackLink, $showHomeLink);
+    generateBanner($backLinkURL,$bannerText, true, false, false);
     ?>
 </header>
 <main class="page-wrapper content-container">

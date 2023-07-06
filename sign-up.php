@@ -3,8 +3,6 @@ include 'component.php'; // banner code
 // Customize the link URLs, text, and display status for Banner
 $backLinkURL = '#';// back link for the back button
 $bannerText = 'Coding made easy';
-$showBackLink = false;
-$showHomeLink = false;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +20,7 @@ $showHomeLink = false;
 <header>
     <?=
     // Generate the banner HTML code
-    generateBanner($backLinkURL,$bannerText,$showBackLink, $showHomeLink);
+    generateBanner($backLinkURL,$bannerText,false, false,false);
     ?>
 </header>
 <main class=" sign-up-wrapper ">

@@ -61,3 +61,4 @@ CREATE TABLE User (
     FOREIGN KEY (current_lesson_id) REFERENCES Lesson(id)
 );
 
+

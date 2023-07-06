@@ -5,8 +5,6 @@ include 'component.php'; // banner code
 // Customize the link URLs, text, and display status for Banner
 $backLinkURL = '#';// back link for the back button
 $bannerText = 'Dashboard';
-$showBackLink = false;
-$showHomeLink = false;
 
 $content= list_all_content();
 
@@ -30,7 +28,7 @@ function lessonRow($title, $href){
 <header>
     <?=
     // Generate the banner HTML code
-    generateBanner($backLinkURL,$bannerText,$showBackLink, $showHomeLink);
+    generateBanner($backLinkURL,$bannerText,false, false,false);
     ?>
 </header>
 <main class="page-wrapper ">

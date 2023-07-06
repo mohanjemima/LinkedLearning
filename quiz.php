@@ -4,8 +4,7 @@ include 'component.php'; // banner code
 // Customize the link URLs, text, and display status for Banner
 $backLinkURL = '#';// back link for the back button
 $bannerText = 'Quiz';
-$showBackLink = false;
-$showHomeLink = true;
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // mark the quiz
@@ -114,7 +113,7 @@ function displayQuestionCheck($question_id, $question, $answers)
 <header>
     <?=
     // Generate the banner HTML code
-    generateBanner($backLinkURL,$bannerText,$showBackLink, $showHomeLink);
+    generateBanner($backLinkURL,$bannerText,false, true, false);
     ?>
 </header>
 <main class="page-wrapper ">
