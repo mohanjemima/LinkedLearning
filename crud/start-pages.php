@@ -43,6 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }else{
             $userID = valid_account($logPassword, $logEmail); //check account details exists & match : TRUE
             $_SESSION['userID'] = $userID;
+
             header("Location: ..\dashboard.php");
             exit();
         }
@@ -94,5 +95,6 @@ function valid_account($findPassword,$findEmail){
         return false;
     }
 }
+
 
 exit();

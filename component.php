@@ -20,8 +20,8 @@ function generateBanner($backLinkURL,$bannerText,$showBackLink,$showHomeLink,$sh
         echo '<div class="banner-links">';
 
         if ($showLogOut) {
-            echo '<a href="./log-in.php" class="banner-link">';
-            echo 'LogOut</a>';
+            echo '<a href="./crud/logout.php" class=" banner-link">';
+            echo 'Logout</a>';
         }else if ($showBackLink) {
             echo '<a href="' . $backLinkURL . '" class="banner-link">';
             echo '<b>&lt;&lt;</b> Back</a>';
