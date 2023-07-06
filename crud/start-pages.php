@@ -1,4 +1,4 @@
-<?php /** @noinspection ALL */
+<?php
 
 use JetBrains\PhpStorm\NoReturn;
 
@@ -53,29 +53,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-#[NoReturn] function redirectToSignUpWithError(string $string): void
+#[NoReturn]
+function redirectToSignUpWithError(string $string): void
 {
     $encodedValue = urlencode($string);
     header("Location: ../sign-up.php?value=$encodedValue");
     exit;
 }
-#[NoReturn] function redirectToLoginWithError(string $string): void
+
+#[NoReturn]
+function redirectToLoginWithError(string $string): void
 {
     $encodedValue = urlencode($string);
     header("Location: ../log-in.php?value=$encodedValue");
     exit;
 }
 
-#[NoReturn] function redirectToDashboard(): void
-{header("Location: ..\dashboard.php");
-exit;}
-
-#[NoReturn] function redirectToStaffDashboard(): void{
-    header("Location: ..\staff-dashboard.php");
+#[NoReturn]
+function redirectToDashboard(): void
+{
+    header("Location: ../dashboard.php");
     exit;
 }
 
-function emailExists($email)
+#[NoReturn]
+function redirectToStaffDashboard(): void
+{
+    header("Location: ../staff-dashboard.php");
+    exit;
+}
+
+function emailExists($email): bool
 {
     global $userData;
 
@@ -88,51 +96,47 @@ function emailExists($email)
     return false;
 }
 
-function addUser($name, $age, $email, $password)
+function addUser($name, $age, $email, $password): void
 {
     global $conn;
 
-    $name = mysqli_real_escape_string($conn, $name);
-    $age = mysqli_real_escape_string($conn, $age);
-    $email = mysqli_real_escape_string($conn, $email);
-    $password = mysqli_real_escape_string($conn, $password);
+    $stmt = $conn->prepare("INSERT INTO User (name, age, email, password) VALUES (?, ?, ?, ?)");
+    $stmt->bind_param("ssss", $name, $age, $email, $password);
 
-    $sql = "INSERT INTO User (name, age, email, password) VALUES ('$name', '$age', '$email', '$password')";
-
-    if ($conn->query($sql)) {
+    if ($stmt->execute()) {
         echo "Data inserted successfully.";
     } else {
-        echo "Error: " . $conn->error;
+        echo "Error: " . $stmt->error;
     }
+
+    $stmt->close();
 }
 
 function validateAccount($findPassword, $findEmail)
 {
     global $conn;
-    $findEmail = mysqli_real_escape_string($conn, $findEmail);
-    $findPassword = mysqli_real_escape_string($conn, $findPassword);
 
-    $sql = "SELECT id FROM User WHERE email = '$findEmail' AND password = '$findPassword'";
+    $stmt = $conn->prepare("SELECT id FROM User WHERE email = ? AND password = ?");
+    $stmt->bind_param("ss", $findEmail, $findPassword);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-    $result = mysqli_query($conn, $sql);
-
-    if (mysqli_num_rows($result) > 0) {
-        $row = mysqli_fetch_assoc($result);
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
         return $row['id'];
     } else {
         return false;
     }
 }
 
-function isImpersonatingAdmin($email)
+function isImpersonatingAdmin($email): bool
 {
-    return strpos($email, '.staff@LinkedLearning') !== false;
+    return str_contains($email, '.staff@LinkedLearning');
 }
 
 function isAdmin($id)
 {
     global $conn;
-    $id = mysqli_real_escape_string($conn, $id);
 
     $stmt = $conn->prepare("SELECT `is_admin` FROM `User` WHERE `id` = ?");
     $stmt->bind_param("s", $id);
