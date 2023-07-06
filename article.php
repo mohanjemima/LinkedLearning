@@ -10,6 +10,18 @@ $bannerText = 'Article';
 $lesson = get_lesson($_GET["id"])[0];
 $demo_items = get_demo_items($_GET["id"]);
 
+$content_list = list_all_content();
+$content_id_list = array_column(array_values($content_list), "id");
+$lesson_index = array_search($lesson["id"], $content_id_list);
+$prev_id = null;
+if ($lesson_index > 0) {
+    $prev_id = $content_id_list[$lesson_index-1];
+}
+$next_id = null;
+if ($lesson_index < sizeof($content_id_list) - 1) {
+    $next_id = $content_id_list[$lesson_index+1];
+}
+
 function displayPageTitle($title){
     $title = htmlspecialchars(addslashes($title));
     echo "<h1 class=\"main-heading\">$title</h1>";
@@ -118,8 +130,26 @@ function displayHeadingText($heading) {
     </div>
 
     <div class="footer-container">
-        <a href="#" class="btn btn-footer btn-default hidden-label">Previous</a>
-        <a href="quiz.php" class="btn btn-footer btn-yellow" ><b>Next</b></a>
+        <?php
+            if ($prev_id) {
+                if (array_key_exists("lesson_id", $content_list[$lesson_index - 1])) {
+                    // quiz
+                    echo "<a href='./quiz.php?id=$prev_id' class='btn btn-footer btn-default'>Previous</a>";
+                } else {
+                    // article
+                    echo "<a href='./article.php?id=$prev_id' class='btn btn-footer btn-default'>Previous</a>";
+                }
+            }
+            if ($next_id) {
+                if (array_key_exists("lesson_id", $content_list[$lesson_index+1])) {
+                    // quiz
+                    echo "<a href='./quiz.php?id=$next_id' class='btn btn-footer btn-yellow'>Next</a>";
+                } else {
+                    // article
+                    echo "<a href='./article.php?id=$next_id' class='btn btn-footer btn-yellow'>Next</a>";
+                }
+            }
+        ?>
     </div>
 
 </main>
