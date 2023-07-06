@@ -159,11 +159,21 @@ function displayQuestionCheck($question_id, $question, $answers)
     </div>
 
     <?php
+//    global $conn;
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $correct_answer_count = array_sum($results);
             $mark = $correct_answer_count . " out of " . sizeof($questions);
             $score = $correct_answer_count * 100;
             $points = $correct_answer_count * 100;
+            $userid = mysqli_real_escape_string($conn, $_SESSION['userID']);
+            
+            $sql = "UPDATE User SET score =$score WHERE id=$userid";
+
+            $results = mysqli_query($conn, $sql);
+
+
+
+            
             echo "<div class='notification-box'><div class='mark-box'><div>";
             echo "<p class='notification-box-content'>Mark: <span id='mark'>$mark</span></p>";
             echo "<p class='notification-box-content'>Score: <span id='score'>$score</span></p>";
