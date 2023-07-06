@@ -120,7 +120,7 @@
   border-left: 10px solid var(--blue);
   border-radius: 4px;
   background-color: var(--blue-light);
-  visibility: visible;
+  visibility: hidden;
   text-align: left;
 }
 
