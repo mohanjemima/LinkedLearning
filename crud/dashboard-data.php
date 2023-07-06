@@ -1,42 +1,26 @@
 <?php
-include(dirname(__DIR__).'/util/connection.php');
+include(dirname(__DIR__) . '/util/connection.php');
 
-
-function get_user_record($findID) {
+function get_user_record($findID): ?array
+{
     global $conn;
-    $findID = mysqli_real_escape_string($conn, $findID);
+    $stmt = $conn->prepare("SELECT * FROM `User` WHERE `id` = ?");
+    $stmt->bind_param("s", $findID);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-    $sql = "SELECT * FROM `User` WHERE `id` = '$findID'";
-    $result = mysqli_query($conn, $sql);
-
-    return $result ? mysqli_fetch_assoc($result) : null;
+    return $result ? $result->fetch_assoc() : null;
 }
 
-
-//function get_user_record($id){
-//    global $conn;
-//
-//    $sql = "SELECT * FROM `User` WHERE `id` = ?";
-//    $stmt = mysqli_prepare($conn, $sql);
-//    mysqli_stmt_bind_param($stmt, "s", $id);
-//    mysqli_stmt_execute($stmt);
-//
-//    $result = mysqli_stmt_get_result($stmt);
-//    return mysqli_fetch_assoc($result);
-//}
-
-
-function get_user_rank($userID){
+function get_user_rank($userID): int|string
+{
     global $conn;
-    $sql= "SELECT `id`,`score` FROM `User`";
-    $result = mysqli_query($conn, $sql);
+    $stmt = $conn->prepare("SELECT `id`, `score` FROM `User` ORDER BY `score` DESC");
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $rows = $result->fetch_all(MYSQLI_ASSOC);
 
-    $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
-
-    $rows = insertionSortDesc($rows, 'score');
-
-    return findUserRank($rows,$userID);
-
+    return findUserRank($rows, $userID);
 }
 
 function insertionSortDesc($array, $columnName)
@@ -57,23 +41,29 @@ function insertionSortDesc($array, $columnName)
 
     return $array;
 }
-function findUserRank($array, $targetID) {
+
+function findUserRank($array, $targetID): int|string
+{
     foreach ($array as $rank => $user) {
         if ($user['id'] == $targetID) {
-            return ($rank+1);
+            return ($rank + 1);
         }
     }
     return -1; // Return -1 if the user with the specified ID is not found in the array
 }
 
-function get_no_available_lessons(){
+function get_no_available_lessons(): int
+{
     global $conn;
-    $sql = "SELECT * FROM `Lesson`";
-    $result = mysqli_query($conn, $sql);
-    return mysqli_num_rows($result);
+    $stmt = $conn->prepare("SELECT COUNT(*) AS count FROM `Lesson`");
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+
+    return $row['count'];
 }
 
-function get_current_lesson($id)
+function get_current_lesson($id): ?array
 {
     global $conn;
 
@@ -82,13 +72,8 @@ function get_current_lesson($id)
     $stmt->execute();
     $result = $stmt->get_result();
 
-    if ($result->num_rows > 0) {
-        return $result->fetch_assoc();
-    } else {
-        return null;
-    }
+    return $result->num_rows > 0 ? $result->fetch_assoc() : null;
 }
-
 
 function get_title($id): string
 {
@@ -114,12 +99,14 @@ function get_content($id): string
     return $content;
 }
 
-
-function getName($id){
+function getName($id): ?string
+{
     global $conn;
-    $sql= "SELECT  name FROM User WHERE is_admin = '1' AND id ='$id'";
-    $result = mysqli_query($conn, $sql);
+    $stmt = $conn->prepare("SELECT name FROM User WHERE is_admin = '1' AND id = ?");
+    $stmt->bind_param("s", $id);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-    $result = mysqli_fetch_assoc($result);
-    return $result['name'];
+    $row = $result->fetch_assoc();
+    return $row ? $row['name'] : null;
 }
