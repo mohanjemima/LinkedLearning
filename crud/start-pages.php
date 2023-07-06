@@ -20,9 +20,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (check_email_exists($userData, $signEmail)) {
             //if e-mail already used then return to sign-up.php & display-error
             $encodedValue = urlencode("400:Account-exists");
-            header("Location: ..\sign-up.php?value=$encodedValue");
+            header("Location: ..\sign-up.php?error=$encodedValue");
             exit();
-        } else {
+        } elseif (!notImpersonateAdmin($signEmail)){
+            //if email ends with admin formatting, it's impersonating an admin account;
+            $encodedValue = urlencode("401:Not_Authorised");
+            header("Location: ..\sign-up.php?error=$encodedValue");
+
+        }else {
             add_user($childName, $age, $signEmail, $signPassword);
         }
     }
@@ -34,17 +39,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if (!check_email_exists($userData, $logEmail)) { //check e-mail exists
             $encodedValue = urlencode("401:email");
-            header("Location: ..\log-in.php?value=$encodedValue");
+            header("Location: ..\log-in.php?error=$encodedValue");
             exit();
         }elseif (!valid_account($logPassword, $logEmail)) { //check account details exists & match : FALSE
             $encodedValue = urlencode("401:password");
-            header("Location: ..\log-in.php?value=$encodedValue");
+            header("Location: ..\log-in.php?error=$encodedValue");
             exit();
         }else{
             $userID = valid_account($logPassword, $logEmail); //check account details exists & match : TRUE
             $_SESSION['userID'] = $userID;
 
-            header("Location: ..\dashboard.php");
+            if(isAdmin($userID)){
+                //Admin
+            }else if(!isAdmin($userID)){
+                //User
+                header("Location: ..\dashboard.php");
+            }else{
+                $encodedValue = urlencode("400:Bad_Data");
+                header("Location: ..\log-in.php?error=$encodedValue");
+            }
             exit();
         }
     }
@@ -89,12 +102,37 @@ function valid_account($findPassword,$findEmail){
     $result = mysqli_query($conn, $sql);
 
     if(mysqli_num_rows($result) > 0) {
-        $row = mysqli_fetch_assoc($result);
-        return $row['id'];
+        $result = mysqli_fetch_assoc($result);
+        return $result['id'];
     }else{
         return false;
     }
 }
 
+function notImpersonateAdmin($email){
+
+    if(str_ends_with($email, '.staff@LinkedLearning')){
+        return true;
+    }else{
+        return false;
+    }
+
+}
+
+function isAdmin($id){
+    global $conn;
+    $id = mysqli_escape_string($conn, $id);
+
+    $sql = "SELECT `is_admin` FROM `User` WHERE `id` = '$id'";
+
+    $result = mysqli_query($conn,$sql);
+
+    if(mysqli_num_rows($result) > 0) {
+        $result = mysqli_fetch_assoc($result);
+        return $result['is_admin'];
+    }else{
+        return Null;
+    }
+}
 
 exit();

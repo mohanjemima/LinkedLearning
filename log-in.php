@@ -54,6 +54,8 @@ if (isset($_GET['value'])) {
         echo '<script>window.addEventListener("load", function() { alert("Wrong E-mail or Account doesn\'t exists"); });</script>';
     }elseif ($decodedValue == "401:password"){
         echo '<script>window.addEventListener("load", function() { alert("Incorrect Password"); });</script>';
+    }elseif ($decodedValue == "400:Bad_Data"){
+        echo '<script>window.addEventListener("load", function() { alert("Bad Data"); });</script>';
     }
 }
 

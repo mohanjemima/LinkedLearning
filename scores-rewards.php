@@ -1,21 +1,21 @@
 <?php
 include 'component.php'; // banner code
-include './assets/data/sample-data.php'; // sample data
+include './crud/scores-rewards-data.php'; // sample data
+
 // Customize the link URLs, text, and display status for Banner
 $backLinkURL = '#';// back link for the back button
 $bannerText = 'Scores & Rewards';
 
-
-$users =  getUsers();
+$topUser =  getTopScores();
 $rewards = getRewards();
 
-function leaderBoardRow($rank,$userName,$points){
+function leaderBoardRow($rank,$userName,$scores){
     echo '<tr class="rows disable-row display-row-yellow">';
     echo '    <td class="leaderboard-column-items leaderboard-column-one">';
     echo '        <p class="leaderboard-column-one"><span class="marker">'.$rank.'.</span> <span id="username1">'.$userName.'</span></p>';
     echo '    </td>';
     echo '    <td class="leaderboard-column-items leaderboard-column-two">';
-    echo '        <p class="leaderboard-column-two">'.$points.'</p>';
+    echo '        <p class="leaderboard-column-two">'.$scores.'</p>';
     echo '    </td>';
     echo '</tr>';
 }
@@ -59,8 +59,8 @@ function rewardPrizeRows($img,$name,$cost){
                 <th class="leaderboard-column-items column-headings leaderboard-column-two">Score</th>
             </tr>
             <?php
-            for ($i = 0; $i < count($users); $i++) {
-                leaderBoardRow(($i+1), $users[$i]['name'], $users[$i]['points']);
+            for ($i = 0; $i < count($topUser); $i++) {
+                leaderBoardRow(($i+1), $topUser[$i]['name'], $topUser[$i]['score']);
             }
             ?>
             <!-- Repeat rows for other users -->
@@ -76,8 +76,8 @@ function rewardPrizeRows($img,$name,$cost){
                 <th class="column-headings rewards-score-column">Cost</th>
             </tr>
             <?php
-            for ($i = 0; $i < count($rewards); $i++) {
-                rewardPrizeRows($rewards[$i]['img'], $rewards[$i]['name'], $rewards[$i]['cost']);
+            foreach ($rewards as $reward){
+                rewardPrizeRows($reward['img_address'], $reward['avatar_name'], $reward['cost']);
             }
             ?>
             <!-- Repeat rows for other prizes -->

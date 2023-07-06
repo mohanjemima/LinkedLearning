@@ -55,10 +55,27 @@ CREATE TABLE User (
     is_admin BOOLEAN DEFAULT false,
     score INT DEFAULT 0,
     points INT DEFAULT 0,
-    age INT,
+    age INT DEFAULT 0,
     current_lesson_id INT NOT NULL DEFAULT 1,
     PRIMARY KEY (id),
     FOREIGN KEY (current_lesson_id) REFERENCES Lesson(id)
 );
+
+CREATE TABLE Reward(
+    id INT NOT NULL,
+    avatar_name VARCHAR(50) NOT NULL,
+    img_address VARCHAR(20) NOT NULL,
+    cost INT NOT NULL,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE UnlockedAvatar(
+    user_id INT NOT NULL,
+    reward_id INT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES User(id),
+    FOREIGN KEY (reward_id) REFERENCES Reward(id),
+    PRIMARY KEY (user_id, reward_id)
+);
+
 
 
