@@ -59,7 +59,7 @@ $name = getName($id);
         </section>
 
         <div class="right-button-section">
-            <div  class="box box-dark-blue box-square disable">
+            <div  class="box box-dark-blue rectangle-box disable">
                 <img class="staff-avatar-img" src="assets/img/avatars/staff-avatar.png" alt="generic user icon ">
                 <h2 class="box-square-headings"><?=$name;?></h2>
             </div>
