@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $encodedValue = urlencode("400:Account-exists");
             header("Location: ..\sign-up.php?error=$encodedValue");
             exit();
-        } elseif (!notImpersonateAdmin($signEmail)){
+        } elseif (notImpersonateAdmin($signEmail)){
             //if email ends with admin formatting, it's impersonating an admin account;
             $encodedValue = urlencode("401:Not_Authorised");
             header("Location: ..\sign-up.php?error=$encodedValue");

@@ -41,6 +41,8 @@ function mark_questions($questions) {
             $results[$question["id"]] = str_contains($user_response, $correct_answer);
         }
     }
+    print_r($results);
+
     return $results;
 }
 
