@@ -12,4 +12,4 @@ if (empty($_SESSION)) {
 
 header("Location: ../log-in.php");
 exit;
-?>
+
