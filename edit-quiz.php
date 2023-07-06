@@ -74,10 +74,20 @@ if (array_key_exists("id", $_GET)) {
         </section>
 
         <section class="submit-buttons-container">
-            <a href="./staff-dashboard.php"><button type="button" class="btn btn-red next-btn">Cancel</button></a>
+            <a href="./staff-dashboard.php"><button type="button" class="btn next-btn">Cancel</button></a>
             <button type="submit" class="btn btn-green next-btn">Save</button>
         </section>
     </form>
+
+    <?php
+    if (array_key_exists("id", $_GET)) {
+        $lesson_id = $_GET["id"];
+        echo "<form action='crud/delete-quiz.php' method='POST'><section class='submit-buttons-container' style='margin-top: 16px;'>";
+        echo "<input type=\"hidden\" name=\"id\" value=\"$lesson_id\" />";
+        echo "<button type='submit' class='btn btn-red next-btn'>Delete</button>";
+        echo "</section></form>";
+    }
+    ?>
 
 </main>
 <script type="text/javascript">
