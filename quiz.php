@@ -164,7 +164,7 @@ function displayQuestionCheck($question_id, $question, $answers)
              }
             ?>
             <section class="submit-buttons-container">
-                <button type="submit" class="btn btn-green next-btn">Submit</button>
+                <?php if ($_SERVER["REQUEST_METHOD"] == "GET") { echo '<button type="submit" class="btn btn-green next-btn">Submit</button>'; } ?>
             </section>
         </form>
     </section>
