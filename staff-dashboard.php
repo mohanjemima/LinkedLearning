@@ -4,7 +4,7 @@ include 'component.php'; // banner code
 include './crud/dashboard-data.php';
 
 session_start();
-
+check_user_access();
 $id = $_SESSION['userID'];
 
 // Customize the link URLs, text, and display status for Banner

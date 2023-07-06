@@ -6,6 +6,10 @@ $bannerText = 'Coding made easy';
 
 $currentFile = basename($_SERVER['PHP_SELF']);
 
+
+
+$currentUrl = $_SERVER['REQUEST_URI'];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

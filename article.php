@@ -1,6 +1,8 @@
 <?php
 include 'component.php'; // banner code
 include './util/fetch.php';
+session_start();
+check_user_access();
 // Customize the link URLs, text, and display status for Banner
 $backLinkURL = '#';// back link for the back button
 $bannerText = 'Article';

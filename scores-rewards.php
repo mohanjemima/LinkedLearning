@@ -1,7 +1,7 @@
 <?php
 include 'component.php'; // banner code
 include './crud/scores-rewards-data.php'; // sample data
-
+check_user_access();
 // Customize the link URLs, text, and display status for Banner
 $backLinkURL = '#';// back link for the back button
 $bannerText = 'Scores & Rewards';

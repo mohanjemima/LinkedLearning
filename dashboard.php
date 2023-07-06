@@ -2,6 +2,7 @@
 include 'component.php'; // banner code
 include './crud/dashboard-data.php';
 session_start();//start session for that page
+check_user_access();
 
 // Customize the link URLs, text, and display status for Banner
 $backLinkURL = '#';// back link for the back button
@@ -10,15 +11,15 @@ $bannerText = 'Dashboard';
 
 $id = $_SESSION['userID'];
 
-$user = get_user_record($id)[0];
+$user = get_user_record($id);
 
 $childName = $user['name'];
 
 $rank = get_user_rank($id);
 $lessonsCompleted= $user['current_lesson_id'] ."/".get_no_available_lessons();
 $points= $user['points'];
-$title = get_title($id);
-$content = get_content($id);
+$title = get_title($user['current_lesson_id']);
+$content = get_content($user['current_lesson_id']);
 
 $articleURL ="./article.php?id=".$user['current_lesson_id'] ;
 

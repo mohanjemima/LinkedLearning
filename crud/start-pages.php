@@ -1,91 +1,113 @@
-<?php
-include(dirname(__DIR__).'/util/connection.php');
-include(dirname(__DIR__).'/util/fetch.php');
-include './dashboard-data.php';
+<?php /** @noinspection ALL */
 
+use JetBrains\PhpStorm\NoReturn;
+
+require_once dirname(__DIR__) . '/util/connection.php';
+require_once dirname(__DIR__) . '/util/fetch.php';
 
 session_start();
 
 $userData = fetch('User');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    //getting the file name of previous page
     $senderFile = $_POST['current_file'];
 
-    //IF previous file was SIGN UP (QUIZ) PAGE
-    if($senderFile == 'sign-up-quiz.php') {
+    if ($senderFile === 'sign-up-quiz.php') {
         $childName = $_POST['child-name'];
         $age = $_POST['age'];
         $signEmail = $_POST['sign-up-email'];
         $signPassword = $_POST['sign-up-password'];
 
-        if (check_email_exists($userData, $signEmail)) {
-            //if e-mail already used then return to sign-up.php & display-error
-            $encodedValue = urlencode("400:Account-exists");
-            header("Location: ..\sign-up.php?error=$encodedValue");
-            exit();
-        }else {
-            add_user($childName, $age, $signEmail, $signPassword);
+        if (emailExists($signEmail)) {
+            redirectToSignUpWithError('400:Account-exists');
+        } elseif (isImpersonatingAdmin($signEmail)) {
+            redirectToSignUpWithError('400:dumb-exists');
+        } else {
+            addUser($childName, $age, $signEmail, $signPassword);
+            $userID = validateAccount($signPassword, $signEmail);
+            $_SESSION['userID'] = $userID;
+            $_SESSION['logged-in'] = true;
+            redirectToDashboard();
         }
     }
 
-    //IF previous file was LOGIN PAGE
-    if($senderFile == 'log-in.php') {
+    if ($senderFile === 'log-in.php') {
         $logEmail = $_POST['log-email'];
         $logPassword = $_POST['log-password'];
 
-        if (!check_email_exists($userData, $logEmail)) { //check e-mail exists
-            $encodedValue = urlencode("401:email");
-            header("Location: ..\log-in.php?error=$encodedValue");
-            exit();
-        }elseif (!valid_account($logPassword, $logEmail)) { //check account details exists & match : FALSE
-            $encodedValue = urlencode("401:password");
-            header("Location: ..\log-in.php?error=$encodedValue");
-            exit();
-        }else{
-            $userID = valid_account($logPassword, $logEmail); //check account details exists & match : TRUE
+        if (!emailExists($logEmail)) {
+            redirectToLoginWithError('401:email');
+        } elseif (!validateAccount($logPassword, $logEmail)) {
+            redirectToLoginWithError('401:password');
+        } else {
+            $userID = validateAccount($logPassword, $logEmail);
             $_SESSION['userID'] = $userID;
+            $_SESSION['logged-in'] = true;
 
-            if(isAdmin($userID)){
-                //Admin
-                header("Location: ..\staff-dashboard.php");
-            }else if(!isAdmin($userID)){
-                //User
-                header("Location: ..\dashboard.php");
-            }else{
-                $encodedValue = urlencode("400:Bad_Data");
-                header("Location: ..\log-in.php?error=$encodedValue");
+            if (isAdmin($userID)) {
+                redirectToStaffDashboard();
+            } else {
+                redirectToDashboard();
             }
-            exit();
         }
     }
 }
 
-//check through all e-mails
-function check_email_exists($array,$findEmail){
-    $emailExists = false;
-
-    foreach ($array as $user) {
-        if ($user['email'] === $findEmail) {
-            $emailExists = true;
-            break;
-        }
-    }
-    return $emailExists;
+#[NoReturn] function redirectToSignUpWithError(string $string): void
+{
+    $encodedValue = urlencode($string);
+    header("Location: ../sign-up.php?value=$encodedValue");
+    exit;
+}
+#[NoReturn] function redirectToLoginWithError(string $string): void
+{
+    $encodedValue = urlencode($string);
+    header("Location: ../log-in.php?value=$encodedValue");
+    exit;
 }
 
+#[NoReturn] function redirectToDashboard(): void
+{header("Location: ..\dashboard.php");
+exit;}
 
-//Add's user data
-function add_user($name,$age,$email,$password){
+#[NoReturn] function redirectToStaffDashboard(): void{
+    header("Location: ..\staff-dashboard.php");
+    exit;
+}
+
+function emailExists($email)
+{
+    global $userData;
+
+    foreach ($userData as $user) {
+        if ($user['email'] === $email) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+function addUser($name, $age, $email, $password)
+{
     global $conn;
 
-    $sql = "INSERT INTO User (name, age, email, password) VALUES ('$name',' $age', '$email', '$password')";
-    //implement data binding if enough time;
+    $name = mysqli_real_escape_string($conn, $name);
+    $age = mysqli_real_escape_string($conn, $age);
+    $email = mysqli_real_escape_string($conn, $email);
+    $password = mysqli_real_escape_string($conn, $password);
+
+    $sql = "INSERT INTO User (name, age, email, password) VALUES ('$name', '$age', '$email', '$password')";
+
+    if ($conn->query($sql)) {
+        echo "Data inserted successfully.";
+    } else {
+        echo "Error: " . $conn->error;
+    }
 }
 
-
-//check account exists
-function valid_account($findPassword,$findEmail){
+function validateAccount($findPassword, $findEmail)
+{
     global $conn;
     $findEmail = mysqli_real_escape_string($conn, $findEmail);
     $findPassword = mysqli_real_escape_string($conn, $findPassword);
@@ -94,30 +116,33 @@ function valid_account($findPassword,$findEmail){
 
     $result = mysqli_query($conn, $sql);
 
-    if(mysqli_num_rows($result) > 0) {
-        $result = mysqli_fetch_assoc($result);
-        return $result['id'];
-    }else{
+    if (mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_assoc($result);
+        return $row['id'];
+    } else {
         return false;
     }
 }
 
-
-
-function isAdmin($id){
-    global $conn;
-    $id = mysqli_escape_string($conn, $id);
-
-    $sql = "SELECT `is_admin` FROM `User` WHERE `id` = '$id'";
-
-    $result = mysqli_query($conn,$sql);
-
-    if(mysqli_num_rows($result) > 0) {
-        $result = mysqli_fetch_assoc($result);
-        return $result['is_admin'];
-    }else{
-        return Null;
-    }
+function isImpersonatingAdmin($email)
+{
+    return strpos($email, '.staff@LinkedLearning') !== false;
 }
 
-exit();
+function isAdmin($id)
+{
+    global $conn;
+    $id = mysqli_real_escape_string($conn, $id);
+
+    $stmt = $conn->prepare("SELECT `is_admin` FROM `User` WHERE `id` = ?");
+    $stmt->bind_param("s", $id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        return $row['is_admin'];
+    } else {
+        return null;
+    }
+}

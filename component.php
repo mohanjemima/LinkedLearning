@@ -1,5 +1,5 @@
 <?php
-function generateBanner($backLinkURL,$bannerText,$showBackLink,$showHomeLink,$showLogOut)
+function generateBanner($backLinkURL,$bannerText,$showBackLink,$showHomeLink,$showLogOut): void
 {
     echo '<head>';
     echo '<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">';
@@ -34,7 +34,8 @@ function generateBanner($backLinkURL,$bannerText,$showBackLink,$showHomeLink,$sh
     echo '</div>';
 }
 
-function generateProfilePic(){
+function generateProfilePic(): void
+{
     echo '<div class="profile-picture-container">';
     echo '    <button class="edit-pp-btn" onclick="openPopup()" type="button">edit</button>';
     echo '    <img class="user-profile-img" id="selectedImage" src="assets/img/avatars/avatar6.png" alt="profile picture">';
@@ -51,4 +52,13 @@ function generateProfilePic(){
     echo '        <img class="thumbnail thumbnail-img" src="./assets/img/avatars/avatar6.png" onclick="selectImage(\'avatar6.png\')">';
     echo '    </section>';
     echo '</div>';
+}
+
+
+function check_user_access(): void
+{
+    if (!isset($_SESSION['logged-in']) || $_SESSION['logged-in'] !== true) {
+        header("Location: log-in.php");
+        exit();
+    }
 }

@@ -3,7 +3,8 @@ include 'component.php'; // banner code
 // Customize the link URLs, text, and display status for Banner
 $backLinkURL = '#';// back link for the back button
 $bannerText = 'Coding made easy';
-
+session_start();
+check_user_access();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];

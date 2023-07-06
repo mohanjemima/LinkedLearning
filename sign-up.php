@@ -46,8 +46,6 @@ if (isset($_GET['value'])) {
     $decodedValue = urldecode($_GET['value']);
     if ($decodedValue = "400:Account-exists") {
         echo '<script>window.addEventListener("load", function() { alert("An account using this e-mail already exists.\nPlease use a different e-mail or login"); });</script>';
-    }elseif ($decodedValue = "401:Not_Authorised"){
-        echo '<script>window.addEventListener("load", function() { alert("Invalid e-mail format.\nPlease try a different e-mail."); });</script>';
     }
 }
 ?>
