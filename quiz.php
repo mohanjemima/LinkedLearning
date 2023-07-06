@@ -22,6 +22,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $results = [];
 }
 
+$content_list = list_all_content();
+$content_id_list = array_column(array_values($content_list), "id");
+$lesson_index = array_search($quiz["id"], $content_id_list);
+$prev_id = null;
+if ($lesson_index > 0) {
+    $prev_id = $content_id_list[$lesson_index-1];
+}
+$next_id = null;
+if ($lesson_index < sizeof($content_id_list) - 1) {
+    $next_id = $content_id_list[$lesson_index+1];
+}
+
 function mark_questions($questions) {
     $results = [];
     foreach ($questions as $question) {
@@ -183,12 +195,29 @@ function displayQuestionCheck($question_id, $question, $answers)
             echo "</div></div>";
         }
     ?>
-    
-<div class="footer-container">
-<!--    TODO FIX -->
-    <a href="article.php" class="btn btn-default btn-footer ">Previous</a>
-    <a href="article2.php" class="btn btn-footer btn-yellow" ><b>Next</b></a>
-</div>
+
+    <div class="footer-container">
+        <?php
+        if ($prev_id) {
+            if (array_key_exists("lesson_id", $content_list[$lesson_index - 1])) {
+                // quiz
+                echo "<a href='./quiz.php?id=$prev_id' class='btn btn-footer btn-default'>Previous</a>";
+            } else {
+                // article
+                echo "<a href='./article.php?id=$prev_id' class='btn btn-footer btn-default'>Previous</a>";
+            }
+        }
+        if ($next_id) {
+            if (array_key_exists("lesson_id", $content_list[$lesson_index+1])) {
+                // quiz
+                echo "<a href='./quiz.php?id=$next_id' class='btn btn-footer btn-yellow'>Next</a>";
+            } else {
+                // article
+                echo "<a href='./article.php?id=$next_id' class='btn btn-footer btn-yellow'>Next</a>";
+            }
+        }
+        ?>
+    </div>
 </main>
 
 </body>

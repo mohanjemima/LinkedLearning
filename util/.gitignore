@@ -1,4 +1,0 @@
-# Ignore log files in the 'my_folder' directory
-util/*.log
-
-connection.php
