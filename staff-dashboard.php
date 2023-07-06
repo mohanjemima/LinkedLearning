@@ -1,6 +1,11 @@
 <?php
 include 'util/fetch.php';
 include 'component.php'; // banner code
+include './crud/dashboard-data.php';
+
+session_start();
+
+$id = $_SESSION['userID'];
 
 // Customize the link URLs, text, and display status for Banner
 $backLinkURL = '#';// back link for the back button
@@ -11,6 +16,8 @@ $content= list_all_content();
 function lessonRow($title, $href){
     echo '<li class="link-list-item"><a class="link-list-link"  href="'.$href.'" >'.$title.'</a></li>';
 }
+
+$name = getName($id);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -54,7 +61,7 @@ function lessonRow($title, $href){
         <div class="right-button-section">
             <div  class="box box-dark-blue box-square disable">
                 <img class="staff-avatar-img" src="assets/img/avatars/staff-avatar.png" alt="generic user icon ">
-                <h2 class="box-square-headings">Staff Name</h2>
+                <h2 class="box-square-headings"><?=$name;?></h2>
             </div>
 
             <a href="edit-lesson.php" class="box box-green box-square ">

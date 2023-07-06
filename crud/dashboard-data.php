@@ -1,6 +1,5 @@
 <?php
 include(dirname(__DIR__).'/util/connection.php');
-include(dirname(__DIR__).'/util/fetch.php');
 
 
 function get_user_record($findID){
@@ -79,4 +78,13 @@ function get_title($id){
 
 function get_content($id){
     return strip_tags(get_current_lesson($id)['content']);
+}
+
+function getName($id){
+    global $conn;
+    $sql= "SELECT  name FROM User WHERE is_admin = '1' AND id ='$id'";
+    $result = mysqli_query($conn, $sql);
+
+    $result = mysqli_fetch_assoc($result);
+    return $result['name'];
 }

@@ -1,6 +1,8 @@
 <?php
 include(dirname(__DIR__).'/util/connection.php');
 include(dirname(__DIR__).'/util/fetch.php');
+include './crud/dashboard-data.php';
+
 
 session_start();
 
