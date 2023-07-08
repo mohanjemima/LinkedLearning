@@ -19,10 +19,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $signPassword = $_POST['sign-up-password'];
 
         if (emailExists($signEmail)) {
+            echo'here1';
+
             redirectToSignUpWithError('400:Account-exists');
         } elseif (isImpersonatingAdmin($signEmail)) {
+            echo'here2';
+
             redirectToSignUpWithError('400:dumb-exists');
         } else {
+            echo'here3';
+
             addUser($childName, $age, $signEmail, $signPassword);
             $userID = validateAccount($signPassword, $signEmail);
             $_SESSION['userID'] = $userID;
