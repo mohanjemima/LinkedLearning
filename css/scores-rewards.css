@@ -36,17 +36,28 @@
 }
 
 .rows {
+    border:none;
     border-bottom: 2px solid;
+    column-gap: 20px;
     background-color: var(--red-light);
     display: flex;
     width: 100%;
     padding: 5px 0;
 }
+.rows:disabled{
+    opacity:50%;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5%);
+
+}
+.rows.disable-row[disabled]:hover {
+    cursor: not-allowed;
+}
+
 .disable-row {
     background-color: transparent;
 }
 
-.rows:not(.disable-row):hover {
+.rows:not(.disable-row):not([disabled]):hover {
     cursor: pointer;
     filter: brightness(95%);
 }

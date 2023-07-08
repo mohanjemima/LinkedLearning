@@ -1,4 +1,6 @@
 <?php
+include './crud/scores-rewards-data.php'; // sample data
+
 function generateBanner($backLinkURL,$bannerText,$showBackLink,$showHomeLink,$showLogOut): void
 {
     echo '<head>';
@@ -36,6 +38,7 @@ function generateBanner($backLinkURL,$bannerText,$showBackLink,$showHomeLink,$sh
 
 function generateProfilePic(): void
 {
+    $rewards = getRewards();
     echo '<div class="profile-picture-container">';
     echo '    <button class="edit-pp-btn" onclick="openPopup()" type="button">edit</button>';
     echo '    <img class="user-profile-img" id="selectedImage" src="assets/img/avatars/avatar6.png" alt="profile picture">';
@@ -44,14 +47,14 @@ function generateProfilePic(): void
     echo '<div class="popup box-green" id="imagePopup">';
     echo '    <h2 class="sub-heading">Select an Image</h2>';
     echo '    <section class="images">';
-    echo '        <img class="thumbnail thumbnail-img" src="./assets/img/avatars/avatar1.png" onclick="selectImage(\'avatar1.png\')">';
-    echo '        <img class="thumbnail thumbnail-img" src="./assets/img/avatars/avatar2.png" onclick="selectImage(\'avatar2.png\')">';
-    echo '        <img class="thumbnail thumbnail-img" src="./assets/img/avatars/avatar3.png" onclick="selectImage(\'avatar3.png\')">';
-    echo '        <img class="thumbnail thumbnail-img" src="./assets/img/avatars/avatar4.png" onclick="selectImage(\'avatar4.png\')">';
-    echo '        <img class="thumbnail thumbnail-img" src="./assets/img/avatars/avatar5.png" onclick="selectImage(\'avatar5.png\')">';
+
+    foreach ($rewards as $reward) {
+        echo '        <img class="thumbnail thumbnail-img" src="./assets/img/avatars/'.$reward['img_address'].'" onclick="selectImage(\''.$reward['img_address'].'\')">';
+    }
     echo '        <img class="thumbnail thumbnail-img" src="./assets/img/avatars/avatar6.png" onclick="selectImage(\'avatar6.png\')">';
     echo '    </section>';
     echo '</div>';
+
 }
 
 

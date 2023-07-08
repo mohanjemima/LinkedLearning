@@ -57,11 +57,13 @@ function get_no_available_lessons(): int
     global $conn;
     $stmt = $conn->prepare("SELECT COUNT(*) AS count FROM `Lesson`");
     $stmt->execute();
-    $result = $stmt->get_result();
-    $row = $result->fetch_assoc();
+    $stmt->bind_result($count);
+    $stmt->fetch();
+    $stmt->close();
 
-    return $row['count'];
+    return $count;
 }
+
 
 function get_current_lesson($id): ?array
 {

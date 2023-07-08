@@ -44,7 +44,7 @@ $bannerText = 'Coding made easy';
 //Place at the bottom of page so Page loads before sending alert
 if (isset($_GET['value'])) {
     $decodedValue = urldecode($_GET['value']);
-    if ($decodedValue = "400:Account-exists") {
+    if ($decodedValue == "400:Account-exists") {
         echo '<script>window.addEventListener("load", function() { alert("An account using this e-mail already exists.\nPlease use a different e-mail or login"); });</script>';
     }
 }

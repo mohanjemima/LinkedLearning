@@ -80,12 +80,12 @@ INSERT INTO User (name, email, password, is_admin) VALUES
                                                        ('Admin4', 'Admin4.staff@LinkedLearning', '1234', '1'),
                                                        ('Admin5', 'Admin5.staff@LinkedLearning', '1234', '1');
 INSERT INTO Reward (id, avatar_name, img_address, cost) VALUES
-                                                            ('1', 'Knight', '/avatars/avatar1.png', '94875'),
-                                                            ('2', 'Scientist', '/avatars/avatar2.png', '743634'),
-                                                            ('3', 'Artist', '/avatars/avatar3.png', '12312'),
-                                                            ('4', 'Adventurer', '/avatars/avatar4.png', '324235'),
-                                                            ('5', 'Teacher', '/avatars/avatar5.png', '34535'),
-                                                            ('6', 'Default', '/avatars/avatar6.png', '0');
+                                                            ('1', 'Knight', 'avatar1.png', '94875'),
+                                                            ('2', 'Scientist', 'avatar2.png', '743634'),
+                                                            ('3', 'Artist', 'avatar3.png', '12312'),
+                                                            ('4', 'Adventurer', 'avatar4.png', '324235'),
+                                                            ('5', 'Teacher', 'avatar5.png', '34535'),
+                                                            ('6', 'Default', 'avatar6.png', '0');
 INSERT INTO UnlockedAvatar (user_id, reward_id) VALUES
                                                     ('1', '1'),
                                                     ('1', '2'),
